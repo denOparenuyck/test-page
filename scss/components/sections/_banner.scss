@@ -1,0 +1,103 @@
+.banner {
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+
+    .banner__inner {
+        width: 100%;
+        max-width: 1920px;
+        min-height: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .banner__content {
+        width: 402px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .banner__title {}
+
+    .banner__text {
+        margin-top: 30px;
+    }
+
+    .banner__button {
+        margin-top: 40px;
+    }
+
+    .banner__background {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .banner {
+        .banner__inner {
+            min-height: vwD(800px);
+        }
+
+        .banner__content {
+            width: vwD(402px);
+        }
+
+        .banner__text {
+            margin-top: vwD(30px);
+        }
+
+        .banner__button {
+            margin-top: vwD(40px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .banner {
+        .banner__inner {
+            max-width: 100%;
+            min-height: 1px;
+            display: block;
+        }
+
+        .banner__content {
+            width: 100%;
+            padding: 0 vwM(16px);
+        }
+
+        .banner__text {
+            margin-top: vwM(24px);
+            text-align: left;
+        }
+
+        .banner__button {
+            width: 100%;
+            margin-top: vwM(32px);
+            .default-button {
+                width: 100%;
+            }
+        }
+
+        .banner__background {
+            position: static;
+            height: vwM(188px);
+            margin-top: vwM(36px);
+        }
+    }
+}

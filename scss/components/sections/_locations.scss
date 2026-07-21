@@ -1,0 +1,185 @@
+.locations {
+    overflow: hidden;
+    padding-top: 56px;
+    padding-bottom: 534px;
+    margin-bottom: -397px;
+
+    .locations__inner {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: -742px;
+            bottom: -534px;
+            width: 1479px;
+            height: 1584px;
+            background: url(../images/shadow-2.webp) no-repeat center/contain;
+        }
+    }
+
+    .locations__top {
+        text-align: center;
+        margin-bottom: 55px;
+    }
+
+    .locations__caption {
+        margin-bottom: 27px;
+    }
+
+    .locations__title {}
+
+    .locations__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+
+        .item {
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        
+            @include minw($mobile) {
+                &:hover{
+                    .item-image img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+
+        .item-link {
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 437px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                transition: all .3s linear;
+            }
+        }
+
+        .item-title {
+            font-family: $mainFont;
+            font-weight: 400;
+            line-height: 1.1;
+            font-size: 32px;
+            letter-spacing: -0.03em;
+            color: #F4EFE7;
+            text-align: center;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .locations {
+        padding-top: vwD(56px);
+        padding-bottom: vwD(534px);
+        margin-bottom: vwD(-397px);
+
+        .locations__inner {
+            &::before {
+                left: vwD(-742px);
+                bottom: vwD(-534px);
+                width: vwD(1479px);
+                height: vwD(1584px);
+            }
+        }
+
+        .locations__top {
+            margin-bottom: vwD(55px);
+        }
+
+        .locations__caption {
+            margin-bottom: vwD(27px);
+        }
+
+        .locations__list {
+            grid-gap: vwD(10px);
+
+            .item-image {
+                height: vwD(437px);
+                border-radius: vwD(8px);
+                margin-bottom: vwD(24px);
+            }
+
+            .item-title {
+                font-size: vwD(32px);
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .locations {
+        padding-top: vwM(100px);
+        padding-bottom: vwM(285px);
+        margin-bottom: vwM(-185px);
+
+        .locations__inner {
+            max-width: 100%;
+
+            &::before {
+                top: vwM(-450px);
+                left: vwM(-325px);
+                bottom: auto;
+                width: vwM(621px);
+                height: vwM(680px);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: auto;
+                right: vwM(-405px);
+                bottom: vwM(-285px);
+                width: vwM(621px);
+                height: vwM(680px);
+                background: url(../images/shadow-2.webp) no-repeat center/contain;
+            }
+        }
+
+        .locations__top {
+            margin-bottom: vwM(36px);
+        }
+
+        .locations__caption {
+            margin-bottom: vwM(8px);
+        }
+
+        .locations__list {
+            grid-template-columns: 1fr;
+            grid-gap: vwM(36px);
+
+            .item-image {
+                width: 100%;
+                height: vwM(398px);
+                border-radius: vwM(8px);
+                margin-bottom: vwM(20px);
+            }
+
+            .item-title {
+                font-size: vwM(24px);
+            }
+        }
+    }
+}

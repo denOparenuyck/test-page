@@ -1,0 +1,19 @@
+@function vwD($px-vw, $base-vw: 1568px) {
+    @return ($px-vw * 100vw) / $base-vw;
+}
+
+@function vwM($px-vw, $base-vw: 375px) {
+    @return ($px-vw * 100vw) / $base-vw;
+}
+
+@mixin maxw($mobile) {
+    @media only screen and (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin minw($mobile) {
+    @media only screen and (min-width: $mobile) {
+        @content;
+    }
+}

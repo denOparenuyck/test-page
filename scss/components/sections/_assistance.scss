@@ -1,0 +1,158 @@
+.assistance {
+    overflow: hidden;
+
+    .assistance__inner {
+        padding: 140px 0;
+        width: 100%;
+        max-width: 1920px;
+        min-height: 710px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 710px;
+            background: url(../images/top-gradient.webp) no-repeat center/cover;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 710px;
+            background: url(../images/bottom-gradient.webp) no-repeat center/cover;
+        }
+    }
+
+    .assistance__content {
+        width: 676px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .assistance__caption {
+        margin-bottom: 28px;
+    }
+
+    .assistance__title {}
+
+    .assistance__text {
+        margin-top: 28px;
+    }
+
+    .assistance__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+        gap: 12px;
+    }
+
+    .assistance__button {}
+}
+
+@include maxw($desktop) {
+    .assistance {
+        .assistance__inner {
+            padding: vwD(140px) 0;
+            min-height: vwD(710px);
+
+            &::before {
+                height: vwD(710px);
+            }
+
+            &::after {
+                height: vwD(710px);
+            }
+        }
+
+        .assistance__content {
+            width: vwD(676px);
+        }
+
+        .assistance__caption {
+            margin-bottom: vwD(28px);
+        }
+
+        .assistance__text {
+            margin-top: vwD(28px);
+        }
+
+        .assistance__buttons {
+            margin-top: vwD(40px);
+            gap: vwD(12px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .assistance {
+
+        .assistance__inner {
+            padding: vwM(140px) 0;
+            max-width: 100%;
+            min-height: vwM(656px);
+
+            &::before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: vwM(710px);
+                background: url(../images/top-gradient.webp) no-repeat center/cover;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: vwM(710px);
+                background: url(../images/bottom-gradient.webp) no-repeat center/cover;
+            }
+        }
+
+        .assistance__content {
+            width: 100%;
+            br{
+                display: none;
+            }
+        }
+
+        .assistance__caption {
+            margin-bottom: vwM(8px);
+        }
+
+        .assistance__text {
+            margin-top: vwM(24px);
+        }
+
+        .assistance__buttons {
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin-top: vwM(36px);
+            gap: vwM(8px);
+        }
+
+        .assistance__button {
+            width: 100%;
+            .default-button {
+                width: 100%;
+            }
+        }
+    }
+}

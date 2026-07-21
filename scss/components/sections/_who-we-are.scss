@@ -1,0 +1,255 @@
+.who-we-are {
+    overflow: hidden;
+
+    .who-we-are__inner {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 140px 0;
+        position: relative;
+        z-index: 2;
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: -571px;
+            bottom: 29px;
+            width: 1307px;
+            height: 1396px;
+            background: url(../images/shadow-1.webp) no-repeat center / contain;
+        }
+    }
+
+    .who-we-are__wrapper {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .who-we-are__promo {
+        flex: 0 0 auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .who-we-are__caption {
+        margin-top: 10px;
+        margin-bottom: 14px;
+    }
+
+    .who-we-are__decoration {
+        margin-top: auto;
+        width: 71px;
+        height: 93px;
+        margin-bottom: 22px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .who-we-are__content {
+        width: 100%;
+        max-width: 676px;
+        margin-right: 86px;
+    }
+
+    .who-we-are__title {}
+
+    .who-we-are__text {
+        padding-right: 57px;
+        margin-top: 45px;
+    }
+
+    .who-we-are__gallery {
+        margin-top: 82px;
+
+        .swiper,
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            min-width: 0;
+            min-height: 0;
+        }
+
+        @include minw(992px) {
+            .swiper-wrapper {
+                gap: 10px;
+            }
+
+            .swiper-slide {
+                width: calc(100% / 4 - 8px);
+                border-radius: 8px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .swiper-pagination {
+                display: none;
+            }
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .who-we-are {
+        .who-we-are__inner {
+            padding: vwD(140px) 0;
+
+            &::before {
+                left: vwD(-571px);
+                bottom: vwD(29px);
+                width: vwD(1307px);
+                height: vwD(1396px);
+            }
+        }
+
+        .who-we-are__wrapper {
+            gap: vwD(50px);
+        }
+
+        .who-we-are__caption {
+            margin-top: vwD(10px);
+            margin-bottom: vwD(14px);
+        }
+
+        .who-we-are__decoration {
+            width: vwD(71px);
+            height: vwD(93px);
+            margin-bottom: vwD(22px);
+        }
+
+        .who-we-are__content {
+            max-width: vwD(676px);
+            margin-right: vwD(86px);
+        }
+
+        .who-we-are__text {
+            padding-right: vwD(57px);
+            margin-top: vwD(45px);
+        }
+
+        .who-we-are__gallery {
+            margin-top: vwD(82px);
+
+            @include minw(992px) {
+                .swiper-wrapper {
+                    gap: vwD(10px);
+                }
+
+                .swiper-slide {
+                    width: calc(100% / 4 - vwD(8px));
+                    border-radius: vwD(8px);
+                }
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .who-we-are {
+        .who-we-are__inner {
+            max-width: 100%;
+            padding: vwM(100px) 0;
+
+            &::before {
+                left: vwM(-324px);
+                bottom: vwM(-275px);
+                width: vwM(621px);
+                height: vwM(680px);
+            }
+        }
+
+        .who-we-are__wrapper {
+            display: block;
+        }
+
+        .who-we-are__promo {
+            position: relative;
+            z-index: 2;
+            display: block;
+            text-align: center;
+        }
+
+        .who-we-are__caption {
+            margin: 0 0 vwM(8px);
+        }
+
+        .who-we-are__decoration {
+            position: absolute;
+            top: vwM(-7px);
+            left: vwM(40px);
+            width: vwM(38px);
+            height: vwM(50px);
+            margin: 0;
+        }
+
+        .who-we-are__content {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .who-we-are__title {
+            width: vwM(235px);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-we-are__text {
+            padding-right: 0px;
+            margin-top: vwM(32px);
+        }
+
+        .who-we-are__gallery {
+            width: calc(100% + vwM(32px));
+            margin: vwM(40px) vwM(-16px) 0;
+
+            .swiper {
+                overflow: hidden;
+                padding: 0 vwM(16px);
+            }
+
+            .swiper-slide {
+                width: 100%;
+                border-radius: vwM(8px);
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    object-fit: cover;
+                }
+            }
+
+            .swiper-pagination {
+                position: static;
+                margin-top: vwM(20px);
+            }
+
+            .swiper-pagination-bullet {
+                opacity: 1;
+                width: vwM(10px);
+                height: vwM(10px);
+                background-color: #525353;
+                transform: none;
+                margin: 0 vwM(4px);
+            }
+
+            .swiper-pagination-bullet-active {
+                background: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,194 @@
+.insurance {
+    overflow: hidden;
+    padding-bottom: 353px;
+    margin-bottom: -384px;
+
+    .insurance__inner {
+        position: relative;
+        z-index: 2;
+        padding: 123px 0;
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -567px;
+            left: -763px;
+            width: 1525px;
+            height: 1670px;
+            background: url(../images/shadow-4.webp) no-repeat center/contain;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -507px;
+            right: -804px;
+            width: 1415px;
+            height: 1550px;
+            background: url(../images/shadow-5.webp) no-repeat center/contain;
+        }
+    }
+
+    .insurance__top {
+        text-align: center;
+    }
+
+    .insurance__caption {
+        margin-bottom: 28px;
+    }
+
+    .insurance__title {}
+
+    .insurance__text {
+        margin-top: 28px;
+    }
+
+    .insurance__button {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .insurance__logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 27px;
+        width: auto;
+        height: 72px;
+        margin-top: 40px;
+
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .insurance__warning {
+        margin-top: 70px;
+        text-align: center;
+
+        .text {
+            color: rgba(255, 255, 255, 0.3);
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .insurance {
+        padding-bottom: vwD(353px);
+        margin-bottom: vwD(-384px);
+
+        .insurance__inner {
+            padding: vwD(123px) 0;
+
+            &::before {
+                top: vwD(-567px);
+                left: vwD(-763px);
+                width: vwD(1525px);
+                height: vwD(1670px);
+            }
+
+            &::after {
+                top: vwD(-507px);
+                right: vwD(-804px);
+                width: vwD(1415px);
+                height: vwD(1550px);
+            }
+        }
+
+        .insurance__caption {
+            margin-bottom: vwD(28px);
+        }
+
+        .insurance__text {
+            margin-top: vwD(28px);
+        }
+
+        .insurance__button {
+            margin-top: vwD(40px);
+        }
+
+        .insurance__logos {
+            gap: vwD(27px);
+            height: vwD(72px);
+            margin-top: vwD(40px);
+        }
+
+        .insurance__warning {
+            margin-top: vwD(70px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .insurance {
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        .insurance__inner {
+            padding: vwM(100px) 0;
+            max-width: 100%;
+
+            &::before {
+                top: vwM(-50px);
+                left: vwM(-426px);
+                width: vwM(730px);
+                height: vwM(800px);
+            }
+
+            &::after {
+                z-index: -1;
+                top: vwM(-50px);
+                right: vwM(-450px);
+                width: vwM(730px);
+                height: vwM(800px);
+            }
+        }
+
+        .insurance__top br{
+            display: none;
+        }
+
+        .insurance__caption {
+            margin-bottom: vwM(8px);
+        }
+
+        .insurance__text {
+            margin-top: vwM(32px);
+        }
+
+        .insurance__button {
+            width: 100%;
+            margin-top: vwM(40px);
+            .default-button {
+                width: 100%;
+            }
+        }
+
+        .insurance__logos {
+            width: vwM(343px);
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: vwM(20px);
+            height: auto;
+            margin-top: vwM(56px);
+            img{
+                height: vwM(54px);
+            }
+        }
+
+        .insurance__warning {
+            margin-top: vwM(56px);
+            br{
+                display: none;
+            }
+        }
+    }
+}
