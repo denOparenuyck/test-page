@@ -123,7 +123,7 @@ $('.release__list .item').each(function (index, item) {
 });
 
 
-$('.education__list .education__list .item-media').each(function(index, item){
+$('.education__list .item-media').each(function(index, item){
     $(item).on('click', function(){
         $(item).parent().addClass('is-current').siblings().removeClass('is-current');
     });
