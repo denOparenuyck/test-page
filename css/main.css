@@ -908,14 +908,12 @@ body.no-scroll {
     position: fixed;
     top: 0;
     left: 0;
+    background-color: #01090B;
     z-index: -2;
+    overflow: auto;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: #01090B;
     opacity: 0;
-    -webkit-filter: blur(20px);
-            filter: blur(20px);
     pointer-events: none;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
@@ -929,7 +927,7 @@ body.no-scroll {
         -ms-flex-direction: column;
             flex-direction: column;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     padding: 25.0666666667vw 4.2666666667vw 8.5333333333vw;
     position: relative;
     z-index: 2;
@@ -1079,6 +1077,30 @@ body.no-scroll {
   font-size: 18px;
   letter-spacing: -0.03em;
   color: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.footer .footer__nav ul li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+@media only screen and (min-width: 991px) {
+  .footer .footer__nav ul li a:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .footer .footer__nav ul li a:hover::before {
+    opacity: 1;
+  }
 }
 .footer .footer__info .footer__info-phone {
   margin-bottom: 10px;
@@ -1090,6 +1112,33 @@ body.no-scroll {
   font-size: 18px;
   letter-spacing: -0.03em;
   color: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.footer .footer__info .footer__info-phone a::before,
+.footer .footer__info .footer__info-email a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+@media only screen and (min-width: 991px) {
+  .footer .footer__info .footer__info-phone a:hover,
+  .footer .footer__info .footer__info-email a:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .footer .footer__info .footer__info-phone a:hover::before,
+  .footer .footer__info .footer__info-email a:hover::before {
+    opacity: 1;
+  }
 }
 .footer .footer__info .footer__info-social {
   margin-top: 20px;
@@ -1109,6 +1158,30 @@ body.no-scroll {
   font-size: 18px;
   letter-spacing: -0.03em;
   color: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.footer .footer__info .footer__info-social ul li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+@media only screen and (min-width: 991px) {
+  .footer .footer__info .footer__info-social ul li a:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .footer .footer__info .footer__info-social ul li a:hover::before {
+    opacity: 1;
+  }
 }
 .footer .footer__rights {
   display: -webkit-box;
@@ -1137,6 +1210,30 @@ body.no-scroll {
   margin: 0 auto;
   -webkit-transform: translateX(-140px);
           transform: translateX(-140px);
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.footer .footer__privacy::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+@media only screen and (min-width: 991px) {
+  .footer .footer__privacy:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .footer .footer__privacy:hover::before {
+    opacity: 1;
+  }
 }
 .footer .footer__dev {
   width: 209px;
