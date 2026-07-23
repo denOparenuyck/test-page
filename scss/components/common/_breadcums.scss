@@ -1,0 +1,119 @@
+.breadcrumbs-page {
+    margin-bottom: 50px;
+
+    .breadcrumbs {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 8px;
+
+        .breadcrumbs-item {
+            display: flex;
+
+            &:not(:last-child) {
+
+                a,
+                span {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 8px;
+
+                    &::after {
+                        content: "/";
+                        display: inline-block;
+                        flex: 0 0 auto;
+                        font-weight: 400;
+                        line-height: 1.22;
+                        font-size: 18px;
+                        letter-spacing: -0.03em;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+
+            a,
+            span {
+                font-family: $mainFont;
+                font-weight: 400;
+                line-height: 1.22;
+                font-size: 18px;
+                letter-spacing: -0.03em;
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+            a {
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+            span {
+                color: #fff;
+            }
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .breadcrumbs-page {
+        margin-bottom: vwD(50px);
+
+        .breadcrumbs {
+            gap: vwD(8px);
+
+            .breadcrumbs-item {
+
+                &:not(:last-child) {
+
+                    a,
+                    span {
+                        gap: vwD(8px);
+
+                        &::after {
+                            font-size: vwD(18px);
+                        }
+                    }
+                }
+
+                a,
+                span {
+                    font-size: vwD(18px);
+                }
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .breadcrumbs-page {
+        margin-bottom: vwM(50px);
+
+        .breadcrumbs {
+            gap: vwM(8px);
+
+            .breadcrumbs-item {
+
+                &:not(:last-child) {
+
+                    a,
+                    span {
+                        gap: vwM(8px);
+
+                        &::after {
+                            line-height: 1.18;
+                            font-size: vwM(16px);
+                            letter-spacing: -0.02em;
+                        }
+                    }
+                }
+
+                a,
+                span {
+                    line-height: 1.18;
+                    font-size: vwM(16px);
+                    letter-spacing: -0.02em;
+                }
+            }
+        }
+    }
+}

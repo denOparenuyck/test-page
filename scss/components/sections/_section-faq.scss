@@ -1,0 +1,287 @@
+.section-faq {
+    overflow: hidden;
+
+    .section-faq__inner {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 106px 0 162px;
+        position: relative;
+        z-index: 2;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 810px;
+            height: 886px;
+            background: url(../images/shadow-8.webp) no-repeat center / cover;
+        }
+
+        &::before {
+            top: -300px;
+            right: -450px;
+        }
+
+        &::after {
+            left: -400px;
+            bottom: -150px;
+        }
+    }
+
+    .section-faq__title {
+        text-align: center;
+        margin-bottom: 55px;
+    }
+
+    .section-faq__list {
+        width: 100%;
+        max-width: 764px;
+        margin: 0 auto;
+
+        .item {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: all .3s linear;
+
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+
+            &.is-open {
+                background: #F4EFE7;
+
+                .item-title {
+                    color: #01090B;
+                }
+
+                .item-button {
+
+                    &::before,
+                    &::after {
+                        background-color: #01090B;
+                    }
+
+                    &::before {
+                        transform: translate(-50%, -50%) rotate(90deg);
+                    }
+                }
+            }
+
+            @include minw($mobile) {
+                &:hover {
+                    background: #F4EFE7;
+
+                    .item-title {
+                        color: #01090B;
+                    }
+
+                    .item-button {
+
+                        &::before,
+                        &::after {
+                            background-color: #01090B;
+                        }
+                    }
+                }
+            }
+        }
+
+        .item-title {
+            font-weight: 400;
+            line-height: 1.22;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            color: #fff;
+            transition: all .3s linear;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 32px;
+            cursor: pointer;
+            padding: 32px;
+        }
+
+        .item-button {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            z-index: 2;
+            flex: 0 0 auto;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                border-radius: 2px;
+                transition: all .3s linear;
+            }
+
+            &::before {
+                width: 2px;
+                height: 14px;
+            }
+
+            &::after {
+                width: 14px;
+                height: 2px;
+            }
+        }
+
+        .item-content {
+            display: none;
+        }
+
+        .item-text {
+            padding: 28px 32px 32px;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .section-faq {
+
+        .section-faq__inner {
+            max-width: vwD(1920px);
+            padding: vwD(106px) 0 vwD(162px);
+
+            &::before,
+            &::after {
+                width: vwD(810px);
+                height: vwD(886px);
+            }
+
+            &::before {
+                top: vwD(-300px);
+                right: vwD(-450px);
+            }
+
+            &::after {
+                left: vwD(-400px);
+                bottom: vwD(-150px);
+            }
+        }
+
+        .section-faq__title {
+            margin-bottom: vwD(55px);
+        }
+
+        .section-faq__list {
+            max-width: vwD(764px);
+
+            .item {
+                border-radius: vwD(8px);
+
+                &:not(:first-child) {
+                    margin-top: vwD(20px);
+                }
+            }
+
+            .item-title {
+                font-size: vwD(22px);
+                gap: vwD(32px);
+                padding: vwD(32px);
+            }
+
+            .item-button {
+                width: vwD(24px);
+                height: vwD(24px);
+
+                &::before,
+                &::after {
+                    border-radius: vwD(2px);
+                }
+
+                &::before {
+                    width: vwD(2px);
+                    height: vwD(14px);
+                }
+
+                &::after {
+                    width: vwD(14px);
+                    height: vwD(2px);
+                }
+            }
+
+            .item-text {
+                padding: vwD(28px) vwD(32px) vwD(32px);
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .section-faq {
+        .section-faq__inner {
+            max-width: 100%;
+            padding: vwM(72px) 0 vwM(100px);
+    
+            &::before,
+            &::after {
+                width: vwM(438px);
+                height: vwM(480px);
+            }
+    
+            &::before {
+                top: vwM(-101px);
+                right: vwM(-269px);
+            }
+    
+            &::after {
+                left: vwM(-215px);
+                bottom: vwM(-70px);
+            }
+        }
+    
+        .section-faq__title {
+            margin-bottom: vwM(60px);
+        }
+    
+        .section-faq__list {
+            max-width: 100%;
+    
+            .item {
+                border-radius: vwM(8px);
+    
+                &:not(:first-child) {
+                    margin-top: vwM(16px);
+                }
+            }
+    
+            .item-title {
+                font-size: vwM(20px);
+                letter-spacing: -0.03em;
+                gap: vwM(16px);
+                padding: vwM(32px) vwM(16px);
+            }
+    
+            .item-button {
+                width: vwM(24px);
+                height: vwM(24px);
+    
+                &::before {
+                    width: vwM(2px);
+                    height: vwM(14px);
+                }
+    
+                &::after {
+                    width: vwM(14px);
+                    height: vwM(2px);
+                }
+            }
+    
+            .item-content {
+                display: none;
+            }
+    
+            .item-text {
+                padding: 0 vwM(16px) vwM(32px);
+            }
+        }
+    }
+}

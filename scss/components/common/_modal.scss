@@ -1,0 +1,141 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(#262A2B, .8);
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all .4s linear;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+
+    .modal-dialog .modal-content {
+      opacity: 1;
+    }
+  }
+
+  &.video-modal {
+    .modal-dialog .modal-content {
+      background-color: #000;
+    }
+  }
+
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &.content {
+      display: block;
+
+      .modal-content {
+        margin: 0 auto;
+      }
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 1204px;
+      min-height: 676px;
+      background-color: #fff;
+      position: relative;
+      border-radius: 12px;
+      z-index: 2;
+
+      transition: all .4s linear;
+      opacity: 0;
+
+      .modal-close {
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        z-index: 3;
+        left: calc(100% + 12px);
+        bottom: calc(100% - 5px);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          border-radius: 2px;
+          background-color: #fff;
+        }
+
+        &::before {
+          transform: rotate(45deg);
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+
+      }
+
+    }
+
+    .modal-video {
+      width: 100%;
+      height: 676px;
+      border-radius: 12px;
+      overflow: hidden;
+
+      #modal-video-iframe {
+        width: 100%;
+        height: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+  }
+
+}
+
+
+@media screen and (max-width:1200px) {
+  .modal .modal-dialog .modal-content .modal-close {
+    left: auto;
+    right: 0;
+    bottom: calc(100% + 5px);
+  }
+}
+
+
+@media screen and (max-width:991px) {
+  .modal .modal-dialog .modal-content {
+    min-height: 250px;
+  }
+
+  .modal .modal-dialog .modal-video {
+    height: 50.4541vw;
+    min-height: 250px;
+  }
+}

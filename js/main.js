@@ -147,3 +147,22 @@ $('.education__list-mobile .item').each(function (index, item) {
         }
     });
 });
+
+$('.section-faq__list .item').each(function (index, item) {
+    let button = $(item).find('.item-title');
+    let content = $(item).find('.item-content');
+    $(button).on('click', function () {
+        const isOpen = $(item).hasClass('is-open');
+
+        $('.section-faq__list .item').not(item).removeClass('is-open');
+        $('.section-faq__list .item .item-content').not(content).stop().slideUp();
+
+        if (isOpen) {
+            $(item).removeClass('is-open');
+            $(content).stop().slideUp();
+        } else {
+            $(item).addClass('is-open');
+            $(content).stop().slideDown();
+        }
+    });
+});
