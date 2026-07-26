@@ -3,6 +3,12 @@
     padding-top: 406px;
     margin-top: -406px;
 
+    &.is-two {
+        .services__list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
     .services__inner {
         padding: 140px 0;
         width: 100%;

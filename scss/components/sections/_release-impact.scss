@@ -1,0 +1,237 @@
+.release-impact {
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+
+    .release-impact__inner {
+        padding: 140px 0;
+    }
+
+    .release-impact__wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .release-impact__info {
+        width: 505px;
+        flex: 0 0 auto;
+        position: sticky;
+        top: 150px;
+        padding-bottom: 80px;
+    }
+
+    .release-impact__caption {}
+
+    .release-impact__title {
+        margin-top: 28px;
+    }
+
+    .release-impact__content {
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .release-impact__card {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .release-impact__card-title {
+        font-weight: 400;
+        line-height: normal;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: #fff;
+    }
+
+    .release-impact__card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .release-impact__card-source {
+        font-weight: 400;
+        line-height: normal;
+        font-size: 18px;
+        letter-spacing: -0.04em;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .release-impact__stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .release-impact__stat {
+        flex: 1 1 calc(50% - 5px);
+        min-width: 0;
+        background: #F4EFE7;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .release-impact__stat-num {
+        font-family: $mainFont;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 26px;
+        letter-spacing: -0.05em;
+        color: #01090B;
+    }
+
+    .release-impact__stat-label {
+        font-weight: 400;
+        line-height: normal;
+        font-size: 18px;
+        letter-spacing: -0.04em;
+        color: #01090B;
+    }
+
+    .release-impact__card-button {}
+}
+
+@include maxw($desktop) {
+    .release-impact {
+        .release-impact__inner {
+            padding: vwD(140px) 0;
+        }
+
+        .release-impact__wrapper {
+            gap: vwD(32px);
+        }
+
+        .release-impact__info {
+            width: vwD(505px);
+            top: vwD(150px);
+            padding-bottom: vwD(80px);
+        }
+
+        .release-impact__title {
+            margin-top: vwD(28px);
+        }
+
+        .release-impact__content {
+            gap: vwD(10px);
+        }
+
+        .release-impact__card {
+            border-radius: vwD(8px);
+            padding: vwD(32px);
+            gap: vwD(40px);
+        }
+
+        .release-impact__card-title {
+            font-size: vwD(22px);
+        }
+
+        .release-impact__card-body {
+            gap: vwD(28px);
+        }
+
+        .release-impact__card-source {
+            font-size: vwD(18px);
+        }
+
+        .release-impact__stats {
+            gap: vwD(10px);
+        }
+
+        .release-impact__stat {
+            flex-basis: calc(50% - #{vwD(5px)});
+            border-radius: vwD(8px);
+            padding: vwD(20px);
+            gap: vwD(10px);
+        }
+
+        .release-impact__stat-num {
+            font-size: vwD(26px);
+        }
+
+        .release-impact__stat-label {
+            font-size: vwD(18px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .release-impact {
+        .release-impact__inner {
+            padding: vwM(100px) 0;
+        }
+
+        .release-impact__wrapper {
+            flex-direction: column;
+            gap: vwM(36px);
+        }
+
+        .release-impact__info {
+            width: 100%;
+            position: static;
+            padding-bottom: 0;
+        }
+
+        .release-impact__title {
+            margin-top: vwM(16px);
+        }
+
+        .release-impact__content {
+            gap: vwM(16px);
+        }
+
+        .release-impact__card {
+            border-radius: vwM(8px);
+            padding: vwM(32px) vwM(24px);
+            gap: vwM(28px);
+        }
+
+        .release-impact__card-title {
+            font-size: vwM(20px);
+        }
+
+        .release-impact__card-body {
+            gap: vwM(20px);
+        }
+
+        .release-impact__card-source {
+            font-size: vwM(16px);
+        }
+
+        .release-impact__stats {
+            gap: vwM(10px);
+        }
+
+        .release-impact__stat {
+            flex-basis: calc(50% - #{vwM(5px)});
+            border-radius: vwM(8px);
+            padding: vwM(16px);
+            gap: vwM(8px);
+        }
+
+        .release-impact__stat-num {
+            font-size: vwM(22px);
+        }
+
+        .release-impact__stat-label {
+            font-size: vwM(16px);
+        }
+
+        .release-impact__card-button {
+            .default-button {
+                width: 100%;
+            }
+        }
+    }
+}

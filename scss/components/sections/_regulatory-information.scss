@@ -1,0 +1,120 @@
+.regulatory-information {
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+
+    .regulatory-information__inner {
+        padding-bottom: 143px;
+    }
+
+    .regulatory-information__wrapper {
+        display: grid;
+        align-items: stretch;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .regulatory-information__content {
+        display: flex;
+        flex-direction: column;
+        background: #F4EFE7;
+        border-radius: 8px;
+        padding: 36px;
+
+        &-title {
+            margin-bottom: auto;
+        }
+
+        &-text {
+            margin-top: 32px;
+        }
+
+        &-warning {
+            margin-top: 32px;
+            font-weight: 400;
+            line-height: 1.22;
+            font-size: 18px;
+            letter-spacing: -0.04em;
+            color: rgba(1, 9, 11, 0.7);
+        }
+    }
+
+    .regulatory-information__image {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        border-radius: 8px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .regulatory-information {
+
+        .regulatory-information__inner {
+            padding-bottom: vwD(143px);
+        }
+
+        .regulatory-information__wrapper {
+            grid-gap: vwD(10px);
+        }
+
+        .regulatory-information__content {
+            border-radius: vwD(8px);
+            padding: vwD(36px);
+
+            &-text {
+                margin-top: vwD(32px);
+            }
+
+            &-warning {
+                margin-top: vwD(32px);
+                font-size: vwD(18px);
+            }
+        }
+
+        .regulatory-information__image {
+            border-radius: vwD(8px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .regulatory-information {
+
+        .regulatory-information__inner {
+            padding-bottom: vwM(100px);
+        }
+
+        .regulatory-information__wrapper {
+            grid-template-columns: 1fr;
+            grid-gap: vwM(24px);
+        }
+
+        .regulatory-information__content {
+            display: block;
+            border-radius: vwM(8px);
+            padding: vwM(32px) vwM(16px);
+
+            &-text {
+                margin-top: vwM(30px);
+            }
+
+            &-warning {
+                margin-top: vwM(32px);
+                line-height: 1.19;
+                font-size: vwM(16px);
+                letter-spacing: -0.03em;
+            }
+        }
+
+        .regulatory-information__image {
+            border-radius: vwM(8px);
+        }
+    }
+}

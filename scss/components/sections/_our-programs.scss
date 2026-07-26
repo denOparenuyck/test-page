@@ -53,6 +53,25 @@
             color: #FFFFFF;
         }
 
+        .item-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item-icon {
+            width: 28px;
+            height: 32px;
+            flex: 0 0 auto;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+        }
+
         .item-text {
             margin-top: 40px;
         }
@@ -96,6 +115,15 @@
 
             .item-title {
                 font-size: vwD(22px);
+            }
+
+            .item-heading {
+                gap: vwD(12px);
+            }
+
+            .item-icon {
+                width: vwD(28px);
+                height: vwD(32px);
             }
 
             .item-text {
@@ -170,6 +198,15 @@
             .item-title {
                 font-size: vwM(20px);
                 letter-spacing: -0.03em;
+            }
+
+            .item-heading {
+                gap: vwM(10px);
+            }
+
+            .item-icon {
+                width: vwM(21px);
+                height: vwM(24px);
             }
 
             .item-text {

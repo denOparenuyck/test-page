@@ -1,0 +1,271 @@
+.section-contact {
+    overflow: hidden;
+
+    &:has(.dec-shadow.is-bottom-left) {
+        padding-bottom: 400px;
+        margin-bottom: -400px;
+    }
+
+    .section-contact__inner {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        padding: 106px 0 150px;
+
+        .dec-shadow {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 1409px;
+            height: 1517px;
+            background: url(../images/shadow-11.webp) no-repeat center / cover;
+
+            &.is-bottom-left {
+                left: -678px;
+                bottom: -398px;
+            }
+
+            &.is-top-right {
+                width: 1209px;
+                height: 1317px;
+                top: -500px;
+                right: -700px;
+            }
+        }
+    }
+
+    .section-contact__wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .section-contact__content {
+        width: 741px;
+
+        &-caption {
+            margin-bottom: 28px;
+        }
+
+        &-title {}
+
+        &-text {
+            margin-top: 28px;
+        }
+
+        &-warning {
+            margin-top: 28px;
+            font-weight: 400;
+            line-height: 1.22;
+            font-size: 18px;
+            letter-spacing: -0.04em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .section-contact__form {
+        width: 763px;
+        max-height: 2000px;
+        padding: 36px;
+        background: #01090B;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        transition: all .3s linear;
+
+
+        form {
+            transition: all .3s linear;
+        }
+
+        &.is-submited {
+            border-color: transparent;
+            max-height: 220px;
+
+            form {
+                opacity: 0;
+            }
+
+            .section-contact__form-thank {
+                opacity: 1;
+                transition-delay: .2s;
+            }
+        }
+    }
+
+    .section-contact__form-thank {
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+        opacity: 0;
+        transition: all .3s linear;
+        top: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+
+        &-title {}
+
+        &-text {
+            margin-top: 28px;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .section-contact {
+        &:has(.dec-shadow.is-bottom-left) {
+            padding-bottom: vwD(400px);
+            margin-bottom: vwD(-400px);
+        }
+
+        .section-contact__inner {
+            max-width: vwD(1920px);
+            padding: vwD(106px) 0 vwD(150px);
+
+            .dec-shadow {
+                width: vwD(1409px);
+                height: vwD(1517px);
+
+                &.is-bottom-left {
+                    left: vwD(-678px);
+                    bottom: vwD(-398px);
+                }
+
+                &.is-top-right {
+                    width: vwD(1209px);
+                    height: vwD(1317px);
+                    top: vwD(-500px);
+                    right: vwD(-700px);
+                }
+            }
+        }
+   
+
+        .section-contact__wrapper {
+            gap: vwD(30px);
+        }
+
+        .section-contact__content {
+            width: vwD(741px);
+
+            &-caption {
+                margin-bottom: vwD(28px);
+            }
+
+            &-text {
+                margin-top: vwD(28px);
+            }
+
+            &-warning {
+                margin-top: vwD(28px);
+                font-size: vwD(18px);
+            }
+        }
+
+        .section-contact__form {
+            width: vwD(763px);
+            max-height: vwD(2000px);
+            padding: vwD(36px);
+            border-radius: vwD(10px);
+
+            &.is-submited {
+                max-height: vwD(220px);
+            }
+        }
+
+        .section-contact__form-thank {
+            top: vwD(36px);
+
+            &-text {
+                margin-top: vwD(28px);
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .section-contact {
+        &:has(.dec-shadow.is-bottom-left) {
+            padding-bottom: vwM(250px);
+            margin-bottom: vwM(-250px);
+        }
+
+        .section-contact__inner {
+            max-width: 100%;
+            padding: vwM(72px) 0 vwM(94px);
+
+            .dec-shadow {
+                width: vwM(548px);
+                height: vwM(600px);
+
+                &.is-bottom-left {
+                    left: vwM(-247px);
+                    bottom: vwM(-250px);
+                }
+
+                &.is-top-right {
+                    width: vwM(548px);
+                    height: vwM(600px);
+                    top: vwM(186px);
+                    right: vwM(-336px);
+                }
+            }
+       
+        }
+
+        .section-contact__wrapper {
+            flex-direction: column;
+            gap: vwM(61px);
+        }
+
+        .section-contact__content {
+            width: 100%;
+
+            br {
+                display: none;
+            }
+
+            &-caption {
+                margin-bottom: vwM(8px);
+            }
+
+            &-text {
+                margin-top: vwM(28px);
+            }
+
+            &-warning {
+                margin-top: vwM(28px);
+                line-height: 1.18;
+                font-size: vwM(16px);
+                letter-spacing: -0.03em;
+            }
+        }
+
+        .section-contact__form {
+            width: 100%;
+            max-height: vwM(2000px);
+            padding: vwM(32px) vwM(16px);
+            border-radius: vwM(10px);
+
+            &.is-submited {
+                max-height: vwM(220px);
+            }
+        }
+
+        .section-contact__form-thank {
+            top: 0;
+            left: 0;
+            transform: none;
+            text-align: left;
+
+            &-text {
+                margin-top: vwM(15px);
+            }
+        }
+    }
+}

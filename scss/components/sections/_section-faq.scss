@@ -1,6 +1,57 @@
 .section-faq {
     overflow: hidden;
 
+    &.is-block {
+        padding-top: 520px;
+        margin-top: -520px;
+
+        .section-faq__inner {
+            padding: 0 0 140px;
+
+            &::before,
+            &::after {
+                width: 1087px;
+                height: 1167px;
+                background: url(../images/shadow-11.webp) no-repeat center / cover;
+            }
+
+            &::before {
+                top: -520px;
+                left: -533px;
+                right: auto;
+            }
+
+            &::after {
+                top: 105px;
+                right: -633px;
+                left: auto;
+                bottom: auto;
+            }
+        }
+
+        .section-faq__top {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-faq__caption {
+            margin-bottom: 28px;
+        }
+
+        .section-faq__title {
+            margin-bottom: 0;
+        }
+
+        .section-faq__button {
+            margin-top: 30px;
+            text-align: center;
+
+            .default-button {
+                min-width: 121px;
+            }
+        }
+    }
+
     .section-faq__inner {
         width: 100%;
         max-width: 1920px;
@@ -146,6 +197,48 @@
 @include maxw($desktop) {
     .section-faq {
 
+        &.is-block {
+            padding-top: vwD(520px);
+            margin-top: vwD(-520px);
+
+            .section-faq__inner {
+                padding: 0 0 vwD(140px);
+
+                &::before,
+                &::after {
+                    width: vwD(1087px);
+                    height: vwD(1167px);
+                }
+
+                &::before {
+                    top: vwD(-520px);
+                    left: vwD(-533px);
+                }
+
+                &::after {
+                    top: vwD(105px);
+                    right: vwD(-633px);
+                }
+            }
+
+            .section-faq__top {
+                margin-bottom: vwD(50px);
+            }
+
+            .section-faq__caption {
+                margin-bottom: vwD(28px);
+            }
+
+            .section-faq__button {
+                margin-top: vwD(30px);
+
+                .default-button {
+                    min-width: vwD(121px);
+                }
+            }
+        }
+
+
         .section-faq__inner {
             max-width: vwD(1920px);
             padding: vwD(106px) 0 vwD(162px);
@@ -217,68 +310,110 @@
 
 @include maxw($mobile) {
     .section-faq {
+        &.is-block {
+            .section-faq__inner {
+                padding: 0 0 vwM(100px);
+
+                &::before,
+                &::after {
+                    width: vwM(558px);
+                    height: vwM(600px);
+                }
+
+                &::before {
+                    top: vwM(-204px);
+                    left: vwM(-269px);
+                    right: auto;
+                }
+
+                &::after {
+                    top: auto;
+                    bottom: vwM(-27px);
+                    right: vwM(-337px);
+                    left: auto;
+                }
+            }
+
+            .section-faq__top {
+                margin-bottom: vwM(40px);
+            }
+
+            .section-faq__caption {
+                margin-bottom: vwM(8px);
+            }
+
+            .section-faq__button {
+                margin-top: vwM(32px);
+
+                .default-button {
+                    width: 100%;
+                    min-width: 0;
+                }
+            }
+        }
+
         .section-faq__inner {
             max-width: 100%;
             padding: vwM(72px) 0 vwM(100px);
-    
+
             &::before,
             &::after {
                 width: vwM(438px);
                 height: vwM(480px);
             }
-    
+
             &::before {
                 top: vwM(-101px);
                 right: vwM(-269px);
             }
-    
+
             &::after {
                 left: vwM(-215px);
                 bottom: vwM(-70px);
             }
         }
-    
+
         .section-faq__title {
             margin-bottom: vwM(60px);
         }
-    
+
         .section-faq__list {
             max-width: 100%;
-    
+
             .item {
                 border-radius: vwM(8px);
-    
+
                 &:not(:first-child) {
                     margin-top: vwM(16px);
                 }
             }
-    
+
             .item-title {
                 font-size: vwM(20px);
                 letter-spacing: -0.03em;
                 gap: vwM(16px);
                 padding: vwM(32px) vwM(16px);
             }
-    
+
             .item-button {
                 width: vwM(24px);
                 height: vwM(24px);
-    
+
                 &::before {
                     width: vwM(2px);
                     height: vwM(14px);
                 }
-    
+
                 &::after {
                     width: vwM(14px);
                     height: vwM(2px);
                 }
             }
-    
+
             .item-content {
                 display: none;
             }
-    
+
             .item-text {
                 padding: 0 vwM(16px) vwM(32px);
             }

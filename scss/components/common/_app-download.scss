@@ -1,0 +1,73 @@
+.app-download {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+
+    .app-download__qr {
+        width: 132px;
+        height: 132px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .app-download__stores {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .app-download__store {
+        width: 166px;
+        height: auto;
+        flex: 0 0 auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .app-download {
+        gap: vwD(20px);
+
+        .app-download__qr {
+            width: vwD(132px);
+            height: vwD(132px);
+        }
+
+        .app-download__stores {
+            gap: vwD(20px);
+        }
+
+        .app-download__store {
+            width: vwD(166px);
+        }
+    }
+}
+
+@include maxw($mobile){
+    .app-download {
+        gap: vwM(24px);
+
+        .app-download__qr {
+            width: vwM(132px);
+            height: vwM(136px);
+        }
+
+        .app-download__stores {
+            gap: vwM(24px);
+        }
+
+        .app-download__store {
+            width: vwM(166px);
+        }
+    }
+}

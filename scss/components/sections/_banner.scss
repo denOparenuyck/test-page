@@ -16,8 +16,6 @@
     }
 
     .banner__content {
-        width: 402px;
-        margin: 0 auto;
         text-align: center;
     }
 
@@ -54,10 +52,6 @@
             min-height: vwD(800px);
         }
 
-        .banner__content {
-            width: vwD(402px);
-        }
-
         .banner__text {
             margin-top: vwD(30px);
         }
@@ -77,8 +71,9 @@
         }
 
         .banner__content {
-            width: 100%;
-            padding: 0 vwM(16px);
+            br{
+                display: none;
+            }
         }
 
         .banner__text {

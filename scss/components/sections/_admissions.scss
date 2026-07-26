@@ -1,0 +1,287 @@
+.admissions {
+    position: relative;
+    z-index: 2;
+
+    .admissions__dec {
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                width: 1119px;
+                height: 1224px;
+                background: url(../images/shadow-12.webp) no-repeat center / contain;
+            }
+
+            &::before {
+                top: -224px;
+                left: -596px;
+            }
+
+            &::after {
+                right: -720px;
+                bottom: -156px;
+            }
+        }
+    }
+
+    .admissions__inner {
+        padding: 106px 0 44px;
+    }
+
+    .admissions__wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .admissions__info {
+        width: 633px;
+        flex: 0 0 auto;
+        position: sticky;
+        top: 150px;
+        padding-top: 100px;
+    }
+
+    .admissions__title {
+        margin-bottom: 28px;
+    }
+
+    .admissions__text {}
+
+    .admissions__content {
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .admissions__image {
+        width: 100%;
+        height: 432px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        &.is-mobile {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .admissions__steps {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .admissions__step {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 32px;
+    }
+
+    .admissions__step-num {
+        font-family: $dmSans;
+        font-weight: 400;
+        line-height: 1.1;
+        font-size: 32px;
+        letter-spacing: -0.03em;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 24px;
+    }
+
+    .admissions__step-title {
+        font-weight: 400;
+        line-height: normal;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: #fff;
+        margin-bottom: 24px;
+    }
+
+    .admissions__step-text {}
+}
+
+@include maxw($desktop) {
+    .admissions {
+        .admissions__dec {
+            span {
+                max-width: vwD(1920px);
+
+                &::before,
+                &::after {
+                    width: vwD(1119px);
+                    height: vwD(1224px);
+                }
+
+                &::before {
+                    top: vwD(-224px);
+                    left: vwD(-596px);
+                }
+
+                &::after {
+                    right: vwD(-720px);
+                    bottom: vwD(-156px);
+                }
+            }
+        }
+
+
+        .admissions__inner {
+            padding: vwD(106px) 0 vwD(44px);
+        }
+
+        .admissions__wrapper {
+            gap: vwD(32px);
+        }
+
+        .admissions__info {
+            width: vwD(633px);
+            top: vwD(150px);
+            padding-top: vwD(100px);
+        }
+
+        .admissions__title {
+            margin-bottom: vwD(28px);
+        }
+
+        .admissions__content {
+            gap: vwD(10px);
+        }
+
+        .admissions__image {
+            height: vwD(432px);
+            border-radius: vwD(8px);
+        }
+
+        .admissions__steps {
+            gap: vwD(10px);
+        }
+
+        .admissions__step {
+            border-radius: vwD(8px);
+            padding: vwD(32px);
+        }
+
+        .admissions__step-num {
+            font-size: vwD(32px);
+            margin-bottom: vwD(24px);
+        }
+
+        .admissions__step-title {
+            font-size: vwD(22px);
+            margin-bottom: vwD(24px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .admissions {
+        padding-bottom: vwM(206px);
+        margin-bottom: vwM(-206px);
+
+        .admissions__dec {
+            padding-bottom: vwM(206px);
+            margin-bottom: vwM(-206px);
+            span {
+                max-width: 100%;
+
+                &::before,
+                &::after {
+                    width: vwM(518px);
+                    height: vwM(480px);
+                }
+
+                &::before {
+                    top: vwM(-75px);
+                    left: vwM(-252px);
+                }
+
+                &::after {
+                    right: vwM(-249px);
+                    bottom: vwM(-206px);
+                }
+            }
+        }
+
+        .admissions__inner {
+            padding: vwM(72px) 0 0;
+        }
+
+        .admissions__wrapper {
+            flex-direction: column;
+            gap: vwM(60px);
+        }
+
+        .admissions__info {
+            width: 100%;
+            position: static;
+            padding-top: 0;
+        }
+
+        .admissions__title {
+            margin-bottom: 36px;
+        }
+
+        .admissions__text {
+            margin-top: vwM(36px);
+        }
+
+        .admissions__content {
+            gap: vwM(36px);
+        }
+
+        .admissions__image {
+            display: none;
+            height: vwM(194px);
+            border-radius: vwM(8px);
+
+            &.is-mobile {
+                display: block;
+            }
+        }
+
+        .admissions__steps {
+            gap: vwM(24px);
+        }
+
+        .admissions__step {
+            border-radius: vwM(8px);
+            padding: vwM(32px) vwM(24px);
+        }
+
+        .admissions__step-num {
+            font-size: vwM(24px);
+            margin-bottom: vwM(20px);
+        }
+
+        .admissions__step-title {
+            font-size: vwM(20px);
+            letter-spacing: -0.03em;
+            margin-bottom: vwM(18px);
+        }
+    }
+}

@@ -1,0 +1,369 @@
+// Case Management
+.concierge-case {
+    overflow: hidden;
+
+    .concierge-case__inner {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+
+    .concierge-case__wrapper {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .concierge-case__content {
+        width: 544px;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        background: #F4EFE7;
+        padding: 32px;
+    }
+
+    .concierge-case__caption {
+        margin-bottom: 20px;
+    }
+
+    .concierge-case__title {
+        margin-bottom: 20px;
+    }
+
+    .concierge-case__text {
+        margin-bottom: 20px;
+    }
+
+    .concierge-case__list {
+        margin-bottom: 32px;
+    }
+
+    .concierge-case__button {
+        margin-top: auto;
+    }
+
+    .concierge-case__image {
+        width: 100%;
+        height: 760px;
+        flex: 1 1 auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .concierge-case {
+        .concierge-case__content {
+            width: vwD(544px);
+            padding: vwD(32px);
+        }
+
+        .concierge-case__caption {
+            margin-bottom: vwD(20px);
+        }
+
+        .concierge-case__title {
+            margin-bottom: vwD(20px);
+        }
+
+        .concierge-case__text {
+            margin-bottom: vwD(20px);
+        }
+
+        .concierge-case__list {
+            margin-bottom: vwD(32px);
+        }
+
+        .concierge-case__image {
+            height: vwD(760px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .concierge-case {
+        .concierge-case__inner {
+            max-width: 100%;
+        }
+
+        .concierge-case__wrapper {
+            flex-direction: column;
+        }
+
+        .concierge-case__content {
+            width: 100%;
+            padding: vwM(32px) vwM(16px);
+        }
+
+        .concierge-case__caption {
+            margin-bottom: vwM(12px);
+        }
+
+        .concierge-case__title {
+            margin-bottom: vwM(20px);
+        }
+
+        .concierge-case__text {
+            margin-bottom: vwM(20px);
+        }
+
+        .concierge-case__list {
+            margin-bottom: vwM(28px);
+        }
+
+        .concierge-case__button {
+            margin-top: 0;
+
+            .default-button {
+                width: 100%;
+            }
+        }
+
+        .concierge-case__image {
+            height: vwM(300px);
+        }
+    }
+}
+
+
+// Intervention / Safe Transport
+.concierge-intervention {
+    overflow: hidden;
+    background: #F4EFE7;
+
+    .concierge-intervention__inner {
+        padding: 140px 0;
+    }
+
+    .concierge-intervention__top {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .concierge-intervention__caption {
+        margin-bottom: 28px;
+    }
+
+    .concierge-intervention__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        align-items: stretch;
+    }
+
+    .concierge-intervention__col {
+        height: 100%;
+    }
+
+    .concierge-intervention__card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid rgba(1, 9, 11, 0.15);
+        border-radius: 8px;
+        padding: 32px;
+    }
+
+    .concierge-intervention__card-caption {
+        margin-bottom: 20px;
+    }
+
+    .concierge-intervention__card-title {
+        margin-bottom: 20px;
+    }
+
+    .concierge-intervention__card-text {
+        flex: 1 1 auto;
+    }
+
+    .concierge-intervention__card-button {
+        margin-top: 32px;
+    }
+
+    .concierge-intervention__image {
+        width: 100%;
+        height: 692px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    .concierge-intervention__stack {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .concierge-intervention__note {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        border: 1px solid rgba(1, 9, 11, 0.15);
+        border-radius: 8px;
+        padding: 32px;
+    }
+
+    .concierge-intervention__note-icon {
+        width: 35px;
+        flex: 0 0 auto;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .concierge-intervention__stack-image {
+        width: 100%;
+        flex: 1 1 auto;
+        border-radius: 8px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .concierge-intervention {
+        .concierge-intervention__inner {
+            padding: vwD(140px) 0;
+        }
+
+        .concierge-intervention__top {
+            margin-bottom: vwD(50px);
+        }
+
+        .concierge-intervention__caption {
+            margin-bottom: vwD(28px);
+        }
+
+        .concierge-intervention__grid {
+            grid-gap: vwD(10px);
+        }
+
+        .concierge-intervention__card {
+            border-radius: vwD(8px);
+            padding: vwD(32px);
+        }
+
+        .concierge-intervention__card-caption {
+            margin-bottom: vwD(20px);
+        }
+
+        .concierge-intervention__card-title {
+            margin-bottom: vwD(20px);
+        }
+
+        .concierge-intervention__card-button {
+            margin-top: vwD(32px);
+        }
+
+        .concierge-intervention__image {
+            height: vwD(692px);
+            border-radius: vwD(8px);
+        }
+
+        .concierge-intervention__stack {
+            gap: vwD(10px);
+        }
+
+        .concierge-intervention__note {
+            gap: vwD(16px);
+            border-radius: vwD(8px);
+            padding: vwD(32px);
+        }
+
+        .concierge-intervention__note-icon {
+            width: vwD(35px);
+        }
+
+        .concierge-intervention__stack-image {
+            border-radius: vwD(8px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .concierge-intervention {
+        .concierge-intervention__inner {
+            padding: vwM(72px) 0 vwM(100px);
+        }
+
+        .concierge-intervention__top {
+            text-align: left;
+            margin-bottom: vwM(36px);
+        }
+
+        .concierge-intervention__caption {
+            margin-bottom: vwM(8px);
+        }
+
+        .concierge-intervention__grid {
+            grid-template-columns: 1fr;
+            grid-gap: vwM(28px);
+        }
+
+        .concierge-intervention__card {
+            border-radius: vwM(8px);
+            padding: vwM(32px) vwM(16px);
+        }
+
+        .concierge-intervention__card-caption {
+            margin-bottom: vwM(12px);
+        }
+
+        .concierge-intervention__card-title {
+            margin-bottom: vwM(16px);
+        }
+
+        .concierge-intervention__card-button {
+            margin-top: vwM(28px);
+
+            .default-button {
+                width: 100%;
+            }
+        }
+
+        .concierge-intervention__image {
+            height: vwM(280px);
+            border-radius: vwM(8px);
+        }
+
+        .concierge-intervention__stack {
+            gap: vwM(28px);
+        }
+
+        .concierge-intervention__note {
+            gap: vwM(12px);
+            border-radius: vwM(8px);
+            padding: vwM(32px) vwM(16px);
+        }
+
+        .concierge-intervention__note-icon {
+            width: vwM(28px);
+        }
+
+        .concierge-intervention__stack-image {
+            height: vwM(280px);
+            border-radius: vwM(8px);
+        }
+    }
+}

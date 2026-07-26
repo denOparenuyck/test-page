@@ -1,0 +1,252 @@
+.concierge-mission {
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+
+    .concierge-mission__inner {
+        padding: 140px 0;
+    }
+
+    .concierge-mission__wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .concierge-mission__content {
+        width: 634px;
+        flex: 0 0 auto;
+        position: sticky;
+        top: 150px;
+    }
+
+    .concierge-mission__caption {
+        margin-bottom: 28px;
+    }
+
+    .concierge-mission__title {
+        margin-bottom: 28px;
+    }
+
+    .concierge-mission__text {
+        &:not(:last-child) {
+            margin-bottom: 18px;
+        }
+    }
+
+    .concierge-mission__card {
+        width: 100%;
+        min-width: 0;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+
+    .concierge-mission__card-title {
+        font-family: $mainFont;
+        font-weight: 400;
+        line-height: normal;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: #fff;
+    }
+
+    .concierge-mission__list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .concierge-mission__list-item {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        &:not(:last-child) {
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    .concierge-mission__list-item-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .concierge-mission__list-item-icon {
+        width: 28px;
+        height: 32px;
+        flex: 0 0 auto;
+        overflow: clip;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    }
+
+    .concierge-mission__list-item-title {
+        font-family: $mainFont;
+        font-weight: 400;
+        line-height: normal;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: #fff;
+    }
+
+    .concierge-mission__list-item-text {
+        font-family: $mainFont;
+        font-weight: 400;
+        line-height: normal;
+        font-size: 18px;
+        letter-spacing: -0.04em;
+        color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+@include maxw($desktop) {
+    .concierge-mission {
+        .concierge-mission__inner {
+            padding: vwD(140px) 0;
+        }
+
+        .concierge-mission__wrapper {
+            gap: vwD(32px);
+        }
+
+        .concierge-mission__content {
+            width: vwD(634px);
+            top: vwD(150px);
+        }
+
+        .concierge-mission__caption {
+            margin-bottom: vwD(28px);
+        }
+
+        .concierge-mission__title {
+            margin-bottom: vwD(28px);
+        }
+
+        .concierge-mission__text {
+            &:not(:last-child) {
+                margin-bottom: vwD(18px);
+            }
+        }
+
+        .concierge-mission__card {
+            border-radius: vwD(8px);
+            padding: vwD(32px);
+            gap: vwD(80px);
+        }
+
+        .concierge-mission__card-title {
+            font-size: vwD(22px);
+        }
+
+        .concierge-mission__list {
+            gap: vwD(32px);
+        }
+
+        .concierge-mission__list-item {
+            gap: vwD(24px);
+
+            &:not(:last-child) {
+                padding-bottom: vwD(32px);
+            }
+        }
+
+        .concierge-mission__list-item-top {
+            gap: vwD(12px);
+        }
+
+        .concierge-mission__list-item-icon {
+            width: vwD(28px);
+            height: vwD(32px);
+        }
+
+        .concierge-mission__list-item-title {
+            font-size: vwD(22px);
+        }
+
+        .concierge-mission__list-item-text {
+            font-size: vwD(18px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .concierge-mission {
+        .concierge-mission__inner {
+            padding: vwM(100px) 0;
+        }
+
+        .concierge-mission__wrapper {
+            flex-direction: column;
+            gap: vwM(28px);
+        }
+
+        .concierge-mission__content {
+            width: 100%;
+            position: static;
+        }
+
+        .concierge-mission__caption {
+            margin-bottom: vwM(8px);
+        }
+
+        .concierge-mission__title {
+            margin-bottom: vwM(24px);
+        }
+
+        .concierge-mission__text {
+            &:not(:last-child) {
+                margin-bottom: vwM(16px);
+            }
+        }
+
+        .concierge-mission__card {
+            border-radius: vwM(8px);
+            padding: vwM(24px) vwM(16px);
+            gap: vwM(32px);
+        }
+
+        .concierge-mission__card-title {
+            font-size: vwM(18px);
+        }
+
+        .concierge-mission__list {
+            gap: vwM(24px);
+        }
+
+        .concierge-mission__list-item {
+            gap: vwM(16px);
+
+            &:not(:last-child) {
+                padding-bottom: vwM(24px);
+            }
+        }
+
+        .concierge-mission__list-item-top {
+            gap: vwM(10px);
+        }
+
+        .concierge-mission__list-item-icon {
+            width: vwM(24px);
+            height: vwM(28px);
+        }
+
+        .concierge-mission__list-item-title {
+            font-size: vwM(18px);
+        }
+
+        .concierge-mission__list-item-text {
+            font-size: vwM(16px);
+        }
+    }
+}

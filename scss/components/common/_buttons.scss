@@ -56,6 +56,20 @@
         }
     }
 
+    &.is-border {
+        color: #F4EFE7;
+        background: transparent;
+        border: 1px solid #F4EFE7;
+        backdrop-filter: unset;
+
+        @include minw($mobile) {
+            &:hover {
+                background: #F4EFE7;
+                color: #01090B;
+            }
+        }
+    }
+
     @include minw($mobile) {
         &:hover {
             background-color: transparent;

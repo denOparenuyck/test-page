@@ -1,0 +1,278 @@
+.testimonials {
+    position: relative;
+    z-index: 2;
+
+
+    .testimonials__dec {
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .testimonials__dec-inner {
+            display: block;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+
+            div {
+                position: absolute;
+                z-index: -1;
+                width: 810px;
+                height: 886px;
+                background: url(../images/shadow-10.webp) no-repeat center / cover;
+
+                &.is-right {
+                    top: 170px;
+                    right: -486px;
+                }
+
+                &.is-left {
+                    top: 836px;
+                    left: -391px;
+                }
+
+            }
+        }
+    }
+
+    .testimonials__inner {
+        position: relative;
+        z-index: 2;
+        padding: 106px 0 140px;
+    }
+
+    .testimonials__top {
+        width: 748px;
+        margin: 0 auto 50px;
+        text-align: center;
+
+    }
+
+    .testimonials__title {}
+
+    .testimonials__text {
+        margin-top: 28px;
+    }
+
+    .testimonials__wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .testimonials__navigation {
+        width: 512px;
+        position: sticky;
+        z-index: 3;
+        top: 100px;
+    }
+
+    .testimonials__content {
+        width: 764px;
+        position: relative;
+        overflow-anchor: none;
+    }
+
+    .testimonials__list {
+        width: 100%;
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+
+
+        .item {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 36px;
+
+            &:not(:first-child) {
+                margin-top: 16px;
+            }
+        }
+
+        .item-label {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1;
+            font-size: 20px;
+            letter-spacing: -0.03em;
+            color: #F4EFE7;
+            margin-bottom: 24px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+
+        .item-text {}
+    }
+}
+
+@include maxw($desktop) {
+    .testimonials {
+
+
+        .testimonials__dec {
+
+            .testimonials__dec-inner {
+                max-width: vwD(1920px);
+
+                div {
+                    width: vwD(810px);
+                    height: vwD(886px);
+
+                    &.is-right {
+                        top: vwD(170px);
+                        right: vwD(-486px);
+                    }
+
+                    &.is-left {
+                        top: vwD(836px);
+                        left: vwD(-391px);
+                    }
+
+                }
+            }
+        }
+
+        .testimonials__inner {
+            padding: vwD(106px) 0 vwD(140px);
+        }
+
+        .testimonials__top {
+            width: vwD(748px);
+            margin: 0 auto vwD(50px);
+
+        }
+
+        .testimonials__text {
+            margin-top: vwD(28px);
+        }
+
+        .testimonials__navigation {
+            width: vwD(512px);
+            top: vwD(100px);
+        }
+
+        .testimonials__content {
+            width: vwD(764px);
+        }
+
+        .testimonials__list {
+            margin-bottom: vwD(16px);
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            .item {
+                border-radius: vwD(8px);
+                padding: vwD(36px);
+
+                &:not(:first-child) {
+                    margin-top: vwD(16px);
+                }
+            }
+
+            .item-label {
+                font-size: vwD(20px);
+                margin-bottom: vwD(24px);
+                padding: vwD(12px) vwD(16px);
+                border-radius: vwD(8px);
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .testimonials {
+
+        .testimonials__dec {
+
+            .testimonials__dec-inner {
+                max-width: 100%;
+
+                div {
+                    width: vwM(438px);
+                    height: vwM(480px);
+
+                    &.is-right {
+                        top: vwM(291px);
+                        right: vwM(-274px);
+                    }
+
+                    &.is-left {
+                        top: vwM(1107px);
+                        left: vwM(-270px);
+                    }
+
+                }
+            }
+        }
+
+        .testimonials__inner {
+            padding: vwM(72px) 0 vwM(100px);
+        }
+
+        .testimonials__top {
+            width: 100%;
+            margin: 0 auto vwM(100px);
+            text-align: left;
+
+            br {
+                display: none;
+            }
+        }
+
+        .testimonials__title {
+            text-align: center;
+        }
+
+        .testimonials__text {
+            margin-top: vwM(28px);
+        }
+
+        .testimonials__wrapper {
+            display: block;
+        }
+
+        .testimonials__navigation {
+            width: 100%;
+            position: relative;
+            z-index: 5;
+            margin-bottom: vwM(48px);
+        }
+
+        .testimonials__content {
+            width: 100%;
+        }
+
+        .testimonials__list {
+            margin-bottom: vwM(30px);
+
+            .item {
+                border-radius: vwM(8px);
+                padding: vwM(24px);
+
+                &:not(:first-child) {
+                    margin-top: vwM(30px);
+                }
+            }
+
+            .item-label {
+                display: inline-block;
+                font-size: vwM(18px);
+                margin-bottom: vwM(20px);
+                padding: vwM(12px) vwM(16px);
+                border-radius: vwM(8px);
+            }
+        }
+    }
+}

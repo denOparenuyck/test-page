@@ -1,0 +1,184 @@
+.gallery-block {
+    --gallery-block-gap: 10px;
+    --gallery-block-main-height: 449px;
+    --gallery-block-main-radius: 8px;
+    --gallery-block-thumb-size: 60px;
+    --gallery-block-thumb-gap: 10px;
+    --gallery-block-thumb-radius: 4px;
+    --gallery-block-nav-size: 40px;
+    --gallery-block-nav-offset: 12px;
+    --gallery-block-gradient-width: 82px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gallery-block-gap);
+    width: 100%;
+}
+
+.gallery-block__main {
+    width: 100%;
+    height: var(--gallery-block-main-height);
+    border-radius: var(--gallery-block-main-radius);
+    overflow: hidden;
+    position: relative;
+
+    .swiper-slide {
+        height: var(--gallery-block-main-height);
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        width: var(--gallery-block-gradient-width);
+        height: 100%;
+        pointer-events: none;
+    }
+
+    &::before {
+        left: 0;
+        background: linear-gradient(90deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0) 100%);
+    }
+
+    &::after {
+        right: 0;
+        background: linear-gradient(-90deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0) 100%);
+    }
+}
+
+.gallery-block__prev,
+.gallery-block__next {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    width: var(--gallery-block-nav-size);
+    height: var(--gallery-block-nav-size);
+    transform: translateY(-50%);
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(1, 9, 11, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .3s linear;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    @include minw($mobile) {
+        &:hover:not(.swiper-button-disabled) {
+            opacity: 0.85;
+        }
+    }
+}
+
+.gallery-block__prev {
+    left: var(--gallery-block-nav-offset);
+}
+
+.gallery-block__next {
+    right: var(--gallery-block-nav-offset);
+
+    img {
+        transform: rotate(180deg);
+    }
+}
+
+.gallery-block__thumbs {
+    width: 100%;
+    margin: 0;
+
+    .swiper-wrapper {
+        display: flex;
+    }
+
+    .swiper-slide {
+        width: var(--gallery-block-thumb-size);
+        height: var(--gallery-block-thumb-size);
+        flex-shrink: 0;
+        border-radius: var(--gallery-block-thumb-radius);
+        overflow: hidden;
+        border: 1px solid transparent;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity .3s linear, border-color .3s linear;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        &.swiper-slide-thumb-active {
+            opacity: 1;
+            border-color: #fff;
+        }
+
+        @include minw($mobile) {
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.gallery-block.is-tall {
+    --gallery-block-main-height: 470px;
+}
+
+@include maxw($desktop) {
+    .gallery-block.is-tall {
+        --gallery-block-main-height: #{vwD(470px)};
+    }
+
+    .gallery-block {
+        --gallery-block-gap: #{vwD(10px)};
+        --gallery-block-main-height: #{vwD(449px)};
+        --gallery-block-main-radius: #{vwD(8px)};
+        --gallery-block-thumb-size: #{vwD(60px)};
+        --gallery-block-thumb-gap: #{vwD(10px)};
+        --gallery-block-thumb-radius: #{vwD(4px)};
+        --gallery-block-nav-size: #{vwD(40px)};
+        --gallery-block-nav-offset: #{vwD(12px)};
+        --gallery-block-gradient-width: #{vwD(82px)};
+    }
+}
+
+@include maxw($mobile) {
+    .gallery-block.is-tall {
+        --gallery-block-main-height: #{vwM(270px)};
+    }
+
+    .gallery-block {
+        --gallery-block-gap: #{vwM(10px)};
+        --gallery-block-main-height: #{vwM(258px)};
+        --gallery-block-main-radius: #{vwM(8px)};
+        --gallery-block-thumb-size: #{vwM(48px)};
+        --gallery-block-thumb-gap: #{vwM(8px)};
+        --gallery-block-thumb-radius: #{vwM(4px)};
+        --gallery-block-nav-size: #{vwM(32px)};
+        --gallery-block-nav-offset: #{vwM(10px)};
+        --gallery-block-gradient-width: #{vwM(60px)};
+    }
+}
