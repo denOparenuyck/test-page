@@ -3,8 +3,28 @@
     position: relative;
     z-index: 2;
 
+    &:has(.dec-shadow-bottom-right) {
+        padding-bottom: 256px;
+        margin-bottom: -256px;
+    }
+
     .programs-approach__inner {
+        width: 100%;
+        max-width: 1920px;
         padding: 140px 0;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+
+        .dec-shadow-bottom-right {
+            position: absolute;
+            z-index: -1;
+            right: -648px;
+            bottom: -256px;
+            width: 1119px;
+            height: 1224px;
+            background: url(../images/shadow-15.webp) no-repeat center / cover;
+        }
     }
 
     .programs-approach__grid {
@@ -113,8 +133,21 @@
 
 @include maxw($desktop) {
     .programs-approach {
+        &:has(.dec-shadow-bottom-right) {
+            padding-bottom: vwD(256px);
+            margin-bottom: vwD(-256px);
+        }
+
         .programs-approach__inner {
+            max-width: vwD(1920px);
             padding: vwD(140px) 0;
+
+            .dec-shadow-bottom-right {
+                right: vwD(-648px);
+                bottom: vwD(-256px);
+                width: vwD(1119px);
+                height: vwD(1224px);
+            }
         }
 
         .programs-approach__grid {
@@ -168,9 +201,24 @@
 
 @include maxw($mobile) {
     .programs-approach {
-        .programs-approach__inner {
-            padding: vwM(100px) 0;
+   
+        &:has(.dec-shadow-bottom-right) {
+            padding-bottom: vwM(271px);
+            margin-bottom: vwM(-271px);
         }
+
+        .programs-approach__inner {
+            max-width: 100%;
+            padding: vwM(100px) 0;
+
+            .dec-shadow-bottom-right {
+                right: vwM(-290px);
+                bottom: vwM(-271px);
+                width: vwM(518px);
+                height: vwM(480px);
+            }
+        }
+   
 
         .programs-approach__grid {
             grid-template-columns: 1fr;

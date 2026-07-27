@@ -1,7 +1,51 @@
 .our-programs {
-    overflow: hidden;
     position: relative;
     z-index: 3;
+    padding-top: 500px;
+    margin-top: -500px;
+
+    .our-programs__dec {
+        padding-top: 500px;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+
+            &::before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: -498px;
+                right: -647px;
+                width: 1003px;
+                height: 1098px;
+                background: url(../images/shadow-16.webp) no-repeat center / contain;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 573px;
+                left: -396px;
+                width: 792px;
+                height: 866px;
+                background: url(../images/shadow-13.webp) no-repeat center / contain;
+            }
+        }
+    }
 
     .our-programs__inner {}
 
@@ -12,6 +56,8 @@
     }
 
     .our-programs__content {
+        position: sticky;
+        top: 150px;
         width: 100%;
         max-width: 691px;
         margin-top: 8px;
@@ -80,11 +126,38 @@
 
 @include maxw($desktop) {
     .our-programs {
+        padding-top: vwD(500px);
+        margin-top: vwD(-500px);
+
+        .our-programs__dec {
+            padding-top: vwD(500px);
+
+            span {
+                max-width: vwD(1920px);
+
+                &::before {
+                    top: vwD(-498px);
+                    right: vwD(-647px);
+                    width: vwD(1003px);
+                    height: vwD(1098px);
+                }
+
+                &::after {
+                    top: vwD(573px);
+                    left: vwD(-396px);
+                    width: vwD(792px);
+                    height: vwD(866px);
+                }
+            }
+        }
+
+
         .our-programs__wrapper {
             gap: vwD(82px);
         }
 
         .our-programs__content {
+            top: vwD(150px);
             max-width: vwD(691px);
             margin-top: vwD(8px);
         }
@@ -135,6 +208,12 @@
 
 @include maxw($mobile) {
     .our-programs {
+        padding-top: 0;
+        margin-top: 0;
+
+        .our-programs__dec {
+            display: none;
+        }
 
         .our-programs__inner {
             position: relative;
@@ -148,9 +227,11 @@
         }
 
         .our-programs__content {
+            position: static;
             margin: 0;
             max-width: 100%;
-            br{
+
+            br {
                 display: none;
             }
         }

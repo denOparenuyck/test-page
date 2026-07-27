@@ -255,6 +255,7 @@ $('.section-side-navigation').each(function (_, navigation) {
     const $current = $navigation.find('.section-side-navigation__current');
     const $list = $navigation.find('.section-side-navigation__list');
     const $items = $list.find('li');
+    const isGrouped = $navigation.hasClass('is-grouped');
     const mobileMq = window.matchMedia('(max-width: 991px)');
     const slideDuration = 300;
 
@@ -278,6 +279,12 @@ $('.section-side-navigation').each(function (_, navigation) {
     };
 
     const syncListForViewport = () => {
+        if (isGrouped) {
+            $navigation.removeClass('is-open');
+            $list.stop(true, true).show().css('display', '');
+            return;
+        }
+
         if (mobileMq.matches) {
             if (!$navigation.hasClass('is-open')) {
                 $list.hide();
@@ -295,7 +302,7 @@ $('.section-side-navigation').each(function (_, navigation) {
     $placeholder.on('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
-        if (!mobileMq.matches) return;
+        if (!mobileMq.matches || isGrouped) return;
 
         if ($navigation.hasClass('is-open')) {
             closeNavigation();
@@ -307,14 +314,14 @@ $('.section-side-navigation').each(function (_, navigation) {
     $items.on('click', function () {
         window.setTimeout(function () {
             syncCurrentLabel();
-            if (mobileMq.matches) {
+            if (mobileMq.matches && !isGrouped) {
                 closeNavigation();
             }
         }, 0);
     });
 
     $(document).on('click.sectionSideNavigation', function (event) {
-        if (!mobileMq.matches) return;
+        if (!mobileMq.matches || isGrouped) return;
         if (!$navigation.is(event.target) && $navigation.has(event.target).length === 0) {
             closeNavigation();
         }
@@ -432,23 +439,45 @@ document.querySelectorAll('.gallery-block').forEach((gallery) => {
     });
 })();
 
-$('.testimonials').each(function (_, section) {
-    const $navigation = $(section).find('.testimonials__navigation li');
-    const $lists = $(section).find('.testimonials__list');
+const initSideNavigationFilter = ($navItems, $panels) => {
+    if (!$navItems.length || !$panels.length) return;
+
+    const hasAllOption = $navItems.filter('[data-value="all"]').length > 0;
     const fadeDuration = 300;
     let isAnimating = false;
 
-    $navigation.on('click', function () {
+    const getTargetPanels = ($item) => {
+        if (hasAllOption && $item.attr('data-value') === 'all') {
+            return $panels;
+        }
+
+        const index = $navItems.index($item);
+        const panelIndex = hasAllOption ? index - 1 : index;
+        return $panels.eq(panelIndex);
+    };
+
+    if (!hasAllOption) {
+        let $active = $navItems.filter('.is-current').first();
+        if (!$active.length) {
+            $active = $navItems.first();
+        }
+
+        $navItems.removeClass('is-current');
+        $active.addClass('is-current');
+        $panels.hide();
+        getTargetPanels($active).show();
+    }
+
+    $navItems.on('click', function () {
         const $item = $(this);
         if (isAnimating || $item.hasClass('is-current')) return;
 
-        const index = $navigation.index($item);
-        $navigation.removeClass('is-current');
+        $navItems.removeClass('is-current');
         $item.addClass('is-current');
 
         isAnimating = true;
-        const $visible = $lists.filter(':visible');
-        const $target = index === 0 ? $lists : $lists.eq(index - 1);
+        const $visible = $panels.filter(':visible');
+        const $target = getTargetPanels($item);
 
         $visible.stop(true, true).fadeOut(fadeDuration).promise().done(function () {
             $target.stop(true, true).hide().fadeIn(fadeDuration).promise().done(function () {
@@ -456,4 +485,18 @@ $('.testimonials').each(function (_, section) {
             });
         });
     });
+};
+
+$('.testimonials').each(function (_, section) {
+    initSideNavigationFilter(
+        $(section).find('.testimonials__navigation li'),
+        $(section).find('.testimonials__list')
+    );
+});
+
+$('.about').each(function (_, section) {
+    initSideNavigationFilter(
+        $(section).find('.about__navigation li'),
+        $(section).find('.about__list > .item')
+    );
 });
