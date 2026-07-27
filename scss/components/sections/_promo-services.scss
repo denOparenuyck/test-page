@@ -1,0 +1,184 @@
+.promo-services {
+    overflow: hidden;
+
+    .promo-services__inner {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 106px 0 140px;
+
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -230px;
+            left: -413px;
+            width: 772px;
+            height: 844px;
+            background: url(../images/shadow-9.webp) no-repeat center / cover;
+        }
+    }
+
+    .promo-services__wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .promo-services__content {
+        width: 666px;
+        padding-top: 54px;
+    }
+
+    .promo-services__title {}
+
+    .promo-services__text {
+        margin-top: 28px;
+    }
+
+    .promo-services__phrase {
+        margin-top: 28px;
+        font-weight: 400;
+        line-height: 1.22;
+        font-size: 18px;
+        letter-spacing: -0.04em;
+        color: #FFFFFF;
+        padding-left: 40px;
+        position: relative;
+        z-index: 2;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 28px;
+            height: 32px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='24' fill='none' viewBox='0 0 21 24'%3E%3Cpath fill='%23da1f26' fill-rule='evenodd' d='M18.038 13.59c-1.226-.558-2.322-.01-3.024-.182C12.376 9.861 12.475 2.37 9.017 0c-.524.279.212 1.823.41 2.863-.035.347-2.352 2.248-.825 3.494-1.22 1.11-2.13 1.378-2.352 2.556-.44 2.33 1.394 5.048 1.764 8.165-.934 1.935-5.306 2.492-6.407 3.264-.119.083-.139.25-.06.372.4.61.702 1.182 1.063 1.622.148.18.415.22.607.078 1.779-1.32 3.315-3.2 5.77-3.161 1.937.034 3.962.254 6.862-1.393.988-.562 3.172-3.21 3.651-4.124-.38-.533-.721.185-1.462-.152z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+
+    .promo-services__image {
+        width: 763px;
+        height: auto;
+        border-radius: 8px;
+        overflow: hidden;
+
+        &.is-mobile {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .promo-services {
+
+        .promo-services__inner {
+            max-width: vwD(1920px);
+            padding: vwD(106px) 0 vwD(140px);
+
+            &::before {
+                top: vwD(-230px);
+                left: vwD(-413px);
+                width: vwD(772px);
+                height: vwD(844px);
+            }
+        }
+
+        .promo-services__content {
+            width: vwD(666px);
+            padding-top: vwD(54px);
+        }
+
+        .promo-services__text {
+            margin-top: vwD(28px);
+        }
+
+        .promo-services__phrase {
+            margin-top: vwD(28px);
+            font-size: vwD(18px);
+            padding-left: vwD(40px);
+
+            &::before {
+                width: vwD(28px);
+                height: vwD(32px);
+            }
+        }
+
+        .promo-services__image {
+            width: vwD(763px);
+            border-radius: vwD(8px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .promo-services {
+
+        .promo-services__inner {
+            max-width: 100%;
+            padding: vwM(72px) 0 vwM(100px);
+
+            &::before {
+                top: vwM(-75px);
+                left: vwM(-252px);
+                width: vwM(518px);
+                height: vwM(480px);
+            }
+        }
+
+        .promo-services__wrapper {
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .promo-services__content {
+            width: 100%;
+            padding-top: 0;
+        }
+
+        .promo-services__title {
+            text-align: center;
+        }
+
+
+        .promo-services__text {
+            margin-top: vwM(36px);
+        }
+
+        .promo-services__phrase {
+            margin-top: vwM(24px);
+            font-size: vwM(16px);
+            letter-spacing: -0.03em;
+            padding-left: vwM(36px);
+
+            &::before {
+                width: vwM(24px);
+                height: vwM(28px);
+            }
+        }
+
+        .promo-services__image {
+            width: 100%;
+            border-radius: vwM(8px);
+            margin-top: vwM(36px);
+            display: none;
+
+            &.is-mobile {
+                display: block;
+            }
+        }
+    }
+}

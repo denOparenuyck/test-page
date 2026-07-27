@@ -90,6 +90,86 @@ initWhoWeAreSwiper();
 whoWeAreMobileMq.addEventListener('change', initWhoWeAreSwiper);
 
 
+const releaseReviewsList = document.querySelector('.release-reviews__list .swiper');
+const releaseReviewsMobileMq = window.matchMedia('(max-width: 991px)');
+let releaseReviewsSwiper = null;
+let releaseReviewsClones = [];
+let releaseReviewsOriginalCount = 0;
+
+const destroyReleaseReviewsSwiper = () => {
+    if (releaseReviewsSwiper) {
+        releaseReviewsSwiper.destroy(true, true);
+        releaseReviewsSwiper = null;
+    }
+
+    releaseReviewsClones.forEach((clone) => clone.remove());
+    releaseReviewsClones = [];
+    releaseReviewsOriginalCount = 0;
+};
+
+const initReleaseReviewsSwiper = () => {
+    if (!releaseReviewsList || typeof Swiper === 'undefined') return;
+
+    if (!releaseReviewsMobileMq.matches) {
+        destroyReleaseReviewsSwiper();
+        return;
+    }
+
+    if (releaseReviewsSwiper) return;
+
+    const swiperWrapper = releaseReviewsList.querySelector('.swiper-wrapper');
+    if (!swiperWrapper) return;
+
+    const slides = Array.from(swiperWrapper.children).filter(
+        (el) => !el.classList.contains('slide-clone')
+    );
+    releaseReviewsOriginalCount = slides.length;
+
+    releaseReviewsClones = slides.map((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.classList.add('slide-clone');
+        swiperWrapper.appendChild(clone);
+        return clone;
+    });
+
+    releaseReviewsSwiper = new Swiper(releaseReviewsList, {
+        loop: true,
+        slidesPerView: 1.02,
+        spaceBetween: 10,
+        centeredSlides: true,
+        speed: 1000,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.release-reviews__list .swiper-pagination',
+            clickable: true,
+            renderBullet: (index, className) =>
+                index < releaseReviewsOriginalCount ? `<span class="${className}"></span>` : '',
+        },
+        on: {
+            slideChange() {
+                const active = this.realIndex % releaseReviewsOriginalCount;
+
+                this.pagination.bullets.forEach((bullet, i) => {
+                    bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
+                });
+
+                this.slides.forEach((slide, i) => {
+                    slide.classList.toggle('is-active', i === this.activeIndex);
+                });
+            },
+        },
+    });
+
+    releaseReviewsSwiper.emit('slideChange');
+};
+
+initReleaseReviewsSwiper();
+releaseReviewsMobileMq.addEventListener('change', initReleaseReviewsSwiper);
+
+
 let releaseNavigationButtons = document.querySelectorAll('.release__navigation .navigation-button');
 let releaseListItems = document.querySelectorAll('.release__list .item');
 

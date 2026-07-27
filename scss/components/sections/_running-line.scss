@@ -1,62 +1,67 @@
-
 .running-line {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
     z-index: 2;
-    padding: 40px 0;
+    padding: 122px 0 140px;
 
     .running-line__track {
         display: flex;
         align-items: center;
-        gap: 40px;
-        width: max-content;
-        animation: runningLine 32s linear infinite;
+
+        @include minw($mobile) {
+            &:hover .running-line__list {
+                animation-play-state: paused;
+            }
+        }
+    }
+
+    .running-line__list {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        animation: runningLine 25s linear infinite;
     }
 
     .running-line__item {
         flex: 0 0 auto;
-        width: 200px;
-        height: 90px;
+        width: 334px;
+        height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0 20px;
 
         img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            display: block;
         }
     }
 }
 
 @include maxw($desktop) {
     .running-line {
-        padding: vwD(40px) 0;
-
-        .running-line__track {
-            gap: vwD(40px);
-        }
+        max-width: vwD(1920px);
+        padding: vwD(122px) 0 vwD(140px);
 
         .running-line__item {
-            width: vwD(200px);
-            height: vwD(90px);
+            width: vwD(334px);
+            padding: 0 vwD(20px);
         }
     }
 }
 
 @include maxw($mobile) {
     .running-line {
-        padding: vwM(28px) 0;
-
-        .running-line__track {
-            gap: vwM(24px);
-            animation-duration: 18s;
-        }
+        max-width: 100%;
+        padding: vwM(60px) 0 vwM(100px);
 
         .running-line__item {
-            width: vwM(140px);
-            height: vwM(64px);
+            width: vwM(163px);
+            padding: 0 vwM(15px);
         }
     }
 }
@@ -64,10 +69,10 @@
 
 @keyframes runningLine {
     0% {
-        transform: translateX(0);
+        transform: translateX(0%);
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }

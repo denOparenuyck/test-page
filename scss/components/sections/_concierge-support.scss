@@ -1,343 +1,171 @@
 .concierge-support {
-
     overflow: hidden;
 
-
-
     .concierge-support__inner {
-
         width: 100%;
-
         max-width: 1920px;
-
         margin: 0 auto;
-
         padding: 140px 0;
-
         position: relative;
-
         z-index: 2;
 
-
-
         &::before,
-
         &::after {
-
             content: "";
-
             position: absolute;
-
             z-index: -1;
-
             width: 772px;
-
             height: 844px;
-
             background: url(../images/shadow-9.webp) no-repeat center / cover;
-
         }
-
-
 
         &::before {
-
             top: -500px;
-
             left: -330px;
-
         }
-
-
 
         &::after {
-
             top: -500px;
-
             right: -430px;
-
         }
-
     }
-
-
 
     .concierge-support__wrapper {
-
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
-
         gap: 32px;
-
     }
-
-
 
     .concierge-support__content {
-
         width: 100%;
-
         max-width: 698px;
-
     }
-
-
 
     .concierge-support__caption {
-
         margin-bottom: 28px;
-
     }
-
-
 
     .concierge-support__title {
-
         margin-bottom: 28px;
-
     }
-
-
 
     .concierge-support__button {
-
         margin-top: 40px;
-
     }
-
-
 
     .concierge-support__gallery {
-
         width: 768px;
-
         flex: 0 0 auto;
-
     }
-
 }
-
-
 
 @include maxw($desktop) {
-
     .concierge-support {
-
         .concierge-support__inner {
-
             max-width: vwD(1920px);
-
             padding: vwD(140px) 0;
 
-
-
             &::before,
-
             &::after {
-
                 width: vwD(772px);
-
                 height: vwD(844px);
-
             }
-
-
 
             &::before {
-
                 top: vwD(-500px);
-
                 left: vwD(-330px);
-
             }
-
-
 
             &::after {
-
                 top: vwD(-500px);
-
                 right: vwD(-430px);
-
             }
-
         }
-
-
 
         .concierge-support__wrapper {
-
             gap: vwD(32px);
-
         }
-
-
 
         .concierge-support__content {
-
             max-width: vwD(698px);
-
         }
-
-
 
         .concierge-support__caption {
-
             margin-bottom: vwD(28px);
-
         }
-
-
 
         .concierge-support__title {
-
             margin-bottom: vwD(28px);
-
         }
-
-
 
         .concierge-support__button {
-
             margin-top: vwD(40px);
-
         }
-
-
 
         .concierge-support__gallery {
-
             width: vwD(768px);
-
         }
-
     }
-
 }
-
-
 
 @include maxw($mobile) {
-
     .concierge-support {
-
         padding-top: vwM(300px);
-
         padding-bottom: vwM(210px);
-
         margin-top: vwM(-300px);
-
         margin-bottom: vwM(-210px);
 
-
-
         .concierge-support__inner {
-
             max-width: 100%;
-
-            padding: 0;
-
-
+            padding: 0 0 vwM(100px);
 
             &::before,
-
             &::after {
-
                 width: vwM(518px);
-
                 height: vwM(480px);
-
             }
-
-
 
             &::before {
-
                 top: vwM(-298px);
-
                 left: vwM(-258px);
-
             }
-
-
 
             &::after {
-
                 top: auto;
-
                 bottom: vwM(-210px);
-
                 right: vwM(-250px);
-
             }
-
         }
-
-
 
         .concierge-support__wrapper {
-
             flex-direction: column;
-
             align-items: flex-start;
-
             gap: vwM(36px);
-
         }
-
-
 
         .concierge-support__content {
-
             max-width: 100%;
-
         }
-
-
 
         .concierge-support__caption {
-
             margin-bottom: vwM(8px);
-
         }
-
-
 
         .concierge-support__title {
-
             margin-bottom: vwM(24px);
-
         }
-
-
 
         .concierge-support__button {
-
             margin-top: vwM(32px);
 
-
-
             .default-button {
-
                 width: 100%;
-
             }
-
         }
-
-
 
         .concierge-support__gallery {
-
             width: 100%;
-
         }
-
     }
-
 }
-
-

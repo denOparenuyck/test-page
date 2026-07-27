@@ -1,10 +1,43 @@
 .release-impact {
-    overflow: hidden;
     position: relative;
     z-index: 2;
+    padding-top: 540px;
+    margin-top: -540px;
+
+    .release-impact__dec {
+        padding-top: 540px;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        span {
+            display: block;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+
+
+            &::before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: -540px;
+                right: -708px;
+                width: 1087px;
+                height: 1167px;
+                background: url(../images/shadow-11.webp) no-repeat center / cover;
+            }
+        }
+    }
 
     .release-impact__inner {
-        padding: 140px 0;
+        padding: 140px 0 0;
     }
 
     .release-impact__wrapper {
@@ -18,7 +51,6 @@
         flex: 0 0 auto;
         position: sticky;
         top: 150px;
-        padding-bottom: 80px;
     }
 
     .release-impact__caption {}
@@ -105,8 +137,27 @@
 
 @include maxw($desktop) {
     .release-impact {
+        padding-top: vwD(540px);
+        margin-top: vwD(-540px);
+
+        .release-impact__dec {
+            padding-top: vwD(540px);
+
+            span {
+                max-width: vwD(1920px);
+
+                &::before {
+                    top: vwD(-540px);
+                    right: vwD(-708px);
+                    width: vwD(1087px);
+                    height: vwD(1167px);
+                }
+            }
+        }
+
+
         .release-impact__inner {
-            padding: vwD(140px) 0;
+            padding: vwD(140px) 0 0;
         }
 
         .release-impact__wrapper {
@@ -168,8 +219,15 @@
 
 @include maxw($mobile) {
     .release-impact {
+        padding-top: 0;
+        margin-top: 0;
+
+        .release-impact__dec {
+           display: none;
+        }
+
         .release-impact__inner {
-            padding: vwM(100px) 0;
+            padding: vwM(100px) 0 0;
         }
 
         .release-impact__wrapper {
@@ -181,6 +239,7 @@
             width: 100%;
             position: static;
             padding-bottom: 0;
+            text-align: center;
         }
 
         .release-impact__title {

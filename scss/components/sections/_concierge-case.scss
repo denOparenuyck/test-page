@@ -1,0 +1,117 @@
+.concierge-case {
+    overflow: hidden;
+
+    .concierge-case__inner {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+
+    .concierge-case__wrapper {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .concierge-case__content {
+        width: 544px;
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        background: #F4EFE7;
+        padding: 32px;
+    }
+
+    .concierge-case__caption {
+        margin-bottom: 28px;
+    }
+
+    .concierge-case__text {
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+
+    .concierge-case__button {
+        margin-top: auto;
+    }
+
+    .concierge-case__image {
+        width: 100%;
+        height: auto;
+        flex: 1 1 auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .concierge-case {
+        .concierge-case__inner {
+            max-width: vwD(1920px);
+        }
+
+        .concierge-case__content {
+            width: vwD(544px);
+            padding: vwD(32px);
+        }
+
+        .concierge-case__caption {
+            margin-bottom: vwD(28px);
+        }
+
+        .concierge-case__text {
+            margin-top: vwD(10px);
+            margin-bottom: vwD(40px);
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .concierge-case {
+        .concierge-case__inner {
+            max-width: 100%;
+            padding: 0 vwM(16px) vwM(100px);
+        }
+
+        .concierge-case__wrapper {
+            flex-direction: column;
+        }
+
+        .concierge-case__content {
+            width: 100%;
+            padding: vwM(32px) vwM(16px);
+            border-radius: vwM(8px);
+            margin-bottom: vwM(36px);
+        }
+
+        .concierge-case__caption {
+            margin-bottom: vwM(8px);
+        }
+
+        .concierge-case__title {
+        }
+
+        .concierge-case__text {
+            margin-top: vwM(28px);
+            margin-bottom: vwM(28px);
+        }
+
+        .concierge-case__button {
+            margin-top: 0;
+
+            .default-button {
+                width: 100%;
+            }
+        }
+
+        .concierge-case__image {
+            height: auto;
+            overflow: hidden;
+            border-radius: vwM(8px);
+        }
+    }
+}
