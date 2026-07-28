@@ -1,0 +1,246 @@
+.about-location {
+    position: relative;
+    z-index: 2;
+
+    .about-location__inner {
+        padding: 140px 0;
+    }
+
+    .about-location__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .about-location__caption {
+        width: 505px;
+        margin: 0;
+    }
+
+    .about-location__top-wrapper {
+        width: 892px;
+    }
+
+    .about-location__title {
+        margin: 0;
+    }
+
+    .about-location__text {
+        margin: 28px 0 0 0;
+    }
+
+    .about-location__wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .about-location__navigation {
+        position: sticky;
+        top: 150px;
+        width: 505px;
+        display: flex;
+        flex-direction: column;
+        gap: 31px;
+    }
+
+    .about-location__navigation-item {
+        width: 100%;
+    }
+
+    .about-location__navigation-title {
+        font-family: $dmSans;
+        font-weight: 400;
+        line-height: 1.1;
+        font-size: 32px;
+        letter-spacing: -0.03em;
+        color: #F4EFE7;
+        margin-bottom: 10px;
+    }
+
+    .about-location__blocks {
+        width: 892px;
+    }
+
+    .about-location__block {
+        > .about-location__navigation-item {
+            display: none;
+        }
+    }
+
+    .about-location__list {
+        .item {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 36px;
+
+            .item-text {
+                h3 {
+                    margin-bottom: 24px;
+                }
+            }
+        }
+
+        .item-gallery,
+        .location-switcher {
+            margin-top: 32px;
+        }
+
+        .location-switcher + .item-text,
+        .item-gallery + .item-text {
+            margin-top: 40px;
+        }
+    }
+}
+
+@include maxw($desktop) {
+    .about-location {
+        .about-location__inner {
+            padding: vwD(140px) 0;
+        }
+
+        .about-location__top {
+            gap: vwD(30px);
+            margin-bottom: vwD(50px);
+        }
+
+        .about-location__caption {
+            width: vwD(505px);
+        }
+
+        .about-location__top-wrapper {
+            width: vwD(892px);
+        }
+
+        .about-location__text {
+            margin: vwD(28px) 0 0 0;
+        }
+
+        .about-location__wrapper {
+            gap: vwD(30px);
+        }
+
+        .about-location__navigation {
+            top: vwD(150px);
+            width: vwD(505px);
+            gap: vwD(31px);
+        }
+
+        .about-location__navigation-title {
+            font-size: vwD(32px);
+            margin-bottom: vwD(10px);
+        }
+
+        .about-location__blocks {
+            width: vwD(892px);
+        }
+
+        .about-location__list {
+            .item {
+                border-radius: vwD(10px);
+                padding: vwD(36px);
+
+                .item-text {
+                    h3 {
+                        margin-bottom: vwD(24px);
+                    }
+                }
+            }
+
+            .item-gallery,
+            .location-switcher {
+                margin-top: vwD(32px);
+            }
+
+            .location-switcher + .item-text,
+            .item-gallery + .item-text {
+                margin-top: vwD(40px);
+            }
+        }
+    }
+}
+
+@include maxw($mobile) {
+    .about-location {
+        .about-location__inner {
+            padding: 0 0 vwM(100px);
+        }
+
+        .about-location__top {
+            display: block;
+            margin-bottom: vwM(44px);
+            text-align: center;
+        }
+
+        .about-location__caption {
+            width: 100%;
+            margin-bottom: vwM(8px);
+        }
+
+        .about-location__top-wrapper {
+            width: 100%;
+        }
+
+        .about-location__text {
+            margin: vwM(28px) 0 0 0;
+            text-align: left;
+        }
+
+        .about-location__wrapper {
+            display: block;
+        }
+
+        .about-location__navigation {
+            display: none;
+        }
+
+        .about-location__blocks {
+            width: 100%;
+        }
+
+        .about-location__block {
+            margin-top: vwM(36px);
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            > .about-location__navigation-item {
+                display: block;
+                margin-bottom: vwM(24px);
+            }
+        }
+
+        .about-location__navigation-title {
+            font-size: vwM(24px);
+            margin-bottom: vwM(24px);
+        }
+
+        .about-location__list {
+            .item {
+                border-radius: vwM(10px);
+                padding: vwM(32px) vwM(24px);
+
+                .item-text {
+                    h3 {
+                        margin-bottom: vwM(16px);
+                        font-size: vwM(20px);
+                    }
+                }
+            }
+
+            .item-gallery,
+            .location-switcher {
+                margin-top: vwM(24px);
+            }
+
+            .location-switcher + .item-text,
+            .item-gallery + .item-text {
+                margin-top: vwM(32px);
+            }
+        }
+    }
+}

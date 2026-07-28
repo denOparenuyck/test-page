@@ -3,6 +3,16 @@
     z-index: 2;
     padding-top: 780px;
     margin-top: -780px;
+
+    &.no-shadow {
+        padding-top: 0;
+        margin-top: 0;
+
+        .about__dec {
+            display: none;
+        }
+    }
+
     .about__dec {
         padding-top: 780px;
         overflow: hidden;
@@ -12,6 +22,7 @@
         left: 0;
         width: 100%;
         height: 100%;
+
         span {
             display: block;
             width: 100%;
@@ -19,6 +30,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+
             &::before {
                 content: "";
                 position: absolute;
@@ -31,76 +43,118 @@
             }
         }
     }
+
     .about__inner {
         padding: 140px 0;
     }
+
+    .about__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 50px;
+
+        .about__caption {
+            width: 376px;
+            margin: 0;
+        }
+
+        .about__top-wrapper {
+            width: 892px;
+        }
+
+        .about__title {
+            margin: 0;
+        }
+
+        .about__text {
+            margin: 28px 0 0 0;
+        }
+    }
+
     .about__wrapper {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
         gap: 30px;
     }
+
     .about__side {
         position: sticky;
         top: 150px;
         width: 512px;
     }
-    .about__title {
-        margin-bottom: 50px;
-    }
-    .about__text {
-        margin-bottom: 40px;
-        .text p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-    }
-    .about__navigation {
-        width: 376px;
-    }
-    .about__main {
-        width: 892px;
-    }
+
     .about__caption {
         margin-bottom: 28px;
     }
+
+    .about__title {
+        margin-bottom: 50px;
+    }
+
+    .about__text {
+        margin-top: -12px;
+        margin-bottom: 40px;
+    }
+
+    .about__navigation {
+        width: 376px;
+    }
+
+    .about__main {
+        width: 892px;
+    }
+
     .about__header {
         margin-bottom: 50px;
+
         .about__title {
             margin-bottom: 28px;
         }
+
         .about__text {
             margin-bottom: 0;
         }
     }
+
     .about__list {
         .item {
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 36px;
             margin-top: 28px;
+
             &:first-child {
                 margin-top: 0;
             }
         }
+
         .item-gallery,
         .location-switcher {
             margin-top: 40px;
         }
-        .location-switcher + .item-text,
-        .item-gallery + .item-text {
+
+        .location-switcher+.item-text,
+        .item-gallery+.item-text {
             margin-top: 40px;
         }
+
         .item-text {
             .is-note {
                 color: rgba(255, 255, 255, 0.5);
             }
-            h3 + .is-note {
+
+            h3+.is-note {
                 margin-top: -20px;
             }
+
             h4.is-icon {
                 position: relative;
                 z-index: 2;
                 padding-left: 40px;
+
                 &::before {
                     content: "";
                     position: absolute;
@@ -116,95 +170,19 @@
             }
         }
     }
-    &.is-residences {
-        padding-top: 0;
-        margin-top: 0;
-        .about__inner {
-            padding: 140px 0 0;
-        }
-        .about__wrapper {
-            display: grid;
-            grid-template-columns: 505px 892px;
-            grid-template-areas:
-                "caption header"
-                "side main";
-            justify-content: space-between;
-            align-items: start;
-            column-gap: 30px;
-            row-gap: 0;
-        }
-        .about__caption {
-            grid-area: caption;
-            margin-bottom: 72px;
-        }
-        .about__header {
-            grid-area: header;
-            margin-bottom: 60px;
-        }
-        .about__side {
-            grid-area: side;
-            position: sticky;
-            top: 150px;
-            width: 505px;
-        }
-        .about__navigation {
-            width: 100%;
-        }
-        .about__main {
-            grid-area: main;
-            width: 892px;
-        }
-        .about__list {
-            .item {
-                .item-text + .location-switcher,
-                .item-text + .item-gallery {
-                    margin-top: 24px;
-                }
-                .location-switcher {
-                    margin-top: 24px;
-                }
-            }
-        }
-    }
-    &.is-clinical {
-        padding-top: 0;
-        margin-top: 0;
-        .about__inner {
-            padding: 140px 0;
-        }
-        .about__side {
-            width: 505px;
-        }
-        .about__caption {
-            margin-bottom: 28px;
-        }
-        .about__title {
-            margin-bottom: 28px;
-        }
-        .about__text {
-            margin-bottom: 40px;
-        }
-        .about__navigation {
-            width: 376px;
-        }
-        .about__list {
-            .item {
-                border-color: rgba(255, 255, 255, 0.16);
-                .item-text + .item-gallery {
-                    margin-top: 24px;
-                }
-            }
-        }
-    }
 }
+
 @include maxw($desktop) {
     .about {
         padding-top: vwD(780px);
         margin-top: vwD(-780px);
+
         .about__dec {
             padding-top: vwD(780px);
+
             span {
                 max-width: vwD(1920px);
+
                 &::before {
                     top: vwD(-779px);
                     right: vwD(-652px);
@@ -213,57 +191,91 @@
                 }
             }
         }
+
         .about__inner {
             padding: vwD(140px) 0;
         }
+
+        .about__top {
+            gap: vwD(30px);
+            margin-bottom: vwD(50px);
+
+            .about__caption {
+                width: vwD(376px);
+            }
+
+            .about__top-wrapper {
+                width: vwD(892px);
+            }
+
+            .about__text {
+                margin: vwD(28px) 0 0 0;
+            }
+        }
+
         .about__wrapper {
             gap: vwD(30px);
         }
+
         .about__side {
             top: vwD(150px);
             width: vwD(512px);
         }
-        .about__title {
-            margin-bottom: vwD(50px);
-        }
-        .about__text {
-            margin-bottom: vwD(40px);
-        }
-        .about__navigation {
-            width: vwD(376px);
-        }
-        .about__main {
-            width: vwD(892px);
-        }
+
         .about__caption {
             margin-bottom: vwD(28px);
         }
+
+        .about__title {
+            margin-bottom: vwD(50px);
+        }
+
+        .about__text {
+            margin-top: vwD(-12px);
+            margin-bottom: vwD(40px);
+        }
+
+        .about__navigation {
+            width: vwD(376px);
+        }
+
+        .about__main {
+            width: vwD(892px);
+        }
+
         .about__header {
             margin-bottom: vwD(50px);
+
             .about__title {
                 margin-bottom: vwD(28px);
             }
         }
+
         .about__list {
             .item {
                 border-radius: vwD(10px);
                 padding: vwD(36px);
-                margin-bottom: vwD(28px);
+                margin-top: vwD(28px);
             }
+
             .item-gallery,
             .location-switcher {
                 margin-top: vwD(40px);
             }
-            .location-switcher + .item-text,
-            .item-gallery + .item-text {
+
+            .location-switcher+.item-text,
+            .item-gallery+.item-text {
                 margin-top: vwD(40px);
             }
+
             .item-text {
-                h3 + .is-note {
+                h3+.is-note {
                     margin-top: vwD(-20px);
                 }
+
                 h4.is-icon {
                     padding-left: vwD(40px);
+
                     &::before {
                         width: vwD(28px);
                         height: vwD(32px);
@@ -271,209 +283,125 @@
                 }
             }
         }
-        &.is-residences {
-            padding-top: 0;
-            margin-top: 0;
-            .about__inner {
-                padding: vwD(140px) 0 0;
-            }
-            .about__wrapper {
-                grid-template-columns: vwD(505px) vwD(892px);
-                column-gap: vwD(30px);
-            }
-            .about__caption {
-                margin-bottom: vwD(72px);
-            }
-            .about__header {
-                margin-bottom: vwD(60px);
-            }
-            .about__side {
-                top: vwD(150px);
-                width: vwD(505px);
-            }
-            .about__navigation {
-                width: 100%;
-            }
-            .about__main {
-                width: vwD(892px);
-            }
-            .about__list {
-                .item {
-                    .item-text + .location-switcher,
-                    .item-text + .item-gallery {
-                        margin-top: vwD(24px);
-                    }
-                    .location-switcher {
-                        margin-top: vwD(24px);
-                    }
-                }
-            }
-        }
-        &.is-clinical {
-            padding-top: 0;
-            margin-top: 0;
-            .about__inner {
-                padding: vwD(140px) 0;
-            }
-            .about__side {
-                width: vwD(505px);
-            }
-            .about__caption {
-                margin-bottom: vwD(28px);
-            }
-            .about__title {
-                margin-bottom: vwD(28px);
-            }
-            .about__text {
-                margin-bottom: vwD(40px);
-            }
-            .about__navigation {
-                width: vwD(376px);
-            }
-            .about__list {
-                .item {
-                    .item-text + .item-gallery {
-                        margin-top: vwD(24px);
-                    }
-                }
-            }
-        }
     }
 }
+
 @include maxw($mobile) {
     .about {
         padding-top: 0;
         margin-top: 0;
+
         .about__dec {
             display: none;
         }
+
         .about__inner {
             padding: 0 0 vwM(100px);
         }
+
         .about__wrapper {
             display: block;
         }
+
+        .about__top {
+            display: block;
+            margin-bottom: vwM(44px);
+
+            .about__caption {
+                width: 100%;
+                margin-bottom: vwM(8px);
+            }
+
+            .about__top-wrapper {
+                width: 100%;
+            }
+
+            .about__text {
+                margin: vwM(28px) 0 0 0;
+            }
+        }
+
         .about__side {
             position: static;
             width: 100%;
         }
+
+        .about__caption {
+            margin-bottom: vwM(8px);
+            text-align: center;
+        }
+
         .about__title {
             margin-bottom: vwM(48px);
             text-align: center;
         }
+
         .about__text {
-            margin-bottom: vwM(40px);
+            margin-top: vwM(-20px);
+            margin-bottom: vwM(44px);
             text-align: left;
         }
+
         .about__navigation {
             width: 100%;
         }
+
         .about__main {
             width: 100%;
             margin-top: vwM(40px);
+
+            .about__caption {
+                margin-bottom: vwM(28px);
+            }
         }
-        .about__caption {
-            margin-bottom: vwM(28px);
-            text-align: center;
-        }
+
         .about__header {
             margin-bottom: vwM(44px);
             text-align: center;
+
             .about__title {
                 margin-bottom: vwM(8px);
             }
+
             .about__text {
                 margin-top: vwM(28px);
                 margin-bottom: 0;
                 text-align: left;
             }
         }
+
         .about__list {
             .item {
                 border-radius: vwM(10px);
                 padding: vwM(32px) vwM(24px);
-                margin-bottom: vwM(28px);
+                margin-top: vwM(28px);
             }
+
             .item-gallery,
             .location-switcher {
                 margin-top: vwM(32px);
             }
-            .location-switcher + .item-text,
-            .item-gallery + .item-text {
+
+            .location-switcher+.item-text,
+            .item-gallery+.item-text {
                 margin-top: vwM(32px);
             }
+
             .item-text {
                 .is-note {
                     font-size: vwM(14px);
                 }
-                h3 + .is-note {
+
+                h3+.is-note {
                     margin-top: vwM(-12px);
                 }
+
                 h4.is-icon {
                     padding-left: vwM(40px);
+
                     &::before {
                         width: vwM(28px);
                         height: vwM(32px);
-                    }
-                }
-            }
-        }
-        &.is-residences {
-            .about__inner {
-                padding: 0 0 vwM(100px);
-            }
-            .about__wrapper {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-            }
-            .about__caption {
-                margin-bottom: vwM(8px);
-                text-align: center;
-            }
-            .about__header {
-                margin-bottom: vwM(44px);
-            }
-            .about__side {
-                position: static;
-                width: 100%;
-                margin-top: 0;
-            }
-            .about__main {
-                width: 100%;
-                margin-top: vwM(36px);
-            }
-            .about__list {
-                .item {
-                    .item-text + .location-switcher,
-                    .item-text + .item-gallery,
-                    .location-switcher {
-                        margin-top: vwM(24px);
-                    }
-                }
-            }
-        }
-        &.is-clinical {
-            .about__inner {
-                padding: 0 0 vwM(100px);
-            }
-            .about__caption {
-                margin-bottom: vwM(8px);
-            }
-            .about__title {
-                margin-bottom: 0;
-            }
-            .about__text {
-                margin-top: vwM(28px);
-                margin-bottom: vwM(44px);
-            }
-            .about__main {
-                margin-top: vwM(36px);
-            }
-            .about__list {
-                .item {
-                    .item-text + .item-gallery {
-                        margin-top: vwM(24px);
                     }
                 }
             }

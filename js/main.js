@@ -500,3 +500,171 @@ $('.about').each(function (_, section) {
         $(section).find('.about__list > .item')
     );
 });
+
+$('.about-location').each(function (_, section) {
+    const $section = $(section);
+    const $desktopItems = $section.find('.about-location__navigation .section-side-navigation__list li');
+    const $blocks = $section.find('.about-location__block');
+    const $allPanels = $section.find('.about-location__list > .item');
+    const fadeDuration = 300;
+    let isAnimating = false;
+    const mobileMq = window.matchMedia('(max-width: 991px)');
+
+    const getBlockNavItems = ($block) =>
+        $block.find('.about-location__navigation-item .section-side-navigation__list li');
+
+    const syncPlaceholder = ($navigation) => {
+        const $current = $navigation.find('.section-side-navigation__current');
+        const label = $navigation.find('li.is-current').first().text().trim();
+        if (label) {
+            $current.text(label);
+        }
+    };
+
+    const syncPlaceholdersIn = ($root) => {
+        $root.find('.section-side-navigation').each(function () {
+            syncPlaceholder($(this));
+        });
+    };
+
+    const updateGalleries = ($panel) => {
+        $panel.find('.gallery-block__main').each(function () {
+            if (this.swiper) this.swiper.update();
+        });
+    };
+
+    const getGlobalIndexFromBlock = ($block, $li) => {
+        let offset = 0;
+        let result = -1;
+
+        $blocks.each(function () {
+            const $currentBlock = $(this);
+            const $lis = getBlockNavItems($currentBlock);
+
+            if ($currentBlock.is($block)) {
+                result = offset + $lis.index($li);
+                return false;
+            }
+
+            offset += $lis.length;
+        });
+
+        return result;
+    };
+
+    const syncBlockNavFromGlobal = (globalIndex) => {
+        let offset = 0;
+
+        $blocks.each(function () {
+            const $block = $(this);
+            const $lis = getBlockNavItems($block);
+            const count = $lis.length;
+            const localIndex = globalIndex - offset;
+
+            if (localIndex >= 0 && localIndex < count) {
+                $lis.removeClass('is-current');
+                $lis.eq(localIndex).addClass('is-current');
+                syncPlaceholdersIn($block);
+            }
+
+            offset += count;
+        });
+    };
+
+    const syncDesktopNavFromGlobal = (globalIndex) => {
+        $desktopItems.removeClass('is-current');
+        $desktopItems.eq(globalIndex).addClass('is-current');
+        syncPlaceholdersIn($section.find('.about-location__navigation'));
+    };
+
+    const applyVisibility = () => {
+        if (mobileMq.matches) {
+            $blocks.each(function () {
+                const $block = $(this);
+                const $lis = getBlockNavItems($block);
+                const $panels = $block.find('.about-location__list > .item');
+                let localIndex = $lis.index($lis.filter('.is-current').first());
+                if (localIndex < 0) localIndex = 0;
+
+                $panels.hide();
+                $panels.eq(localIndex).show();
+                updateGalleries($panels.eq(localIndex));
+            });
+            return;
+        }
+
+        let globalIndex = $desktopItems.index($desktopItems.filter('.is-current').first());
+        if (globalIndex < 0) globalIndex = 0;
+
+        $allPanels.hide();
+        $allPanels.eq(globalIndex).show();
+        updateGalleries($allPanels.eq(globalIndex));
+    };
+
+    const fadeSwap = ($hide, $show) => {
+        if (isAnimating || !$show.length) return;
+
+        isAnimating = true;
+        $hide.stop(true, true).fadeOut(fadeDuration).promise().done(function () {
+            $show.stop(true, true).hide().fadeIn(fadeDuration).promise().done(function () {
+                updateGalleries($show);
+                isAnimating = false;
+            });
+        });
+    };
+
+    $desktopItems.removeClass('is-current');
+    $desktopItems.first().addClass('is-current');
+    syncPlaceholdersIn($section.find('.about-location__navigation'));
+
+    $blocks.each(function () {
+        const $lis = getBlockNavItems($(this));
+        if (!$lis.filter('.is-current').length) {
+            $lis.first().addClass('is-current');
+        }
+        syncPlaceholdersIn($(this));
+    });
+
+    applyVisibility();
+
+    $desktopItems.on('click', function () {
+        const $item = $(this);
+        if (isAnimating || $item.hasClass('is-current') || mobileMq.matches) return;
+
+        const globalIndex = $desktopItems.index($item);
+        syncDesktopNavFromGlobal(globalIndex);
+        syncBlockNavFromGlobal(globalIndex);
+        fadeSwap($allPanels.filter(':visible'), $allPanels.eq(globalIndex));
+    });
+
+    $blocks.each(function () {
+        const $block = $(this);
+        const $lis = getBlockNavItems($block);
+        const $panels = $block.find('.about-location__list > .item');
+
+        $lis.on('click', function () {
+            const $item = $(this);
+            if (isAnimating || $item.hasClass('is-current')) return;
+
+            const localIndex = $lis.index($item);
+            const globalIndex = getGlobalIndexFromBlock($block, $item);
+
+            $lis.removeClass('is-current');
+            $item.addClass('is-current');
+            syncPlaceholdersIn($block);
+            syncDesktopNavFromGlobal(globalIndex);
+
+            if (mobileMq.matches) {
+                fadeSwap($panels.filter(':visible'), $panels.eq(localIndex));
+            } else {
+                fadeSwap($allPanels.filter(':visible'), $allPanels.eq(globalIndex));
+            }
+        });
+    });
+
+    if (typeof mobileMq.addEventListener === 'function') {
+        mobileMq.addEventListener('change', applyVisibility);
+    } else if (typeof mobileMq.addListener === 'function') {
+        mobileMq.addListener(applyVisibility);
+    }
+});
