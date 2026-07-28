@@ -47,29 +47,8 @@
                     color: #FFFFFF;
                     position: relative;
                     z-index: 2;
-                    transition: all .3s linear;
 
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                        width: 100%;
-                        height: 1px;
-                        background-color: #fff;
-                        opacity: 0;
-                        transition: all .3s linear;
-                    }
-
-                    @include minw($mobile) {
-                        &:hover {
-                            color: rgba(255, 255, 255, 0.5);
-
-                            &::before {
-                                opacity: 1;
-                            }
-                        }
-                    }
+                    @include link-hover-underline(#fff);
                 }
             }
         }
@@ -90,29 +69,8 @@
                 color: #FFFFFF;
                 position: relative;
                 z-index: 2;
-                transition: all .3s linear;
 
-                &::before {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: #fff;
-                    opacity: 0;
-                    transition: all .3s linear;
-                }
-
-                @include minw($mobile) {
-                    &:hover {
-                        color: rgba(255, 255, 255, 0.5);
-
-                        &::before {
-                            opacity: 1;
-                        }
-                    }
-                }
+                @include link-hover-underline(#fff);
             }
         }
 
@@ -133,29 +91,8 @@
                         color: #FFFFFF;
                         position: relative;
                         z-index: 2;
-                        transition: all .3s linear;
 
-                        &::before {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            bottom: 0;
-                            width: 100%;
-                            height: 1px;
-                            background-color: #fff;
-                            opacity: 0;
-                            transition: all .3s linear;
-                        }
-
-                        @include minw($mobile) {
-                            &:hover {
-                                color: rgba(255, 255, 255, 0.5);
-
-                                &::before {
-                                    opacity: 1;
-                                }
-                            }
-                        }
+                        @include link-hover-underline(#fff);
                     }
                 }
             }
@@ -179,51 +116,37 @@
     }
 
     .footer__privacy {
-        font-weight: 400;
-        line-height: 1.22;
-        font-size: 18px;
-        letter-spacing: -0.03em;
-        color: #FFFFFF;
         margin: 0 auto;
         transform: translateX(-140px);
-        position: relative;
-        z-index: 2;
-        transition: all .3s linear;
 
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 1px;
-            background-color: #fff;
-            opacity: 0;
-            transition: all .3s linear;
-        }
+        a {
+            font-weight: 400;
+            line-height: 1.22;
+            font-size: 18px;
+            letter-spacing: -0.03em;
+            color: #FFFFFF;
+            position: relative;
+            z-index: 2;
 
-        @include minw($mobile) {
-            &:hover {
-                color: rgba(255, 255, 255, 0.5);
-
-                &::before {
-                    opacity: 1;
-                }
-            }
+            @include link-hover-underline(#fff);
         }
     }
 
     .footer__dev {
-        width: 209px;
-        height: 24px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
 
-        a,
-        img {
-            width: 100%;
-            height: 100%;
+        a{
+            position: relative;
+            z-index: 2;
+
+            @include link-hover-underline(#fff);
         }
 
         img {
+            width: 129px;
+            flex: 0 0 auto;
             object-fit: contain;
         }
     }
@@ -311,13 +234,20 @@
         }
 
         .footer__privacy {
-            font-size: vwD(18px);
             transform: translateX(vwD(-140px));
+
+            a {
+                font-size: vwD(18px);
+            }
         }
 
+
         .footer__dev {
-            width: vwD(209px);
-            height: vwD(24px);
+            gap: vwD(5px);
+    
+            img {
+                width: vwD(129px);
+            }
         }
 
         .footer__image {
@@ -344,8 +274,11 @@
         }
 
         .footer__navigations {
-            grid-template-columns: 1fr;
-            grid-gap: vwM(32px);
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: vwM(16px);
         }
 
         .footer__nav {
@@ -408,17 +341,23 @@
         }
 
         .footer__privacy {
-            font-size: vwM(16px);
-            letter-spacing: -0.02em;
             transform: translateX(0);
             margin: 0;
             order: -1;
-            color: rgba(255, 255, 255, 0.5);
+
+            a {
+                font-size: vwM(16px);
+                letter-spacing: -0.02em;
+                color: rgba(255, 255, 255, 0.5);
+            }
         }
 
         .footer__dev {
-            width: vwM(195px);
-            height: vwM(23px);
+            gap: vwM(5px);
+
+            img{
+                width: vwM(120px);
+            }
         }
 
         .footer__image {

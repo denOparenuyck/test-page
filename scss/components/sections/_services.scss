@@ -88,13 +88,16 @@
         .item-button {
             margin-top: auto;
 
-            a {
+            a:not(.default-button) {
                 font-weight: 400;
                 line-height: 1.22;
                 font-size: 18px;
                 letter-spacing: -0.03em;
                 color: #F4EFE7;
-                border-bottom: 1px solid #F4EFE7;
+                position: relative;
+                z-index: 2;
+
+                @include link-hover-underline-reverse(#F4EFE7);
             }
         }
     }

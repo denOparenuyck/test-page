@@ -3,7 +3,7 @@
         width: 100%;
         max-width: 1920px;
         margin: 0 auto;
-        min-height: 800px;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: flex-end;
@@ -74,6 +74,24 @@
     }
 
     .hero__button {}
+
+    .hero__next{
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 32px;
+        width: 21px;
+        height: 9px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='9' fill='none' viewBox='0 0 21 9'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' d='m.5.5 10 8 10-8'/%3E%3C/svg%3E");
+        transition: all .3s linear;
+
+        @include minw($mobile) {
+            &:hover{
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+    }
 }
 
 @include maxw($desktop) {
@@ -103,6 +121,12 @@
         .hero__buttons {
             gap: vwD(12px);
             margin-top: vwD(40px);
+        }
+
+        .hero__next{
+            bottom: vwD(32px);
+            width: vwD(21px);
+            height: vwD(9px);
         }
     }
 }
@@ -162,6 +186,10 @@
             .default-button {
                 width: 100%;
             }
+        }
+
+        .hero__next{
+            display: none;
         }
     }
 }

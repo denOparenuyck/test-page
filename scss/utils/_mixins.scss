@@ -17,3 +17,48 @@
         @content;
     }
 }
+
+@mixin link-hover-underline($color: currentColor) {
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 1.109s cubic-bezier(.17, .84, .44, 1);
+    }
+
+    @include minw($mobile) {
+        &:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    }
+}
+
+// For links that already have an underline by default
+@mixin link-hover-underline-reverse($color: currentColor) {
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: transform 1.109s cubic-bezier(.17, .84, .44, 1);
+    }
+
+    @include minw($mobile) {
+        &:hover::before {
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+    }
+}

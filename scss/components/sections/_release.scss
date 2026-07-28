@@ -55,7 +55,8 @@
             &::before {
                 content: "";
                 position: absolute;
-                top: 0;
+                top: calc(50% - 5px);
+                transform: translateY(-50%);
                 left: 0;
                 width: 28px;
                 height: 32px;
@@ -72,6 +73,7 @@
 
                 &::before {
                     opacity: 1;
+                    transition-delay: 0.2s;
                 }
             }
         }
@@ -175,6 +177,7 @@
                 font-size: vwD(22px);
 
                 &::before {
+                    top: calc(50% - vwD(5px));
                     width: vwD(28px);
                     height: vwD(32px);
                 }
@@ -249,7 +252,7 @@
                 border-radius: vwM(8px);
 
                 &:not(:first-child) {
-                    margin-top: vwM(24px);
+                    margin-top: vwM(8px);
                 }
             }
 

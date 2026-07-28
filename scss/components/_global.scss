@@ -16,14 +16,24 @@ body {
     min-width: 0;
     min-height: 0;
     background: #01090B;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.7);
     height: 100%;
-
-    position: relative;
-    z-index: 2;
+    font-size: 18px;
 
     &.no-scroll {
         overflow: hidden;
+    }
+}
+
+@include maxw($desktop) {
+    body {
+        font-size: vwD(18px);
+    }
+}
+
+@include maxw($mobile) {
+    body {
+        font-size: vwM(16px);
     }
 }
 

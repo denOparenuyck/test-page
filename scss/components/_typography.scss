@@ -39,7 +39,7 @@
     line-height: normal;
     font-size: 18px;
     letter-spacing: -0.04em;
-    color: rgba(#fff, 0.7);
+    color: #fff;
 
     >p,
     >ul,
@@ -82,6 +82,7 @@
     h4,
     h5,
     h6 {
+        font-family: $dmSans;
         color: #fff;
     }
 
@@ -138,8 +139,12 @@
 
     a {
         color: inherit !important;
-        text-decoration: underline !important;
+        text-decoration: none !important;
         letter-spacing: -0.03em;
+        position: relative;
+        z-index: 2;
+
+        @include link-hover-underline-reverse;
     }
 
     blockquote {
