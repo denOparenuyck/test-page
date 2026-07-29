@@ -84,12 +84,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transform-origin: center center;
+            will-change: transform;
         }
     }
 
     .text-image__content {
         width: 100%;
         max-width: 741px;
+        will-change: transform, opacity;
 
         &.is-center {
             text-align: center;

@@ -20,10 +20,35 @@ body {
     height: 100%;
     font-size: 18px;
 
+    // Light text on dark — cream highlight
+    --selection-bg: #F4EFE7;
+    --selection-color: #01090B;
+
     &.no-scroll {
         overflow: hidden;
     }
 }
+
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-color);
+}
+
+// Dark text on light — black highlight
+.is-black,
+.is-dark,
+.is-light,
+.cookies,
+.release,
+.process,
+.education.is-light,
+.concierge-case,
+.concierge-intervention,
+.founder__content {
+    --selection-bg: #01090B;
+    --selection-color: #F4EFE7;
+}
+
 
 @include maxw($desktop) {
     body {
@@ -80,5 +105,65 @@ body {
 
     footer {
         flex-shrink: 0;
+    }
+}
+
+// Scroll reveals: paint "from" state before JS, clear after .is-revealed
+.release:not(.is-revealed) .release__inner,
+.locations:not(.is-revealed) .locations__inner,
+.process:not(.is-revealed) .process__inner,
+.education:not(.is-revealed) .education__inner {
+    filter: blur(18px);
+}
+
+.text-image:not(.is-revealed) {
+    .text-image__media img {
+        transform: scale(1.2);
+    }
+
+    .text-image__content {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+}
+
+.insurance:not(.is-revealed) > .insurance__inner > .container {
+    opacity: 0;
+    transform: translateY(32px);
+}
+
+.banner:not(.is-revealed) {
+    .banner__background img {
+        transform: scale(1.2);
+    }
+
+    .banner__content {
+        opacity: 0;
+    }
+}
+
+.assistance:not(.is-animated) .assistance__content {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .release .release__inner,
+    .locations .locations__inner,
+    .process .process__inner,
+    .education .education__inner {
+        filter: none !important;
+    }
+
+    .text-image .text-image__media img,
+    .banner .banner__background img {
+        transform: none !important;
+    }
+
+    .text-image .text-image__content,
+    .insurance > .insurance__inner > .container,
+    .banner .banner__content,
+    .assistance .assistance__content {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }

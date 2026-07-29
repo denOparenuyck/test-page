@@ -112,9 +112,9 @@
 @include maxw($mobile) {
     .concierge-support {
         padding-top: vwM(300px);
-        padding-bottom: vwM(210px);
+        padding-bottom: vwM(110px);
         margin-top: vwM(-300px);
-        margin-bottom: vwM(-210px);
+        margin-bottom: vwM(-110px);
 
         .concierge-support__inner {
             max-width: 100%;
@@ -133,7 +133,7 @@
 
             &::after {
                 top: auto;
-                bottom: vwM(-210px);
+                bottom: vwM(-110px);
                 right: vwM(-250px);
             }
         }

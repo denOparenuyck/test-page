@@ -185,7 +185,21 @@ form {
             a {
                 position: relative;
                 z-index: 3;
-                text-decoration: underline;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: #F4EFE7;
+                    transform: scaleX(1);
+                    transform-origin: left;
+                    transition: transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+                }
+
+                @include link-hover-underline-reverse(#fff);
             }
         }
     }
@@ -354,6 +368,7 @@ form {
         .button-field {
             width: 100%;
             margin-top: vwM(16px);
+
             .default-button {
                 width: 100%;
             }

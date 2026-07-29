@@ -1,5 +1,5 @@
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -561,6 +561,15 @@
                 font-size: vwM(16px);
                 letter-spacing: -0.03em;
                 color: #FFFFFF;
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                    position: relative;
+                    z-index: 2;
+
+                    @include link-hover-underline(#fff);
+                }
             }
         }
 

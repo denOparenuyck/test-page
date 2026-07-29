@@ -1,6 +1,11 @@
 .who-we-are {
     overflow: hidden;
 
+    .who-we-are__title,
+    .who-we-are__text {
+        will-change: transform, opacity;
+    }
+
     .who-we-are__inner {
         width: 100%;
         max-width: 1920px;

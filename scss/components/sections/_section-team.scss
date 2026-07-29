@@ -83,7 +83,6 @@
             height: 100%;
             min-height: 525px;
             position: relative;
-            z-index: 2;
             background-color: #F4EFE7;
             border-radius: 8px;
             overflow: hidden;
@@ -94,7 +93,7 @@
 
         .item-image {
             position: absolute;
-            z-index: -1;
+            z-index: 0;
             top: 0;
             left: 0;
             width: 100%;
@@ -108,13 +107,14 @@
         }
 
         .item-content {
+            position: relative;
+            z-index: 4;
             width: 100%;
             padding: 30px 16px;
             background: rgba(0, 0, 0, 0.51);
             background-blend-mode: multiply;
             backdrop-filter: blur(15px);
             border-radius: 6px;
-
         }
 
         .item-title {
@@ -148,7 +148,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all .3s linear;
+            transition: opacity .15s ease-out;
 
             opacity: 0;
             pointer-events: none;

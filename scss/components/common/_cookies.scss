@@ -1,0 +1,115 @@
+.cookies {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    z-index: 100;
+    width: 100%;
+    max-width: 892px;
+    padding: 0 20px;
+    transform: translateX(-50%) translateY(calc(100% + 40px));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+
+    &.is-visible {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    &.is-hiding {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) translateY(calc(100% + 40px));
+    }
+}
+
+.cookies__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 18px 18px 28px;
+    background: #F4EFE7;
+    border: 1px solid rgba(1, 9, 11, 0.5);
+    border-radius: 16px;
+    backdrop-filter: blur(53.75px);
+}
+
+.cookies__text {
+    flex: 1 1 auto;
+    max-width: 473px;
+    margin: 0;
+    font-family: $mainFont;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #01090B;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        position: relative;
+        z-index: 3;
+
+        @include link-hover-underline-reverse(#01090B);
+    }
+}
+
+.cookies__button {
+    flex: 0 0 auto;
+    width: 160px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@include maxw($desktop) {
+    .cookies {
+        bottom: vwD(30px);
+        max-width: vwD(892px);
+        padding: 0 vwD(20px);
+    }
+
+    .cookies__inner {
+        gap: vwD(24px);
+        padding: vwD(18px) vwD(18px) vwD(18px) vwD(28px);
+        border-radius: vwD(16px);
+    }
+
+    .cookies__text {
+        max-width: vwD(473px);
+        font-size: vwD(16px);
+    }
+
+    .cookies__button {
+        width: vwD(160px);
+    }
+}
+
+@include maxw($mobile) {
+    .cookies {
+        bottom: vwM(16px);
+        max-width: none;
+        padding: 0 vwM(16px);
+    }
+
+    .cookies__inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: vwM(20px);
+        padding: vwM(20px) vwM(16px);
+        border-radius: vwM(14px);
+    }
+
+    .cookies__text {
+        max-width: none;
+        font-size: vwM(16px);
+        line-height: normal;
+        letter-spacing: -0.03em;
+    }
+
+    .cookies__button {
+        width: 100%;
+    }
+}

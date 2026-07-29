@@ -1,9 +1,10 @@
 .release {
     background: #F4EFE7;
-    overflow: hidden;
+    overflow: visible;
 
     .release__inner {
         padding: 70px 0;
+        will-change: filter;
     }
 
     .release__top {

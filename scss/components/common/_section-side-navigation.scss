@@ -124,7 +124,7 @@
 @include maxw($mobile) {
     .section-side-navigation {
         width: 100%;
-        height: vwM(60px);
+        height: auto;
         position: relative;
         z-index: 5;
         .section-side-navigation__inner {
@@ -168,9 +168,7 @@
                 transition: transform .3s linear;
             }
             span {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+           
             }
         }
         .section-side-navigation__current {

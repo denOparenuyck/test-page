@@ -1,5 +1,95 @@
 'use strict';
 
+const COOKIE_CONSENT_KEY = 'rr_cookie_consent';
+
+const finishPageLoader = (loader) => {
+    document.documentElement.classList.remove('has-page-loader');
+    if (loader) {
+        loader.classList.add('is-done');
+        loader.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.add('has-page-loader-done');
+    document.dispatchEvent(new CustomEvent('rr:loader-complete'));
+};
+
+const initPageLoader = () => {
+    const loader = document.querySelector('.page-loader');
+    const html = document.documentElement;
+
+    if (!loader) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !html.classList.contains('has-page-loader')) {
+        finishPageLoader(loader);
+        return;
+    }
+
+    const onAnimationStart = (event) => {
+        if (event.target !== loader || event.animationName !== 'page-loader-exit') return;
+        setTimeout(() => {
+            document.body.classList.add('has-page-loader-done');
+            document.dispatchEvent(new CustomEvent('rr:loader-exit-start'));
+        }, 300);
+    };
+
+    const onAnimationEnd = (event) => {
+        if (event.target !== loader || event.animationName !== 'page-loader-exit') return;
+        loader.removeEventListener('animationstart', onAnimationStart);
+        loader.removeEventListener('animationend', onAnimationEnd);
+        finishPageLoader(loader);
+    };
+
+    loader.addEventListener('animationstart', onAnimationStart);
+    loader.addEventListener('animationend', onAnimationEnd);
+};
+
+initPageLoader();
+
+const initCookieBanner = () => {
+    if (localStorage.getItem(COOKIE_CONSENT_KEY)) return;
+
+    const banner = document.createElement('div');
+    banner.className = 'cookies';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-live', 'polite');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML = `
+        <div class="cookies__inner">
+            <p class="cookies__text">
+                Our website use cookies. By continuing, we assume your permission to deploy cookies as detailed in our
+                <a href="privacy-policy.html">Privacy Policy</a>.
+            </p>
+            <button type="button" class="default-button is-dark cookies__button">Accept</button>
+        </div>
+    `;
+
+    document.body.appendChild(banner);
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            banner.classList.add('is-visible');
+        });
+    });
+
+    const acceptButton = banner.querySelector('.cookies__button');
+    acceptButton.addEventListener('click', () => {
+        localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
+        banner.classList.remove('is-visible');
+        banner.classList.add('is-hiding');
+
+        const onTransitionEnd = (event) => {
+            if (event.target !== banner || event.propertyName !== 'opacity') return;
+            banner.removeEventListener('transitionend', onTransitionEnd);
+            banner.remove();
+        };
+
+        banner.addEventListener('transitionend', onTransitionEnd);
+    });
+};
+
+initCookieBanner();
+
 const header = document.querySelector('.header');
 const headerMenu = document.querySelector('.header__menu');
 
@@ -110,6 +200,426 @@ const initWhoWeAreSwiper = () => {
 initWhoWeAreSwiper();
 whoWeAreMobileMq.addEventListener('change', initWhoWeAreSwiper);
 
+(() => {
+    const section = document.querySelector('.who-we-are');
+    if (!section || typeof gsap === 'undefined' || typeof SplitText === 'undefined') return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    gsap.registerPlugin(SplitText);
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
+    const content = section.querySelector('.who-we-are__content');
+    if (!content) return;
+
+    const title = content.querySelector('.who-we-are__title');
+    const titleTarget = title?.querySelector('.title, h2') || title;
+    const textBlock = content.querySelector('.who-we-are__text');
+    const paragraphs = gsap.utils.toArray(
+        content.querySelectorAll('.who-we-are__text .text > *')
+    );
+
+    gsap.set([title, textBlock].filter(Boolean), { autoAlpha: 0 });
+
+    let hasPlayed = false;
+    let watching = false;
+    const splits = [];
+
+    const isSectionInView = () => {
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        return rect.top < vh * 0.85 && rect.bottom > vh * 0.15;
+    };
+
+    const play = () => {
+        if (hasPlayed) return;
+        hasPlayed = true;
+
+        const run = () => {
+            gsap.set([title, textBlock].filter(Boolean), { autoAlpha: 1 });
+
+            const tl = gsap.timeline({
+                defaults: { ease: 'power1.out' },
+                onComplete: () => {
+                    if (typeof ScrollTrigger !== 'undefined') {
+                        ScrollTrigger.refresh();
+                    }
+                },
+            });
+
+            if (titleTarget) {
+                const titleSplit = SplitText.create(titleTarget, {
+                    type: 'lines',
+                    linesClass: 'wwa-line',
+                    aria: 'auto',
+                });
+                splits.push(titleSplit);
+                gsap.set(titleSplit.lines, { opacity: 0, y: 16 });
+                tl.to(titleSplit.lines, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.25,
+                    stagger: 0.14,
+                }, 0);
+            }
+
+            if (paragraphs.length) {
+                const allLines = [];
+
+                paragraphs.forEach((paragraph) => {
+                    const split = SplitText.create(paragraph, {
+                        type: 'lines',
+                        linesClass: 'wwa-line',
+                        aria: 'auto',
+                    });
+                    splits.push(split);
+                    allLines.push(...split.lines);
+                });
+
+                gsap.set(allLines, { opacity: 0, y: 12 });
+                tl.to(allLines, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.1,
+                    stagger: 0.12,
+                }, 0.25);
+            }
+        };
+
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(run);
+        } else {
+            run();
+        }
+    };
+
+    const startWatching = () => {
+        if (watching) return;
+        watching = true;
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+
+        if (isSectionInView()) {
+            play();
+            return;
+        }
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 80%',
+                once: true,
+                onEnter: play,
+            });
+        }
+    };
+
+    const hasLoaderDoneClass = () => document.body.classList.contains('has-page-loader-done');
+
+    if (hasLoaderDoneClass() || !document.documentElement.classList.contains('has-page-loader')) {
+        startWatching();
+    } else {
+        const observer = new MutationObserver(() => {
+            if (!hasLoaderDoneClass()) return;
+            observer.disconnect();
+            startWatching();
+        });
+
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+    }
+})();
+
+const rrPrefersReducedMotion = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const rrWhenLoaderDone = (callback) => {
+    const hasLoaderDoneClass = () => document.body.classList.contains('has-page-loader-done');
+
+    if (hasLoaderDoneClass() || !document.documentElement.classList.contains('has-page-loader')) {
+        callback();
+        return;
+    }
+
+    const observer = new MutationObserver(() => {
+        if (!hasLoaderDoneClass()) return;
+        observer.disconnect();
+        callback();
+    });
+
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class'],
+    });
+};
+
+const rrIsEnoughVisible = (el, ratio = 0.2) => {
+    if (!el) return false;
+
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const height = el.offsetHeight || 1;
+    const visible = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+
+    if (visible <= 0) return false;
+
+    const needed = Math.min(height * ratio, vh);
+    return visible >= needed;
+};
+
+const rrWhenVisible = (el, { ratio = 0.2, onEnter } = {}) => {
+    if (!el || typeof onEnter !== 'function') return;
+
+    let done = false;
+
+    const tryEnter = () => {
+        if (done || !rrIsEnoughVisible(el, ratio)) return;
+        done = true;
+        window.removeEventListener('scroll', tryEnter);
+        window.removeEventListener('resize', tryEnter);
+        onEnter();
+    };
+
+    if (rrIsEnoughVisible(el, ratio)) {
+        onEnter();
+        return;
+    }
+
+    window.addEventListener('scroll', tryEnter, { passive: true });
+    window.addEventListener('resize', tryEnter, { passive: true });
+};
+
+const rrResolveInRoot = (root, ref) => {
+    if (!ref) return null;
+    if (typeof ref !== 'string') return ref;
+    return root.querySelector(ref);
+};
+
+const rrAnimateMediaZoom = (media, {
+    duration = 1.45,
+    ease = 'power1.out',
+    targetSelector = 'img',
+} = {}) => {
+    if (!media || typeof gsap === 'undefined') return;
+
+    const target = (targetSelector && media.querySelector(targetSelector)) || media;
+
+    gsap.to(target, { scale: 1, duration, ease });
+};
+
+const rrAnimateFadeUp = (el, {
+    duration = 1.15,
+    ease = 'power1.out',
+    delay = 0.1,
+} = {}) => {
+    if (!el || typeof gsap === 'undefined') return;
+
+    gsap.to(el, { autoAlpha: 1, y: 0, duration, ease, delay });
+};
+
+const rrAnimateFade = (el, {
+    duration = 1.15,
+    ease = 'power1.out',
+    delay = 0,
+} = {}) => {
+    if (!el || typeof gsap === 'undefined') return;
+
+    gsap.to(el, { autoAlpha: 1, duration, ease, delay });
+};
+
+/**
+ * Reusable scroll reveal: media zooms out to normal, content fades (up or simple).
+ * Pass selectors or elements relative to `root`.
+ *
+ * fade.mode: 'up' (default) | 'fade'
+ * animatedClass: added when play starts (e.g. 'is-animated')
+ * revealedClass: added when play completes (default 'is-revealed')
+ */
+const initMediaContentReveal = (root, options = {}) => {
+    if (!root || typeof gsap === 'undefined') return;
+
+    const {
+        media = null,
+        content = null,
+        trigger = null,
+        visibleRatio = 0.2,
+        zoom = {},
+        fade = {},
+        animatedClass = null,
+        revealedClass = 'is-revealed',
+    } = options;
+
+    const mediaEl = rrResolveInRoot(root, media);
+    const contentEl = rrResolveInRoot(root, content);
+    const triggerEl = rrResolveInRoot(root, trigger) || root;
+
+    if (!mediaEl && !contentEl) return;
+
+    const scaleFrom = zoom.scaleFrom ?? 1.2;
+    const fadeMode = fade.mode === 'fade' ? 'fade' : 'up';
+    const fadeY = fadeMode === 'up' ? (fade.y ?? 32) : 0;
+    const zoomTarget = mediaEl
+        ? (mediaEl.querySelector(zoom.targetSelector || 'img') || mediaEl)
+        : null;
+
+    const markReady = () => {
+        if (animatedClass) root.classList.add(animatedClass);
+        if (revealedClass) root.classList.add(revealedClass);
+    };
+
+    if (rrPrefersReducedMotion()) {
+        markReady();
+        if (contentEl) gsap.set(contentEl, { autoAlpha: 1, y: 0 });
+        if (zoomTarget) gsap.set(zoomTarget, { scale: 1 });
+        return;
+    }
+
+    // From-state immediately — avoid flash of final styles before play.
+    if (zoomTarget) gsap.set(zoomTarget, { scale: scaleFrom });
+    if (contentEl) {
+        gsap.set(contentEl, fadeMode === 'up'
+            ? { autoAlpha: 0, y: fadeY }
+            : { autoAlpha: 0 });
+    }
+
+    let hasPlayed = false;
+
+    const play = () => {
+        if (hasPlayed) return;
+        hasPlayed = true;
+
+        if (animatedClass) root.classList.add(animatedClass);
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                if (revealedClass) root.classList.add(revealedClass);
+            },
+        });
+
+        if (zoomTarget) {
+            tl.to(zoomTarget, {
+                scale: 1,
+                duration: zoom.duration ?? 1.45,
+                ease: zoom.ease ?? 'power1.out',
+            }, 0);
+        }
+
+        if (contentEl) {
+            const contentVars = {
+                autoAlpha: 1,
+                duration: fade.duration ?? 1.15,
+                ease: fade.ease ?? 'power1.out',
+            };
+
+            if (fadeMode === 'up') {
+                contentVars.y = 0;
+            }
+
+            tl.to(contentEl, contentVars, fade.delay ?? 0.1);
+        }
+
+        if (!zoomTarget && !contentEl) {
+            markReady();
+        }
+    };
+
+    rrWhenLoaderDone(() => {
+        rrWhenVisible(triggerEl, {
+            ratio: visibleRatio,
+            onEnter: play,
+        });
+    });
+};
+
+const initSectionUnblur = (sectionSelector, innerSelector) => {
+    const section = document.querySelector(sectionSelector);
+    if (!section || typeof gsap === 'undefined') return;
+
+    const target = section.querySelector(innerSelector) || section;
+
+    if (rrPrefersReducedMotion()) {
+        section.classList.add('is-revealed');
+        target.style.filter = 'none';
+        return;
+    }
+
+    // From-state immediately — avoid flash of sharp content before play.
+    gsap.set(target, { filter: 'blur(18px)' });
+
+    let hasPlayed = false;
+
+    const play = () => {
+        if (hasPlayed) return;
+        hasPlayed = true;
+
+        gsap.to(target, {
+            filter: 'blur(0px)',
+            duration: 1.25,
+            ease: 'power1.out',
+            onComplete: () => {
+                section.classList.add('is-revealed');
+                gsap.set(target, { clearProps: 'filter' });
+            },
+        });
+    };
+
+    rrWhenLoaderDone(() => {
+        rrWhenVisible(section, {
+            ratio: 0.2,
+            onEnter: play,
+        });
+    });
+};
+
+initSectionUnblur('section.release', '.release__inner');
+initSectionUnblur('section.locations', '.locations__inner');
+initSectionUnblur('section.process', '.process__inner');
+initSectionUnblur('section.education', '.education__inner');
+
+document.querySelectorAll('section.text-image').forEach((section) => {
+    initMediaContentReveal(section, {
+        media: '.text-image__media',
+        content: '.text-image__content',
+        trigger: '.text-image__wrapper',
+    });
+});
+
+(() => {
+    const section = document.querySelector('section.insurance');
+    if (!section) return;
+
+    initMediaContentReveal(section, {
+        content: '.container',
+        trigger: '.container',
+    });
+})();
+
+document.querySelectorAll('section.banner').forEach((section) => {
+    initMediaContentReveal(section, {
+        media: '.banner__background',
+        content: '.banner__content',
+        trigger: '.banner__inner',
+        fade: { mode: 'fade' },
+    });
+});
+
+document.querySelectorAll('section.assistance').forEach((section) => {
+    initMediaContentReveal(section, {
+        content: '.assistance__content',
+        trigger: '.assistance__content',
+        fade: { mode: 'fade' },
+        animatedClass: 'is-animated',
+        revealedClass: 'is-animated',
+    });
+});
+
 
 const releaseReviewsList = document.querySelector('.release-reviews__list .swiper');
 const releaseReviewsMobileMq = window.matchMedia('(max-width: 991px)');
@@ -190,16 +700,43 @@ const initReleaseReviewsSwiper = () => {
 initReleaseReviewsSwiper();
 releaseReviewsMobileMq.addEventListener('change', initReleaseReviewsSwiper);
 
+const scrollTabBlockToStart = (fromEl) => {
+    if (!fromEl || !window.matchMedia('(min-width: 992px)').matches) return;
+
+    const anchor = fromEl.closest(
+        '.about__wrapper, .testimonials__wrapper, .about-location__wrapper, .release__wrapper, .location-switcher'
+    ) || fromEl.closest('section');
+
+    if (!anchor) return;
+
+    const headerOffset = header
+        ? (header.querySelector('.header__inner') || header).getBoundingClientRect().height
+        : 0;
+    const rect = anchor.getBoundingClientRect();
+    if (rect.top >= headerOffset) return;
+
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth';
+
+    window.scrollTo({
+        top: Math.max(0, window.pageYOffset + rect.top - headerOffset),
+        behavior,
+    });
+};
 
 let releaseNavigationButtons = document.querySelectorAll('.release__navigation .navigation-button');
 let releaseListItems = document.querySelectorAll('.release__list .item');
 
 releaseNavigationButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
+        if (button.classList.contains('is-current')) return;
+
         releaseNavigationButtons.forEach((btn) => btn.classList.remove('is-current'));
         button.classList.add('is-current');
         releaseListItems.forEach((item) => item.classList.remove('is-current'));
         releaseListItems[index].classList.add('is-current');
+        scrollTabBlockToStart(button);
     });
 });
 
@@ -338,6 +875,15 @@ $('.section-side-navigation').each(function (_, navigation) {
         }
     };
 
+    const syncMobileHeight = () => {
+        if (!mobileMq.matches || isGrouped) {
+            $navigation.css('height', '');
+            return;
+        }
+
+        $navigation.css('height', $placeholder.outerHeight());
+    };
+
     const openNavigation = () => {
         if ($navigation.hasClass('is-open')) return;
         $navigation.addClass('is-open');
@@ -354,6 +900,7 @@ $('.section-side-navigation').each(function (_, navigation) {
         if (isGrouped) {
             $navigation.removeClass('is-open');
             $list.stop(true, true).show().css('display', '');
+            syncMobileHeight();
             return;
         }
 
@@ -361,11 +908,13 @@ $('.section-side-navigation').each(function (_, navigation) {
             if (!$navigation.hasClass('is-open')) {
                 $list.hide();
             }
+            syncMobileHeight();
             return;
         }
 
         $navigation.removeClass('is-open');
         $list.stop(true, true).show().css('display', '');
+        syncMobileHeight();
     };
 
     syncCurrentLabel();
@@ -386,6 +935,7 @@ $('.section-side-navigation').each(function (_, navigation) {
     $items.on('click', function () {
         window.setTimeout(function () {
             syncCurrentLabel();
+            syncMobileHeight();
             if (mobileMq.matches && !isGrouped) {
                 closeNavigation();
             }
@@ -398,6 +948,8 @@ $('.section-side-navigation').each(function (_, navigation) {
             closeNavigation();
         }
     });
+
+    $(window).on('resize.sectionSideNavigation', syncMobileHeight);
 
     if (typeof mobileMq.addEventListener === 'function') {
         mobileMq.addEventListener('change', syncListForViewport);
@@ -424,6 +976,7 @@ document.querySelectorAll('.location-switcher').forEach((switcher) => {
 
             const mainEl = panel.querySelector('.gallery-block__main');
             if (mainEl && mainEl.swiper) mainEl.swiper.update();
+            scrollTabBlockToStart(switcher);
         });
     });
 });
@@ -546,6 +1099,7 @@ const initSideNavigationFilter = ($navItems, $panels) => {
 
         $navItems.removeClass('is-current');
         $item.addClass('is-current');
+        scrollTabBlockToStart(this);
 
         isAnimating = true;
         const $visible = $panels.filter(':visible');
@@ -558,7 +1112,6 @@ const initSideNavigationFilter = ($navItems, $panels) => {
         });
     });
 };
-
 $('.testimonials').each(function (_, section) {
     initSideNavigationFilter(
         $(section).find('.testimonials__navigation li'),
@@ -706,6 +1259,7 @@ $('.about-location').each(function (_, section) {
         const globalIndex = $desktopItems.index($item);
         syncDesktopNavFromGlobal(globalIndex);
         syncBlockNavFromGlobal(globalIndex);
+        scrollTabBlockToStart(this);
         fadeSwap($allPanels.filter(':visible'), $allPanels.eq(globalIndex));
     });
 
@@ -725,6 +1279,7 @@ $('.about-location').each(function (_, section) {
             $item.addClass('is-current');
             syncPlaceholdersIn($block);
             syncDesktopNavFromGlobal(globalIndex);
+            scrollTabBlockToStart(this);
 
             if (mobileMq.matches) {
                 fadeSwap($panels.filter(':visible'), $panels.eq(localIndex));

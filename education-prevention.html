@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="has-page-loader" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.documentElement.classList.remove('has-page-loader');
+                }
+            } catch (e) { }
+        })();
+    </script>
+
 
     <link rel="stylesheet" href="https://use.typekit.net/cts8rau.css">
 
@@ -15,6 +25,33 @@
 
 <body>
 
+    <div class="page-loader" aria-hidden="true">
+        <div class="page-loader__mark">
+            <svg width="220" height="199" viewBox="0 0 220 199" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <g class="loader-mark__letters">
+                    <path class="loader-mark__r loader-mark__r--1"
+                        d="M144.542 141H127.039C123.952 141 122.026 139.981 119.448 138.171L75.6896 92.1978H36.0658C35.3011 92.1978 34.7913 92.707 34.7913 93.4709V116.473C34.7913 119.302 32.9786 120.972 30.2879 120.972H15.5033C12.6711 120.972 11 119.302 11 116.473V35.4986C11 32.6693 12.6711 31 15.5033 31H98.7444C126.671 31 138 46.8158 138 61.5847C138 75.0805 128.483 89.4816 105.57 91.8017L146.497 135.455C149.697 138.142 148.819 140.972 144.571 140.972L144.542 141ZM36.0658 69.337H97.2999C109.649 69.337 113.501 68.0638 113.501 61.613C113.501 55.1622 109.649 53.7759 97.2999 53.7759H36.0658C35.3011 53.7759 34.7913 54.2851 34.7913 55.049V68.0355C34.7913 68.7994 35.3011 69.3087 36.0658 69.3087V69.337Z"
+                        fill="#01090B" />
+                    <path class="loader-mark__r loader-mark__r--2"
+                        d="M195.542 199H178.039C174.952 199 173.026 197.981 170.448 196.171L139.69 170.198H100.066C99.3011 170.198 98.7913 170.707 98.7913 171.471V194.473C98.7913 197.302 96.9786 198.972 94.2879 198.972H79.5033C76.6711 198.972 75 197.302 75 194.473V113.499C75 110.669 76.6711 109 79.5033 109H162.744C190.671 109 202 124.816 202 139.585C202 153.08 192.483 167.482 169.57 169.802L197.497 193.455C200.697 196.142 199.819 198.972 195.571 198.972L195.542 199ZM100.066 147.337H161.3C173.649 147.337 177.501 146.064 177.501 139.613C177.501 133.162 173.649 131.776 161.3 131.776H100.066C99.3011 131.776 98.7913 132.285 98.7913 133.049V146.036C98.7913 146.799 99.3011 147.309 100.066 147.309V147.337Z"
+                        fill="#01090B" />
+                </g>
+                <g class="loader-mark__birds">
+                    <path class="loader-mark__bird loader-mark__bird--1" fill-rule="evenodd" clip-rule="evenodd"
+                        d="M151.77 85.9695C150.51 88.0695 150.29 90.3695 152.66 89.7095C152.09 91.5295 151.37 94.6095 153.16 93.8795C155.87 90.2595 157.95 87.8395 160.77 84.7795C162.65 83.0595 161.84 86.0895 162.62 87.3495C162.82 87.6795 163.3 87.7195 163.56 87.4195C166.83 83.6595 169.11 80.6495 176.03 79.2795C179.3 78.6295 181.69 74.2695 181.87 70.6995C181.94 69.3695 182.17 68.0395 182.76 66.8395C184.31 63.6995 184.87 63.8395 186.33 62.1295C187.98 60.1995 190.12 58.0995 190.54 57.1395C190.23 56.3795 188.75 58.1795 186.55 57.8995C184.58 57.6495 179.66 57.0295 177.78 61.7595C177.53 61.3495 171.65 51.4995 167.66 46.6395C164.44 42.7095 154.72 34.0495 153.47 33.3595C153.04 33.1195 152.51 33.2895 152.28 33.7195C151.86 34.4895 154.33 40.4895 152.22 41.6995C151.36 42.1895 151.12 43.2895 151.88 43.9295C154.59 46.2295 152.05 47.1095 150.77 47.8395C150.42 48.0395 150.35 48.5095 150.59 48.8395C151.74 50.4195 154.11 51.9795 154.75 52.6895C154.89 52.8495 154.86 53.1195 154.71 53.2695C153.48 54.4595 153.21 53.5295 151.23 53.5095C151.08 53.5095 150.94 53.6395 150.97 53.7795C151.16 54.7995 154.26 57.1995 155.27 56.9795C155.6 58.5895 153.27 59.0095 152.59 59.6395C152.41 59.7995 152.46 60.1095 152.63 60.2795C154.08 61.7295 155.69 61.8195 156.52 61.8195C156.49 62.5795 154.98 63.8295 154.36 64.1095C154.18 64.1895 154.04 64.3595 154.09 64.5495C154.37 65.4495 156.96 66.0295 157.63 65.6795C158.61 67.0595 156.11 68.0395 157.5 69.4695C159 70.3695 159.41 70.6295 159.76 71.6495C161.6 75.2495 155.38 80.4195 150.44 82.4895C148.5 83.2995 147.31 86.2995 151.76 85.9495L151.77 85.9695Z"
+                        fill="#01090B" />
+                    <path class="loader-mark__bird loader-mark__bird--2" fill-rule="evenodd" clip-rule="evenodd"
+                        d="M217.007 27.81C214.527 26.67 212.307 27.79 210.887 27.44C205.547 20.18 205.747 4.85 198.747 0C197.687 0.57 199.177 3.73 199.577 5.86C199.507 6.57 194.817 10.46 197.907 13.01C195.437 15.28 193.597 15.83 193.147 18.24C192.257 23.01 195.967 28.57 196.717 34.95C194.827 38.91 185.977 40.05 183.747 41.63C183.507 41.8 183.467 42.14 183.627 42.39C184.437 43.64 185.047 44.81 185.777 45.71C186.077 46.08 186.617 46.16 187.007 45.87C190.607 43.17 193.717 39.32 198.687 39.4C202.607 39.47 206.707 39.92 212.587 36.55C214.587 35.4 219.007 29.98 219.977 28.11C219.207 27.02 218.517 28.49 217.017 27.8L217.007 27.81Z"
+                        fill="#01090B" />
+                    <path class="loader-mark__bird loader-mark__bird--3" fill-rule="evenodd" clip-rule="evenodd"
+                        d="M36.6302 152.98C31.5302 151.31 30.2202 153.69 28.6602 153.59C21.8402 146.98 9.7502 143.8 0.680199 139.8C0.360199 139.66 -0.00980164 139.9 0.000198359 140.25C0.200198 146.25 4.4402 151.87 10.4602 155.23C8.0702 158.38 4.4302 158.17 6.2802 160.38C10.7202 165.7 13.3402 161.56 13.2902 166.18C13.4602 169.1 3.1802 175.56 3.4302 176.96C4.0902 178.57 5.3202 179.78 6.1402 180.34C6.4702 180.56 6.9302 180.48 7.1702 180.15C9.2202 177.34 10.3102 172.45 15.9802 171.53C20.5402 170.79 25.8102 170.3 31.3402 164.55C35.2902 160.45 41.4402 153.6 41.1502 153.15C40.1302 152.12 38.5602 153.6 36.6402 152.97L36.6302 152.98Z"
+                        fill="#01090B" />
+                </g>
+            </svg>
+        </div>
+    </div>
+
     <div id="wrapper">
 
         <header class="header">
@@ -23,8 +60,30 @@
                     <div class="header__wrapper">
                         <nav class="header__nav">
                             <ul>
-                                <li>
+                                <li class="has-child">
                                     <a href="#">Locations</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">
+                                                New York City
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Westchester
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Austin
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Nationwide
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="#">Clinical Care</a>
@@ -41,14 +100,75 @@
                         </div>
                         <nav class="header__nav">
                             <ul>
-                                <li>
-                                    <a href="education-prevention.html">Education & Prevention</a>
+                                <li class="has-child">
+                                    <a href="#">Education & Prevention</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">
+                                                Release U
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                The Zac Clark Show
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Family Programming
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
+                                <li class="has-child">
                                     <a href="#">Services</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">
+                                                Case Management
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Recovery Coaching
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Intervention / Safe Transport
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
+                                <li class="has-child">
                                     <a href="#">About</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">
+                                                What We Treat
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Team
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Testimonials
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                FAQ
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Careers
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="#">Contact</a>
@@ -59,8 +179,30 @@
                             <div class="header__nav-mobile-inner">
                                 <div class="header__nav-mobile-wrapper">
                                     <ul>
-                                        <li>
+                                        <li class="has-child">
                                             <a href="#">Locations</a>
+                                            <ul class="sub-menu">
+                                                <li>
+                                                    <a href="#">
+                                                        New York City
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Westchester
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Austin
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Nationwide
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </li>
                                         <li>
                                             <a href="#">Clinical Care</a>
@@ -68,14 +210,75 @@
                                         <li>
                                             <a href="#">Admissions Process</a>
                                         </li>
-                                        <li>
-                                            <a href="education-prevention.html">Education & Prevention</a>
+                                        <li class="has-child">
+                                            <a href="#">Education & Prevention</a>
+                                            <ul class="sub-menu">
+                                                <li>
+                                                    <a href="#">
+                                                        Release U
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        The Zac Clark Show
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Family Programming
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li>
+                                        <li class="has-child">
                                             <a href="#">Services</a>
+                                            <ul class="sub-menu">
+                                                <li>
+                                                    <a href="#">
+                                                        Case Management
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Recovery Coaching
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Intervention / Safe Transport
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li>
+                                        <li class="has-child">
                                             <a href="#">About</a>
+                                            <ul class="sub-menu">
+                                                <li>
+                                                    <a href="#">
+                                                        What We Treat
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Team
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Testimonials
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        FAQ
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Careers
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </li>
                                         <li>
                                             <a href="#">Contact</a>
@@ -597,7 +800,7 @@
                             <nav class="footer__nav">
                                 <ul>
                                     <li>
-                                        <a href="education-prevention.html">Education & Prevention</a>
+                                        <a href="#">Education & Prevention</a>
                                     </li>
                                     <li>
                                         <a href="#">Concierge Services </a>
@@ -609,23 +812,21 @@
                                         <a href="#">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="insurance-verification-form.html">Insurance Verification</a>
+                                        <a href="#">Insurance Verification</a>
                                     </li>
                                 </ul>
-                            </nav>
-                            <nav class="footer__nav">
                                 <ul>
                                     <li>
-                                        <a href="team.html">Team</a>
+                                        <a href="#">Team</a>
                                     </li>
                                     <li>
-                                        <a href="testimonials.html">Testimonials</a>
+                                        <a href="#">Testimonials</a>
                                     </li>
                                     <li>
-                                        <a href="faq.html">FAQ</a>
+                                        <a href="#">FAQ</a>
                                     </li>
                                     <li>
-                                        <a href="careers.html">Careers</a>
+                                        <a href="#">Careers</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -654,11 +855,12 @@
                             ©2026 Release Recovery. All Rights Reserved
                         </div>
                         <div class="footer__privacy">
-                            <a href="privacy-policy.html">Privacy Policy</a>
+                            <a href="#">Privacy Policy</a>
                         </div>
                         <div class="footer__dev">
-                            <a href="" target="_blank">
-                                <img src="images/dev.svg" alt="">
+                            <img src="images/dev.svg" alt="">
+                            <a href="#" target="_blank">
+                                DD.NYC®
                             </a>
                         </div>
                     </div>
@@ -672,7 +874,11 @@
 
     <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/SplitText.min.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html>

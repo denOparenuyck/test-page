@@ -33,10 +33,19 @@
         .education__list .item-content__wrapper {
             border: 1px solid rgba(1, 9, 11, 0.3);
         }
+
+        .education__list .item {
+            background: #FFFFFF;
+
+            &.is-current {
+                background: #FFFFFF;
+            }
+        }
     }
 
     .education__inner {
         padding: 10px 0 140px;
+        will-change: filter;
     }
 
     .education__top {
@@ -60,20 +69,30 @@
         .item {
             position: relative;
             z-index: 2;
-            flex: 1 1 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+            min-width: 0;
             height: auto;
             overflow: hidden;
             border-radius: 8px;
+            background: #01090B;
             cursor: pointer;
-            transition: all .3s linear;
+            transition:
+                flex-grow 0.65s linear,
+                flex-basis 0.65s linear,
+                background-color 0.55s linear;
 
             &.is-current {
-                flex: 0 0 763px;
-                width: 763px;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 763px;
+                background: #F4EFE7;
 
                 .item-media {
                     opacity: 0;
                     pointer-events: none;
+                    transition: opacity 0.55s linear;
                 }
 
                 .item-content {
@@ -87,17 +106,17 @@
             z-index: 3;
             top: 0;
             left: 0;
-            width: 377px;
-            height: 100%;
+            bottom: 0;
+            width: 100%;
+            max-width: 377px;
+            height: auto;
             padding: 22px 26px;
             display: flex;
             align-items: flex-end;
-            border-radius: 8px;
             overflow: hidden;
-            transition: all .3s linear;
+            transition: opacity 0.65s linear;
 
             .item-media__image {
-                width: 100%;
                 position: absolute;
                 z-index: -1;
                 top: 0;
@@ -109,6 +128,17 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    transform: scale(1.02);
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(191.34deg, rgba(0, 0, 0, 0) 23.24%, rgba(0, 0, 0, 0.6) 92.38%);
                 }
             }
 
@@ -130,11 +160,10 @@
             width: 763px;
             height: 100%;
             min-height: 450px;
-            border-radius: 8px;
             padding: 36px;
             display: flex;
             flex-direction: column;
-            background-color: #F4EFE7;
+            background-color: transparent;
         }
 
         .item-title {
@@ -185,15 +214,13 @@
                 border-radius: vwD(8px);
 
                 &.is-current {
-                    flex: 0 0 vwD(763px);
-                    width: vwD(763px);
+                    flex-basis: vwD(763px);
                 }
             }
 
             .item-media {
-                width: vwD(376px);
+                max-width: vwD(377px);
                 padding: vwD(22px) vwD(26px);
-                border-radius: vwD(8px);
 
                 .item-media__title {
                     font-size: vwD(22px);
@@ -204,7 +231,6 @@
                 width: vwD(763px);
                 min-height: vwD(450px);
                 padding: vwD(36px);
-                border-radius: vwD(8px);
             }
 
             .item-title {
@@ -342,11 +368,23 @@
                 border-radius: vwM(8px);
                 overflow: hidden;
                 margin-top: vwM(24px);
+                position: relative;
+                z-index: 2;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(191.34deg, rgba(0, 0, 0, 0) 23.24%, rgba(0, 0, 0, 0.6) 92.38%);
                 }
             }
         }
