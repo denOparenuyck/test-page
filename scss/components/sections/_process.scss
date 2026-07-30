@@ -2,7 +2,7 @@
     background-color: #F4EFE7;
 
     .process__inner {
-        padding: 110px 0 33px;
+        padding: 70px 0;
         will-change: filter;
     }
 
@@ -67,7 +67,7 @@
 @include maxw($desktop) {
     .process {
         .process__inner {
-            padding: vwD(110px) 0 vwD(33px);
+            padding: vwD(70px) 0;
         }
 
         .process__top {
@@ -111,7 +111,7 @@
 @include maxw($mobile) {
     .process {
         .process__inner {
-            padding: vwM(100px) 0;
+            padding: vwM(50px) 0;
         }
 
         .process__top {

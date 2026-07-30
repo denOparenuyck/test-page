@@ -1,4 +1,4 @@
-.has-page-loader-done{
+.has-page-loader-done {
     .hero__content.is-animation {
         animation: hero-animation 1s ease-in-out forwards;
     }
@@ -6,6 +6,12 @@
 
 
 .hero {
+    margin-top: -106px;
+
+    &.no-margin-top {
+        margin-top: 0;
+    }
+
     .hero__inner {
         width: 100%;
         max-width: 1920px;
@@ -34,7 +40,7 @@
         }
     }
 
-    .hero__wrapper{
+    .hero__wrapper {
         position: relative;
         z-index: 2;
         width: 100%;
@@ -105,7 +111,7 @@
 
     .hero__button {}
 
-    .hero__next{
+    .hero__next {
         position: absolute;
         z-index: 2;
         left: 50%;
@@ -117,7 +123,7 @@
         transition: all .3s linear;
 
         @include minw($mobile) {
-            &:hover{
+            &:hover {
                 transform: translateX(-50%) scale(1.2);
             }
         }
@@ -126,6 +132,8 @@
 
 @include maxw($desktop) {
     .hero {
+        margin-top: vwD(-106px);
+
         .hero__inner {
             min-height: vwD(800px);
             padding: vwD(204px) 0;
@@ -153,7 +161,7 @@
             margin-top: vwD(40px);
         }
 
-        .hero__next{
+        .hero__next {
             bottom: vwD(32px);
             width: vwD(21px);
             height: vwD(9px);
@@ -163,6 +171,8 @@
 
 @include maxw($mobile) {
     .hero {
+        margin-top: -vwM(72px);
+
         .hero__inner {
             max-width: 100%;
             min-height: 1px;
@@ -198,7 +208,8 @@
             letter-spacing: -0.02em;
             margin-top: vwM(16px);
             margin-bottom: vwM(28px);
-            br{
+
+            br {
                 display: none;
             }
         }
@@ -213,12 +224,13 @@
 
         .hero__button {
             width: 100%;
+
             .default-button {
                 width: 100%;
             }
         }
 
-        .hero__next{
+        .hero__next {
             display: none;
         }
     }
@@ -230,10 +242,12 @@
         opacity: 0;
         transform: translateX(-50%) translateZ(-200px);
     }
+
     50% {
         opacity: 0.5;
         transform: translateX(-50%) translateZ(0);
     }
+
     100% {
         opacity: 0;
         transform: translateX(-50%) translateZ(0);

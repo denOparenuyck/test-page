@@ -172,7 +172,7 @@
 @include maxw($mobile) {
     .concierge-intervention {
         .concierge-intervention__inner {
-            padding: vwM(72px) 0 vwM(100px);
+            padding: vwM(100px) 0;
         }
 
         .concierge-intervention__top {

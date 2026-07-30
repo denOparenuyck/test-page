@@ -1,9 +1,18 @@
+@function vwB($px-vw, $base-vw: 1920px) {
+    @return ($px-vw * 100vw) / $base-vw;
+}
+
 @function vwD($px-vw, $base-vw: 1568px) {
     @return ($px-vw * 100vw) / $base-vw;
 }
 
 @function vwM($px-vw, $base-vw: 375px) {
     @return ($px-vw * 100vw) / $base-vw;
+}
+
+// Fixed px as if viewport were $at (cap vwB above $maxDesktop)
+@function pxB($px-vw, $base-vw: 1920px, $at: 3000px) {
+    @return ($px-vw / $base-vw) * $at;
 }
 
 @mixin maxw($mobile) {

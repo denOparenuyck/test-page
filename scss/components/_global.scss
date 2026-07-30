@@ -23,6 +23,7 @@ body {
     // Light text on dark — cream highlight
     --selection-bg: #F4EFE7;
     --selection-color: #01090B;
+    --section-side-navigation-height: 60px;
 
     &.no-scroll {
         overflow: hidden;
@@ -101,6 +102,15 @@ body {
 
     main {
         flex: 1 0 auto;
+        padding-top: 106px;
+
+        @include maxw($desktop) {
+            padding-top: vwD(106px);
+        }
+
+        @include maxw($mobile) {
+            padding-top: vwM(72px);
+        }
     }
 
     footer {

@@ -1,11 +1,11 @@
 .locations {
     overflow: hidden;
-    padding-top: 56px;
     padding-bottom: 534px;
-    margin-bottom: -397px;
+    margin-bottom: -534px;
 
     .locations__inner {
         position: relative;
+        padding: 70px 0;
         z-index: 2;
         width: 100%;
         max-width: 1920px;
@@ -92,11 +92,11 @@
 
 @include maxw($desktop) {
     .locations {
-        padding-top: vwD(56px);
         padding-bottom: vwD(534px);
-        margin-bottom: vwD(-397px);
+        margin-bottom: vwD(-534px);
 
         .locations__inner {
+            padding: vwD(70px) 0;
             &::before {
                 left: vwD(-742px);
                 bottom: vwD(-534px);
@@ -131,12 +131,12 @@
 
 @include maxw($mobile) {
     .locations {
-        padding-top: vwM(100px);
         padding-bottom: vwM(285px);
-        margin-bottom: vwM(-185px);
+        margin-bottom: vwM(-285px);
 
         .locations__inner {
             max-width: 100%;
+            padding: vwM(50px) 0;
 
             &::before {
                 top: vwM(-450px);

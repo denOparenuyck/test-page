@@ -1,12 +1,12 @@
 .insurance {
     overflow: hidden;
     padding-bottom: 353px;
-    margin-bottom: -384px;
+    margin-bottom: -372px;
 
     .insurance__inner {
         position: relative;
         z-index: 2;
-        padding: 123px 0;
+        padding: 70px 0;
         width: 100%;
         max-width: 1920px;
         margin: 0 auto;
@@ -83,10 +83,10 @@
 @include maxw($desktop) {
     .insurance {
         padding-bottom: vwD(353px);
-        margin-bottom: vwD(-384px);
+        margin-bottom: vwD(-372px);
 
         .insurance__inner {
-            padding: vwD(123px) 0;
+            padding: vwD(70px) 0;
 
             &::before {
                 top: vwD(-567px);
@@ -133,7 +133,7 @@
         margin-bottom: 0;
 
         .insurance__inner {
-            padding: vwM(100px) 0;
+            padding: vwM(50px) 0;
             max-width: 100%;
 
             &::before {

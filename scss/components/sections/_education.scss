@@ -5,9 +5,10 @@
 
     &.is-light {
         background: #F4EFE7;
+        overflow: visible;
 
         .education__inner {
-            padding: 140px 0;
+            padding: 70px 0;
         }
 
         .education__top {
@@ -30,12 +31,9 @@
             }
         }
 
-        .education__list .item-content__wrapper {
-            border: 1px solid rgba(1, 9, 11, 0.3);
-        }
-
         .education__list .item {
             background: #FFFFFF;
+            border: 1px solid rgba(1, 9, 11, 0.3);
 
             &.is-current {
                 background: #FFFFFF;
@@ -44,7 +42,7 @@
     }
 
     .education__inner {
-        padding: 10px 0 140px;
+        padding: 70px 0;
         will-change: filter;
     }
 
@@ -194,8 +192,20 @@
 
 @include maxw($desktop) {
     .education {
+        &.is-light {
+
+            .education__inner {
+                padding: vwD(70px) 0;
+            }
+
+            .education__caption {
+                margin-bottom: vwD(28px);
+            }
+
+        }
+
         .education__inner {
-            padding: vwD(10px) 0 vwD(140px);
+            padding: vwD(70px) 0;
         }
 
         .education__top {
@@ -246,8 +256,20 @@
 
 @include maxw($mobile) {
     .education {
+
+        &.is-light {
+            .education__inner {
+                padding: vwM(50px) 0;
+            }
+
+            .education__caption {
+                margin-bottom: vwM(8px);
+            }
+
+        }
+
         .education__inner {
-            padding: 0 0 vwM(100px);
+            padding: vwM(50px) 0;
         }
 
         .education__top {

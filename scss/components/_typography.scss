@@ -219,12 +219,12 @@
             &::after {
                 content: "";
                 position: absolute;
-                top: 11px;
-                left: 0;
+                top: 9px;
+                left: 11px;
                 width: 5px;
                 height: 5px;
                 border-radius: 50%;
-                background-color: rgba(#fff, 0.7);
+                background-color: #fff;
             }
 
             ol {
@@ -284,12 +284,12 @@
                     &::after {
                         content: "";
                         position: absolute;
-                        top: 11px;
-                        left: 0;
+                        top: 9px;
+                        left: 11px;
                         width: 5px;
                         height: 5px;
                         border-radius: 50%;
-                        background-color: rgba(#fff, 0.7);
+                        background-color: #fff;
                     }
 
                     &::before {
@@ -487,7 +487,8 @@
                 padding-left: vwD(27px);
 
                 &::after {
-                    top: vwD(8px);
+                    top: vwD(9px);
+                    left: vwD(11px);
                     width: vwD(5px);
                     height: vwD(5px);
                 }
@@ -507,7 +508,8 @@
                         padding-left: vwD(27px);
 
                         &::after {
-                            top: vwD(8px);
+                            top: vwD(9px);
+                            left: vwD(11px);
                             width: vwD(5px);
                             height: vwD(5px);
                         }
@@ -607,10 +609,11 @@
 
         ul {
             li {
-                padding-left: vwM(15px);
+                padding-left: vwM(22px);
 
                 &::after {
-                    top: vwM(9px);
+                    top: vwM(8px);
+                    left: vwM(8px);
                     width: vwM(4px);
                     height: vwM(4px);
                 }
@@ -620,17 +623,18 @@
         ol {
             li {
                 ol {
-                    padding-left: vwM(15px);
+                    padding-left: vwM(22px);
                 }
 
                 ul {
-                    padding-left: vwM(15px);
+                    padding-left: vwM(22px);
 
                     li {
-                        padding-left: vwM(15px);
+                        padding-left: vwM(22px);
 
                         &::after {
-                            top: vwM(9px);
+                            top: vwM(8px);
+                            left: vwM(8px);
                             width: vwM(4px);
                             height: vwM(4px);
                         }

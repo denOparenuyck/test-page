@@ -55,7 +55,9 @@
         }
     }
 
-    .our-programs__inner {}
+    .our-programs__inner {
+        padding: 70px 0;
+    }
 
     .our-programs__wrapper {
         display: flex;
@@ -159,6 +161,9 @@
             }
         }
 
+        .our-programs__inner {
+            padding: vwD(70px) 0;
+        }
 
         .our-programs__wrapper {
             gap: vwD(82px);
@@ -226,7 +231,7 @@
         .our-programs__inner {
             position: relative;
             z-index: 2;
-            padding-bottom: vwM(86px);
+            padding: vwM(50px) 0 vwM(150px);
         }
 
         .our-programs__wrapper {
@@ -261,7 +266,7 @@
             margin: 0;
             position: absolute;
             left: 0;
-            bottom: 0;
+            bottom: vwM(50px);
             width: 100%;
             padding: 0 vwM(16px);
 

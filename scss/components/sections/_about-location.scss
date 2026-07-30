@@ -3,7 +3,7 @@
     z-index: 2;
 
     .about-location__inner {
-        padding: 140px 0;
+        padding: 70px 0;
     }
 
     .about-location__top {
@@ -63,10 +63,12 @@
 
     .about-location__blocks {
         width: 892px;
+        min-height: 600px;
     }
 
     .about-location__block {
-        > .about-location__navigation-item {
+        .about-location__navigation-title,
+        .about-location__navigation-list {
             display: none;
         }
     }
@@ -99,7 +101,7 @@
 @include maxw($desktop) {
     .about-location {
         .about-location__inner {
-            padding: vwD(140px) 0;
+            padding: vwD(70px) 0;
         }
 
         .about-location__top {
@@ -136,6 +138,7 @@
 
         .about-location__blocks {
             width: vwD(892px);
+            min-height: vwD(600px);
         }
 
         .about-location__list {
@@ -166,7 +169,7 @@
 @include maxw($mobile) {
     .about-location {
         .about-location__inner {
-            padding: 0 0 vwM(100px);
+            padding: vwM(50px) 0;
         }
 
         .about-location__top {
@@ -199,6 +202,7 @@
 
         .about-location__blocks {
             width: 100%;
+            min-height: 1px;
         }
 
         .about-location__block {
@@ -208,9 +212,15 @@
                 margin-top: 0;
             }
 
-            > .about-location__navigation-item {
+            .about-location__navigation-title,
+            .about-location__navigation-list {
                 display: block;
-                margin-bottom: vwM(24px);
+            }
+
+            .about-location__navigation-list {
+                position: sticky;
+                top: vwM(60px);
+                z-index: 5;
             }
         }
 
@@ -220,6 +230,9 @@
         }
 
         .about-location__list {
+            margin-top: vwM(24px);
+            padding-bottom: calc(var(--section-side-navigation-height, #{vwM(60px)}) + vwM(16px));
+
             .item {
                 border-radius: vwM(10px);
                 padding: vwM(32px) vwM(24px);

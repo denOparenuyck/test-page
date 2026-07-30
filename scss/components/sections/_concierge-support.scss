@@ -5,7 +5,7 @@
         width: 100%;
         max-width: 1920px;
         margin: 0 auto;
-        padding: 140px 0;
+        padding: 70px 0;
         position: relative;
         z-index: 2;
 
@@ -64,7 +64,7 @@
     .concierge-support {
         .concierge-support__inner {
             max-width: vwD(1920px);
-            padding: vwD(140px) 0;
+            padding: vwD(70px) 0;
 
             &::before,
             &::after {
@@ -116,9 +116,13 @@
         margin-top: vwM(-300px);
         margin-bottom: vwM(-110px);
 
+        & + .concierge-mission {
+            margin-top: vwM(-385px);
+        }
+
         .concierge-support__inner {
             max-width: 100%;
-            padding: 0 0 vwM(100px);
+            padding: vwM(50px) 0;
 
             &::before,
             &::after {

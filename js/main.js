@@ -1,5 +1,9 @@
 'use strict';
 
+/* ==========================================================================
+   Global / shared helpers
+   ========================================================================== */
+
 const COOKIE_CONSENT_KEY = 'rr_cookie_consent';
 
 const finishPageLoader = (loader) => {
@@ -89,253 +93,6 @@ const initCookieBanner = () => {
 };
 
 initCookieBanner();
-
-const header = document.querySelector('.header');
-const headerMenu = document.querySelector('.header__menu');
-
-if (headerMenu) {
-    headerMenu.addEventListener('click', () => {
-        header.classList.toggle('is-open');
-        document.body.classList.toggle('no-scroll');
-    });
-}
-
-$('.header__nav-mobile .has-child').each(function(index, item){
-    let link = $(item).find('a');
-    let submenu = $(item).find('.sub-menu');
-
-    $(link).append('<span class="is-arrow"></span>');
-
-    $(item).find('.is-arrow').on('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $(item).toggleClass('is-open');
-        $(submenu).stop().slideToggle();
-    });
-});
-
-$('.hero__next').on('click', function(){
-    const nextSection = $(this).closest('.hero').next('section').get(0);
-    if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
-});
-
-const whoWeAreGallery = document.querySelector('.who-we-are__gallery .swiper');
-const whoWeAreMobileMq = window.matchMedia('(max-width: 991px)');
-let whoWeAreSwiper = null;
-let whoWeAreClones = [];
-let whoWeAreOriginalCount = 0;
-
-const destroyWhoWeAreSwiper = () => {
-    if (whoWeAreSwiper) {
-        whoWeAreSwiper.destroy(true, true);
-        whoWeAreSwiper = null;
-    }
-
-    whoWeAreClones.forEach((clone) => clone.remove());
-    whoWeAreClones = [];
-    whoWeAreOriginalCount = 0;
-};
-
-const initWhoWeAreSwiper = () => {
-    if (!whoWeAreGallery || typeof Swiper === 'undefined') return;
-
-    if (!whoWeAreMobileMq.matches) {
-        destroyWhoWeAreSwiper();
-        return;
-    }
-
-    if (whoWeAreSwiper) return;
-
-    const swiperWrapper = whoWeAreGallery.querySelector('.swiper-wrapper');
-    if (!swiperWrapper) return;
-
-    const slides = Array.from(swiperWrapper.children).filter(
-        (el) => !el.classList.contains('slide-clone')
-    );
-    whoWeAreOriginalCount = slides.length;
-
-    whoWeAreClones = slides.map((slide) => {
-        const clone = slide.cloneNode(true);
-        clone.classList.add('slide-clone');
-        swiperWrapper.appendChild(clone);
-        return clone;
-    });
-
-    whoWeAreSwiper = new Swiper(whoWeAreGallery, {
-        loop: true,
-        slidesPerView: 1.02,
-        spaceBetween: 12,
-        centeredSlides: true,
-        speed: 1000,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.who-we-are__gallery .swiper-pagination',
-            clickable: true,
-            renderBullet: (index, className) =>
-                index < whoWeAreOriginalCount ? `<span class="${className}"></span>` : '',
-        },
-        on: {
-            slideChange() {
-                const active = this.realIndex % whoWeAreOriginalCount;
-
-                this.pagination.bullets.forEach((bullet, i) => {
-                    bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
-                });
-
-                this.slides.forEach((slide, i) => {
-                    slide.classList.toggle('is-active', i === this.activeIndex);
-                });
-            },
-        },
-    });
-
-    whoWeAreSwiper.emit('slideChange');
-};
-
-initWhoWeAreSwiper();
-whoWeAreMobileMq.addEventListener('change', initWhoWeAreSwiper);
-
-(() => {
-    const section = document.querySelector('.who-we-are');
-    if (!section || typeof gsap === 'undefined' || typeof SplitText === 'undefined') return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-
-    gsap.registerPlugin(SplitText);
-    if (typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-    }
-
-    const content = section.querySelector('.who-we-are__content');
-    if (!content) return;
-
-    const title = content.querySelector('.who-we-are__title');
-    const titleTarget = title?.querySelector('.title, h2') || title;
-    const textBlock = content.querySelector('.who-we-are__text');
-    const paragraphs = gsap.utils.toArray(
-        content.querySelectorAll('.who-we-are__text .text > *')
-    );
-
-    gsap.set([title, textBlock].filter(Boolean), { autoAlpha: 0 });
-
-    let hasPlayed = false;
-    let watching = false;
-    const splits = [];
-
-    const isSectionInView = () => {
-        const rect = section.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        return rect.top < vh * 0.85 && rect.bottom > vh * 0.15;
-    };
-
-    const play = () => {
-        if (hasPlayed) return;
-        hasPlayed = true;
-
-        const run = () => {
-            gsap.set([title, textBlock].filter(Boolean), { autoAlpha: 1 });
-
-            const tl = gsap.timeline({
-                defaults: { ease: 'power1.out' },
-                onComplete: () => {
-                    if (typeof ScrollTrigger !== 'undefined') {
-                        ScrollTrigger.refresh();
-                    }
-                },
-            });
-
-            if (titleTarget) {
-                const titleSplit = SplitText.create(titleTarget, {
-                    type: 'lines',
-                    linesClass: 'wwa-line',
-                    aria: 'auto',
-                });
-                splits.push(titleSplit);
-                gsap.set(titleSplit.lines, { opacity: 0, y: 16 });
-                tl.to(titleSplit.lines, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.25,
-                    stagger: 0.14,
-                }, 0);
-            }
-
-            if (paragraphs.length) {
-                const allLines = [];
-
-                paragraphs.forEach((paragraph) => {
-                    const split = SplitText.create(paragraph, {
-                        type: 'lines',
-                        linesClass: 'wwa-line',
-                        aria: 'auto',
-                    });
-                    splits.push(split);
-                    allLines.push(...split.lines);
-                });
-
-                gsap.set(allLines, { opacity: 0, y: 12 });
-                tl.to(allLines, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.1,
-                    stagger: 0.12,
-                }, 0.25);
-            }
-        };
-
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(run);
-        } else {
-            run();
-        }
-    };
-
-    const startWatching = () => {
-        if (watching) return;
-        watching = true;
-
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.refresh();
-        }
-
-        if (isSectionInView()) {
-            play();
-            return;
-        }
-
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.create({
-                trigger: section,
-                start: 'top 80%',
-                once: true,
-                onEnter: play,
-            });
-        }
-    };
-
-    const hasLoaderDoneClass = () => document.body.classList.contains('has-page-loader-done');
-
-    if (hasLoaderDoneClass() || !document.documentElement.classList.contains('has-page-loader')) {
-        startWatching();
-    } else {
-        const observer = new MutationObserver(() => {
-            if (!hasLoaderDoneClass()) return;
-            observer.disconnect();
-            startWatching();
-        });
-
-        observer.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['class'],
-        });
-    }
-})();
 
 const rrPrefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -434,14 +191,6 @@ const rrAnimateFade = (el, {
     gsap.to(el, { autoAlpha: 1, duration, ease, delay });
 };
 
-/**
- * Reusable scroll reveal: media zooms out to normal, content fades (up or simple).
- * Pass selectors or elements relative to `root`.
- *
- * fade.mode: 'up' (default) | 'fade'
- * animatedClass: added when play starts (e.g. 'is-animated')
- * revealedClass: added when play completes (default 'is-revealed')
- */
 const initMediaContentReveal = (root, options = {}) => {
     if (!root || typeof gsap === 'undefined') return;
 
@@ -481,7 +230,6 @@ const initMediaContentReveal = (root, options = {}) => {
         return;
     }
 
-    // From-state immediately — avoid flash of final styles before play.
     if (zoomTarget) gsap.set(zoomTarget, { scale: scaleFrom });
     if (contentEl) {
         gsap.set(contentEl, fadeMode === 'up'
@@ -539,49 +287,327 @@ const initMediaContentReveal = (root, options = {}) => {
 };
 
 const initSectionUnblur = (sectionSelector, innerSelector) => {
-    const section = document.querySelector(sectionSelector);
-    if (!section || typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined') return;
 
-    const target = section.querySelector(innerSelector) || section;
+    document.querySelectorAll(sectionSelector).forEach((section) => {
+        const target = section.querySelector(innerSelector) || section;
 
-    if (rrPrefersReducedMotion()) {
-        section.classList.add('is-revealed');
-        target.style.filter = 'none';
-        return;
-    }
+        if (rrPrefersReducedMotion()) {
+            section.classList.add('is-revealed');
+            target.style.filter = 'none';
+            return;
+        }
 
-    // From-state immediately — avoid flash of sharp content before play.
-    gsap.set(target, { filter: 'blur(18px)' });
+        gsap.set(target, { filter: 'blur(18px)' });
 
-    let hasPlayed = false;
+        let hasPlayed = false;
 
-    const play = () => {
-        if (hasPlayed) return;
-        hasPlayed = true;
+        const play = () => {
+            if (hasPlayed) return;
+            hasPlayed = true;
 
-        gsap.to(target, {
-            filter: 'blur(0px)',
-            duration: 1.25,
-            ease: 'power1.out',
-            onComplete: () => {
-                section.classList.add('is-revealed');
-                gsap.set(target, { clearProps: 'filter' });
-            },
-        });
-    };
+            gsap.to(target, {
+                filter: 'blur(0px)',
+                duration: 1.25,
+                ease: 'power1.out',
+                onComplete: () => {
+                    section.classList.add('is-revealed');
+                    gsap.set(target, { clearProps: 'filter' });
+                },
+            });
+        };
 
-    rrWhenLoaderDone(() => {
-        rrWhenVisible(section, {
-            ratio: 0.2,
-            onEnter: play,
+        rrWhenLoaderDone(() => {
+            rrWhenVisible(section, {
+                ratio: 0.2,
+                onEnter: play,
+            });
         });
     });
 };
+
+const scrollTabBlockToStart = (fromEl) => {
+    if (!fromEl) return false;
+
+    const anchor = fromEl.closest(
+        '.about-location__block, .about__wrapper, .testimonials__wrapper, .about-location__wrapper, .release__wrapper, .location-switcher'
+    ) || fromEl.closest('section');
+
+    if (!anchor) return false;
+
+    const headerEl = document.querySelector('.header');
+    const headerOffset = headerEl
+        ? (headerEl.querySelector('.header__inner') || headerEl).getBoundingClientRect().height
+        : 0;
+    const offset = headerOffset + 16;
+    const rect = anchor.getBoundingClientRect();
+    if (rect.top >= offset) return false;
+
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth';
+
+    window.scrollTo({
+        top: Math.max(0, window.pageYOffset + rect.top - offset),
+        behavior,
+    });
+
+    return true;
+};
+
+const accordionMobileMq = window.matchMedia('(max-width: 991px)');
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+(() => {
+    const header = document.querySelector('.header');
+    const headerMenu = document.querySelector('.header__menu');
+
+    if (header && headerMenu) {
+        headerMenu.addEventListener('click', () => {
+            header.classList.toggle('is-open');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
+
+    $('.header__nav-mobile .has-child').each(function (index, item) {
+        const link = $(item).find('a');
+        const submenu = $(item).find('.sub-menu');
+
+        $(link).append('<span class="is-arrow"></span>');
+
+        $(item).find('.is-arrow').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(item).toggleClass('is-open');
+            $(submenu).stop().slideToggle();
+        });
+    });
+})();
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+$('.hero__next').on('click', function () {
+    const nextSection = $(this).closest('.hero').next('section').get(0);
+    if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+
+/* ==========================================================================
+   Who we are — mobile gallery + text reveal
+   ========================================================================== */
+
+(() => {
+    const mobileMq = window.matchMedia('(max-width: 991px)');
+    const galleryState = new WeakMap();
+
+    const destroyGallery = (gallery) => {
+        const state = galleryState.get(gallery);
+        if (!state) return;
+
+        if (state.swiper) {
+            state.swiper.destroy(true, true);
+        }
+
+        state.clones.forEach((clone) => clone.remove());
+        galleryState.delete(gallery);
+    };
+
+    const initGallery = (gallery) => {
+        if (typeof Swiper === 'undefined') return;
+
+        if (!mobileMq.matches) {
+            destroyGallery(gallery);
+            return;
+        }
+
+        if (galleryState.has(gallery)) return;
+
+        const swiperWrapper = gallery.querySelector('.swiper-wrapper');
+        const paginationEl = gallery.querySelector('.swiper-pagination');
+        if (!swiperWrapper) return;
+
+        const slides = Array.from(swiperWrapper.children).filter(
+            (el) => !el.classList.contains('slide-clone')
+        );
+        const originalCount = slides.length;
+
+        const clones = slides.map((slide) => {
+            const clone = slide.cloneNode(true);
+            clone.classList.add('slide-clone');
+            swiperWrapper.appendChild(clone);
+            return clone;
+        });
+
+        const swiper = new Swiper(gallery, {
+            loop: true,
+            slidesPerView: 1.02,
+            spaceBetween: 12,
+            centeredSlides: true,
+            speed: 1000,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: paginationEl,
+                clickable: true,
+                renderBullet: (index, className) =>
+                    index < originalCount ? `<span class="${className}"></span>` : '',
+            },
+            on: {
+                slideChange() {
+                    const active = this.realIndex % originalCount;
+
+                    this.pagination.bullets.forEach((bullet, i) => {
+                        bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
+                    });
+
+                    this.slides.forEach((slide, i) => {
+                        slide.classList.toggle('is-active', i === this.activeIndex);
+                    });
+                },
+            },
+        });
+
+        galleryState.set(gallery, { swiper, clones, originalCount });
+        swiper.emit('slideChange');
+    };
+
+    const syncGalleries = () => {
+        document.querySelectorAll('.who-we-are__gallery .swiper').forEach(initGallery);
+    };
+
+    syncGalleries();
+    mobileMq.addEventListener('change', syncGalleries);
+
+    const initTextReveal = (section) => {
+        if (typeof gsap === 'undefined' || typeof SplitText === 'undefined') return;
+        if (rrPrefersReducedMotion()) return;
+
+        gsap.registerPlugin(SplitText);
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+
+        const content = section.querySelector('.who-we-are__content');
+        if (!content) return;
+
+        const title = content.querySelector('.who-we-are__title');
+        const titleTarget = title?.querySelector('.title, h2') || title;
+        const textBlock = content.querySelector('.who-we-are__text');
+        const paragraphs = gsap.utils.toArray(
+            content.querySelectorAll('.who-we-are__text .text > *')
+        );
+
+        gsap.set([title, textBlock].filter(Boolean), { autoAlpha: 0 });
+
+        let hasPlayed = false;
+        let watching = false;
+
+        const isSectionInView = () => {
+            const rect = section.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            return rect.top < vh * 0.85 && rect.bottom > vh * 0.15;
+        };
+
+        const play = () => {
+            if (hasPlayed) return;
+            hasPlayed = true;
+
+            const run = () => {
+                gsap.set([title, textBlock].filter(Boolean), { autoAlpha: 1 });
+
+                const tl = gsap.timeline({
+                    defaults: { ease: 'power1.out' },
+                });
+
+                if (titleTarget) {
+                    const titleSplit = SplitText.create(titleTarget, {
+                        type: 'lines',
+                        linesClass: 'wwa-line',
+                        aria: 'auto',
+                    });
+                    gsap.set(titleSplit.lines, { opacity: 0, y: 16 });
+                    tl.to(titleSplit.lines, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.25,
+                        stagger: 0.14,
+                    }, 0);
+                }
+
+                if (paragraphs.length) {
+                    const allLines = [];
+
+                    paragraphs.forEach((paragraph) => {
+                        const split = SplitText.create(paragraph, {
+                            type: 'lines',
+                            linesClass: 'wwa-line',
+                            aria: 'auto',
+                        });
+                        allLines.push(...split.lines);
+                    });
+
+                    gsap.set(allLines, { opacity: 0, y: 12 });
+                    tl.to(allLines, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.1,
+                        stagger: 0.12,
+                    }, 0.25);
+                }
+            };
+
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(run);
+            } else {
+                run();
+            }
+        };
+
+        const startWatching = () => {
+            if (watching) return;
+            watching = true;
+
+            if (isSectionInView()) {
+                play();
+                return;
+            }
+
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 80%',
+                    once: true,
+                    onEnter: play,
+                });
+            }
+        };
+
+        rrWhenLoaderDone(startWatching);
+    };
+
+    document.querySelectorAll('.who-we-are').forEach(initTextReveal);
+})();
+
+/* ==========================================================================
+   Scroll reveals — release / locations / process / education (unblur)
+   ========================================================================== */
 
 initSectionUnblur('section.release', '.release__inner');
 initSectionUnblur('section.locations', '.locations__inner');
 initSectionUnblur('section.process', '.process__inner');
 initSectionUnblur('section.education', '.education__inner');
+
+/* ==========================================================================
+   Text image
+   ========================================================================== */
 
 document.querySelectorAll('section.text-image').forEach((section) => {
     initMediaContentReveal(section, {
@@ -591,15 +617,20 @@ document.querySelectorAll('section.text-image').forEach((section) => {
     });
 });
 
-(() => {
-    const section = document.querySelector('section.insurance');
-    if (!section) return;
+/* ==========================================================================
+   Insurance
+   ========================================================================== */
 
+document.querySelectorAll('section.insurance').forEach((section) => {
     initMediaContentReveal(section, {
         content: '.container',
         trigger: '.container',
     });
-})();
+});
+
+/* ==========================================================================
+   Banner
+   ========================================================================== */
 
 document.querySelectorAll('section.banner').forEach((section) => {
     initMediaContentReveal(section, {
@@ -609,6 +640,10 @@ document.querySelectorAll('section.banner').forEach((section) => {
         fade: { mode: 'fade' },
     });
 });
+
+/* ==========================================================================
+   Assistance
+   ========================================================================== */
 
 document.querySelectorAll('section.assistance').forEach((section) => {
     initMediaContentReveal(section, {
@@ -620,246 +655,264 @@ document.querySelectorAll('section.assistance').forEach((section) => {
     });
 });
 
+/* ==========================================================================
+   Release reviews — mobile gallery
+   ========================================================================== */
 
-const releaseReviewsList = document.querySelector('.release-reviews__list .swiper');
-const releaseReviewsMobileMq = window.matchMedia('(max-width: 991px)');
-let releaseReviewsSwiper = null;
-let releaseReviewsClones = [];
-let releaseReviewsOriginalCount = 0;
+(() => {
+    const mobileMq = window.matchMedia('(max-width: 991px)');
+    const galleryState = new WeakMap();
 
-const destroyReleaseReviewsSwiper = () => {
-    if (releaseReviewsSwiper) {
-        releaseReviewsSwiper.destroy(true, true);
-        releaseReviewsSwiper = null;
-    }
+    const destroyGallery = (gallery) => {
+        const state = galleryState.get(gallery);
+        if (!state) return;
 
-    releaseReviewsClones.forEach((clone) => clone.remove());
-    releaseReviewsClones = [];
-    releaseReviewsOriginalCount = 0;
-};
+        if (state.swiper) {
+            state.swiper.destroy(true, true);
+        }
 
-const initReleaseReviewsSwiper = () => {
-    if (!releaseReviewsList || typeof Swiper === 'undefined') return;
+        state.clones.forEach((clone) => clone.remove());
+        galleryState.delete(gallery);
+    };
 
-    if (!releaseReviewsMobileMq.matches) {
-        destroyReleaseReviewsSwiper();
-        return;
-    }
+    const initGallery = (gallery) => {
+        if (typeof Swiper === 'undefined') return;
 
-    if (releaseReviewsSwiper) return;
+        if (!mobileMq.matches) {
+            destroyGallery(gallery);
+            return;
+        }
 
-    const swiperWrapper = releaseReviewsList.querySelector('.swiper-wrapper');
-    if (!swiperWrapper) return;
+        if (galleryState.has(gallery)) return;
 
-    const slides = Array.from(swiperWrapper.children).filter(
-        (el) => !el.classList.contains('slide-clone')
-    );
-    releaseReviewsOriginalCount = slides.length;
+        const swiperWrapper = gallery.querySelector('.swiper-wrapper');
+        const paginationEl = gallery.querySelector('.swiper-pagination');
+        if (!swiperWrapper) return;
 
-    releaseReviewsClones = slides.map((slide) => {
-        const clone = slide.cloneNode(true);
-        clone.classList.add('slide-clone');
-        swiperWrapper.appendChild(clone);
-        return clone;
-    });
+        const slides = Array.from(swiperWrapper.children).filter(
+            (el) => !el.classList.contains('slide-clone')
+        );
+        const originalCount = slides.length;
 
-    releaseReviewsSwiper = new Swiper(releaseReviewsList, {
-        loop: true,
-        slidesPerView: 1.02,
-        spaceBetween: 10,
-        centeredSlides: true,
-        speed: 1000,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.release-reviews__list .swiper-pagination',
-            clickable: true,
-            renderBullet: (index, className) =>
-                index < releaseReviewsOriginalCount ? `<span class="${className}"></span>` : '',
-        },
-        on: {
-            slideChange() {
-                const active = this.realIndex % releaseReviewsOriginalCount;
+        const clones = slides.map((slide) => {
+            const clone = slide.cloneNode(true);
+            clone.classList.add('slide-clone');
+            swiperWrapper.appendChild(clone);
+            return clone;
+        });
 
-                this.pagination.bullets.forEach((bullet, i) => {
-                    bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
-                });
-
-                this.slides.forEach((slide, i) => {
-                    slide.classList.toggle('is-active', i === this.activeIndex);
-                });
+        const swiper = new Swiper(gallery, {
+            loop: true,
+            slidesPerView: 1.02,
+            spaceBetween: 10,
+            centeredSlides: true,
+            speed: 1000,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
             },
-        },
+            pagination: {
+                el: paginationEl,
+                clickable: true,
+                renderBullet: (index, className) =>
+                    index < originalCount ? `<span class="${className}"></span>` : '',
+            },
+            on: {
+                slideChange() {
+                    const active = this.realIndex % originalCount;
+
+                    this.pagination.bullets.forEach((bullet, i) => {
+                        bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
+                    });
+
+                    this.slides.forEach((slide, i) => {
+                        slide.classList.toggle('is-active', i === this.activeIndex);
+                    });
+                },
+            },
+        });
+
+        galleryState.set(gallery, { swiper, clones, originalCount });
+        swiper.emit('slideChange');
+    };
+
+    const syncGalleries = () => {
+        document.querySelectorAll('.release-reviews__list .swiper').forEach(initGallery);
+    };
+
+    syncGalleries();
+    mobileMq.addEventListener('change', syncGalleries);
+})();
+
+/* ==========================================================================
+   Release — desktop tabs + mobile accordion
+   ========================================================================== */
+
+document.querySelectorAll('section.release').forEach((section) => {
+    const navigationButtons = section.querySelectorAll('.release__navigation .navigation-button');
+    const listItems = section.querySelectorAll('.release__list .item');
+
+    navigationButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('is-current')) return;
+
+            navigationButtons.forEach((btn) => btn.classList.remove('is-current'));
+            button.classList.add('is-current');
+            listItems.forEach((item) => item.classList.remove('is-current'));
+            if (listItems[index]) {
+                listItems[index].classList.add('is-current');
+            }
+            scrollTabBlockToStart(button);
+        });
     });
 
-    releaseReviewsSwiper.emit('slideChange');
-};
+    const $section = $(section);
+    const $items = $section.find('.release__list .item');
 
-initReleaseReviewsSwiper();
-releaseReviewsMobileMq.addEventListener('change', initReleaseReviewsSwiper);
+    const syncAccordionForViewport = () => {
+        const $titles = $items.find('.item-title');
+        const $wrappers = $items.find('.item-wrapper');
 
-const scrollTabBlockToStart = (fromEl) => {
-    if (!fromEl || !window.matchMedia('(min-width: 992px)').matches) return;
+        if (accordionMobileMq.matches) {
+            $titles.removeClass('is-open');
+            $wrappers.hide();
+            $items.first().find('.item-title').addClass('is-open');
+            $items.first().find('.item-wrapper').show();
+        } else {
+            $titles.removeClass('is-open');
+            $wrappers.css('display', '');
+        }
+    };
 
-    const anchor = fromEl.closest(
-        '.about__wrapper, .testimonials__wrapper, .about-location__wrapper, .release__wrapper, .location-switcher'
-    ) || fromEl.closest('section');
+    $items.each(function (index, item) {
+        const $item = $(item);
+        const $button = $item.find('.item-title');
+        const $content = $item.find('.item-wrapper');
 
-    if (!anchor) return;
+        $button.on('click', function () {
+            if (!accordionMobileMq.matches) return;
 
-    const headerOffset = header
-        ? (header.querySelector('.header__inner') || header).getBoundingClientRect().height
-        : 0;
-    const rect = anchor.getBoundingClientRect();
-    if (rect.top >= headerOffset) return;
+            const isOpen = $button.hasClass('is-open');
 
-    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        ? 'auto'
-        : 'smooth';
+            $items.find('.item-title.is-open').not($button).removeClass('is-open');
+            $items.find('.item-wrapper').not($content).stop().slideUp();
 
-    window.scrollTo({
-        top: Math.max(0, window.pageYOffset + rect.top - headerOffset),
-        behavior,
+            if (isOpen) {
+                $button.removeClass('is-open');
+                $content.stop().slideUp();
+            } else {
+                $button.addClass('is-open');
+                $content.stop().slideDown();
+            }
+        });
     });
-};
 
-let releaseNavigationButtons = document.querySelectorAll('.release__navigation .navigation-button');
-let releaseListItems = document.querySelectorAll('.release__list .item');
-
-releaseNavigationButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        if (button.classList.contains('is-current')) return;
-
-        releaseNavigationButtons.forEach((btn) => btn.classList.remove('is-current'));
-        button.classList.add('is-current');
-        releaseListItems.forEach((item) => item.classList.remove('is-current'));
-        releaseListItems[index].classList.add('is-current');
-        scrollTabBlockToStart(button);
-    });
-});
-
-
-const accordionMobileMq = window.matchMedia('(max-width: 991px)');
-
-const syncReleaseAccordionForViewport = () => {
-    const $items = $('.release__list .item');
-    const $titles = $items.find('.item-title');
-    const $wrappers = $items.find('.item-wrapper');
-
-    if (accordionMobileMq.matches) {
-        $titles.removeClass('is-open');
-        $wrappers.hide();
-        $items.first().find('.item-title').addClass('is-open');
-        $items.first().find('.item-wrapper').show();
-    } else {
-        $titles.removeClass('is-open');
-        $wrappers.css('display', '');
+    syncAccordionForViewport();
+    if (typeof accordionMobileMq.addEventListener === 'function') {
+        accordionMobileMq.addEventListener('change', syncAccordionForViewport);
+    } else if (typeof accordionMobileMq.addListener === 'function') {
+        accordionMobileMq.addListener(syncAccordionForViewport);
     }
-};
+});
 
-$('.release__list .item').each(function (index, item) {
-    let button = $(item).find('.item-title');
-    let content = $(item).find('.item-wrapper');
-    $(button).on('click', function () {
-        if (!accordionMobileMq.matches) return;
+/* ==========================================================================
+   Education — desktop cards + mobile accordion
+   ========================================================================== */
 
-        const isOpen = $(button).hasClass('is-open');
+document.querySelectorAll('section.education').forEach((section) => {
+    const $section = $(section);
 
-        $('.release__list .item .item-title.is-open').not(button).removeClass('is-open');
-        $('.release__list .item .item-wrapper').not(content).stop().slideUp();
+    $section.find('.education__list .item-media').each(function (index, item) {
+        $(item).on('click', function () {
+            $(item).parent().addClass('is-current').siblings().removeClass('is-current');
+        });
+    });
 
-        if (isOpen) {
-            $(button).removeClass('is-open');
-            $(content).stop().slideUp();
+    const $items = $section.find('.education__list-mobile .item');
+
+    const syncAccordionForViewport = () => {
+        const $wrappers = $items.find('.item-wrapper');
+
+        if (accordionMobileMq.matches) {
+            $items.removeClass('is-open');
+            $wrappers.hide();
+            $items.first().addClass('is-open');
+            $items.first().find('.item-wrapper').show();
         } else {
-            $(button).addClass('is-open');
-            $(content).stop().slideDown();
+            $items.removeClass('is-open');
+            $wrappers.css('display', '');
         }
+    };
+
+    $items.each(function (index, item) {
+        const $item = $(item);
+        const $button = $item.find('.item-title');
+        const $content = $item.find('.item-wrapper');
+
+        $button.on('click', function () {
+            if (!accordionMobileMq.matches) return;
+
+            const isOpen = $item.hasClass('is-open');
+
+            $items.not($item).removeClass('is-open');
+            $items.find('.item-wrapper').not($content).stop().slideUp();
+
+            if (isOpen) {
+                $item.removeClass('is-open');
+                $content.stop().slideUp();
+            } else {
+                $item.addClass('is-open');
+                $content.stop().slideDown();
+            }
+        });
     });
-});
 
-syncReleaseAccordionForViewport();
-if (typeof accordionMobileMq.addEventListener === 'function') {
-    accordionMobileMq.addEventListener('change', syncReleaseAccordionForViewport);
-} else if (typeof accordionMobileMq.addListener === 'function') {
-    accordionMobileMq.addListener(syncReleaseAccordionForViewport);
-}
-
-
-$('.education__list .item-media').each(function (index, item) {
-    $(item).on('click', function () {
-        $(item).parent().addClass('is-current').siblings().removeClass('is-current');
-    });
-});
-
-const syncEducationAccordionForViewport = () => {
-    const $items = $('.education__list-mobile .item');
-    const $wrappers = $items.find('.item-wrapper');
-
-    if (accordionMobileMq.matches) {
-        $items.removeClass('is-open');
-        $wrappers.hide();
-        $items.first().addClass('is-open');
-        $items.first().find('.item-wrapper').show();
-    } else {
-        $items.removeClass('is-open');
-        $wrappers.css('display', '');
+    syncAccordionForViewport();
+    if (typeof accordionMobileMq.addEventListener === 'function') {
+        accordionMobileMq.addEventListener('change', syncAccordionForViewport);
+    } else if (typeof accordionMobileMq.addListener === 'function') {
+        accordionMobileMq.addListener(syncAccordionForViewport);
     }
-};
+});
 
-$('.education__list-mobile .item').each(function (index, item) {
-    let button = $(item).find('.item-title');
-    let content = $(item).find('.item-wrapper');
-    $(button).on('click', function () {
-        if (!accordionMobileMq.matches) return;
+/* ==========================================================================
+   Section FAQ
+   ========================================================================== */
 
-        const isOpen = $(item).hasClass('is-open');
+document.querySelectorAll('section.section-faq').forEach((section) => {
+    const $section = $(section);
+    const $items = $section.find('.section-faq__list .item');
 
-        $('.education__list-mobile .item').not(item).removeClass('is-open');
-        $('.education__list-mobile .item .item-wrapper').not(content).stop().slideUp();
+    $items.each(function (index, item) {
+        const $item = $(item);
+        const $button = $item.find('.item-title');
+        const $content = $item.find('.item-content');
 
-        if (isOpen) {
-            $(item).removeClass('is-open');
-            $(content).stop().slideUp();
-        } else {
-            $(item).addClass('is-open');
-            $(content).stop().slideDown();
-        }
+        $button.on('click', function () {
+            const isOpen = $item.hasClass('is-open');
+
+            $items.not($item).removeClass('is-open');
+            $items.find('.item-content').not($content).stop().slideUp();
+
+            if (isOpen) {
+                $item.removeClass('is-open');
+                $content.stop().slideUp();
+            } else {
+                $item.addClass('is-open');
+                $content.stop().slideDown();
+            }
+        });
     });
 });
 
-syncEducationAccordionForViewport();
-if (typeof accordionMobileMq.addEventListener === 'function') {
-    accordionMobileMq.addEventListener('change', syncEducationAccordionForViewport);
-} else if (typeof accordionMobileMq.addListener === 'function') {
-    accordionMobileMq.addListener(syncEducationAccordionForViewport);
-}
-
-$('.section-faq__list .item').each(function (index, item) {
-    let button = $(item).find('.item-title');
-    let content = $(item).find('.item-content');
-    $(button).on('click', function () {
-        const isOpen = $(item).hasClass('is-open');
-
-        $('.section-faq__list .item').not(item).removeClass('is-open');
-        $('.section-faq__list .item .item-content').not(content).stop().slideUp();
-
-        if (isOpen) {
-            $(item).removeClass('is-open');
-            $(content).stop().slideUp();
-        } else {
-            $(item).addClass('is-open');
-            $(content).stop().slideDown();
-        }
-    });
-});
-
-
+/* ==========================================================================
+   Section side navigation (shared UI)
+   ========================================================================== */
 
 $('.section-side-navigation').each(function (_, navigation) {
     const $navigation = $(navigation);
+    const $scope = $navigation.closest('section');
+    const scopeEl = $scope.get(0) || document.body;
     const $placeholder = $navigation.find('.section-side-navigation__placeholder');
     const $current = $navigation.find('.section-side-navigation__current');
     const $list = $navigation.find('.section-side-navigation__list');
@@ -877,11 +930,14 @@ $('.section-side-navigation').each(function (_, navigation) {
 
     const syncMobileHeight = () => {
         if (!mobileMq.matches || isGrouped) {
-            $navigation.css('height', '');
+            scopeEl.style.removeProperty('--section-side-navigation-height');
             return;
         }
 
-        $navigation.css('height', $placeholder.outerHeight());
+        scopeEl.style.setProperty(
+            '--section-side-navigation-height',
+            `${$placeholder.outerHeight()}px`
+        );
     };
 
     const openNavigation = () => {
@@ -958,6 +1014,10 @@ $('.section-side-navigation').each(function (_, navigation) {
     }
 });
 
+/* ==========================================================================
+   Location switcher
+   ========================================================================== */
+
 document.querySelectorAll('.location-switcher').forEach((switcher) => {
     const buttons = switcher.querySelectorAll('.location-toggle__button');
     const panels = switcher.querySelectorAll('.location-toggle-panel');
@@ -980,6 +1040,10 @@ document.querySelectorAll('.location-switcher').forEach((switcher) => {
         });
     });
 });
+
+/* ==========================================================================
+   Gallery block
+   ========================================================================== */
 
 document.querySelectorAll('.gallery-block').forEach((gallery) => {
     if (typeof Swiper === 'undefined') return;
@@ -1018,9 +1082,12 @@ document.querySelectorAll('.gallery-block').forEach((gallery) => {
     });
 });
 
-(() => {
-    const story = document.querySelector('.story');
-    if (!story || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+/* ==========================================================================
+   Story — decoration scroll pin
+   ========================================================================== */
+
+document.querySelectorAll('section.story').forEach((story) => {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
     const dec = story.querySelector('.story__dec');
     const list = story.querySelector('.story__list');
@@ -1029,40 +1096,69 @@ document.querySelectorAll('.gallery-block').forEach((gallery) => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const getTravelY = () => {
-        const currentY = Number(gsap.getProperty(dec, 'y')) || 0;
-        const decRect = dec.getBoundingClientRect();
-        const dotRect = lastDot.getBoundingClientRect();
-        const decCenter = decRect.top + decRect.height / 2;
-        const dotCenter = dotRect.top + dotRect.height / 2;
-
-        return currentY + (dotCenter - decCenter);
-    };
-
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-        gsap.to(dec, {
-            y: getTravelY,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: list,
-                start: 'top center',
-                endTrigger: lastDot,
-                end: 'center center',
-                scrub: true,
-                invalidateOnRefresh: true,
-            },
-        });
+        let tween = null;
 
-        const refresh = () => ScrollTrigger.refresh();
-        window.addEventListener('load', refresh);
+        // Recreate instead of ScrollTrigger.refresh() — refresh while scrolled
+        // shifts start/end by -scrollY and starts the scrub too early.
+        const create = () => {
+            if (tween) {
+                tween.scrollTrigger?.kill();
+                tween.kill();
+            }
+
+            gsap.set(dec, { y: 0 });
+
+            const travelY =
+                (lastDot.getBoundingClientRect().top + lastDot.offsetHeight / 2)
+                - (dec.getBoundingClientRect().top + dec.offsetHeight / 2);
+
+            const scrollDistance = Math.max(
+                1,
+                (lastDot.getBoundingClientRect().top + lastDot.offsetHeight / 2)
+                - list.getBoundingClientRect().top
+            );
+
+            tween = gsap.to(dec, {
+                y: travelY,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: list,
+                    start: 'top center',
+                    end: `+=${scrollDistance}`,
+                    scrub: true,
+                },
+            });
+        };
+
+        let resizeTimer = null;
+        const onResize = () => {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(create, 150);
+        };
+
+        rrWhenLoaderDone(create);
+        window.addEventListener('load', create);
+        window.addEventListener('resize', onResize);
 
         return () => {
-            window.removeEventListener('load', refresh);
+            window.clearTimeout(resizeTimer);
+            window.removeEventListener('load', create);
+            window.removeEventListener('resize', onResize);
+            if (tween) {
+                tween.scrollTrigger?.kill();
+                tween.kill();
+            }
+            gsap.set(dec, { clearProps: 'transform' });
         };
     });
-})();
+});
+
+/* ==========================================================================
+   Side navigation filter (shared helper)
+   ========================================================================== */
 
 const initSideNavigationFilter = ($navItems, $panels) => {
     if (!$navItems.length || !$panels.length) return;
@@ -1104,20 +1200,38 @@ const initSideNavigationFilter = ($navItems, $panels) => {
         isAnimating = true;
         const $visible = $panels.filter(':visible');
         const $target = getTargetPanels($item);
+        const $container = $panels.first().parent();
+        const containerEl = $container.get(0);
+
+        if (containerEl) {
+            containerEl.style.minHeight = `${containerEl.offsetHeight}px`;
+        }
 
         $visible.stop(true, true).fadeOut(fadeDuration).promise().done(function () {
             $target.stop(true, true).hide().fadeIn(fadeDuration).promise().done(function () {
+                if (containerEl) {
+                    containerEl.style.minHeight = '';
+                }
                 isAnimating = false;
             });
         });
     });
 };
+
+/* ==========================================================================
+   Testimonials
+   ========================================================================== */
+
 $('.testimonials').each(function (_, section) {
     initSideNavigationFilter(
         $(section).find('.testimonials__navigation li'),
         $(section).find('.testimonials__list')
     );
 });
+
+/* ==========================================================================
+   About
+   ========================================================================== */
 
 $('.about').each(function (_, section) {
     initSideNavigationFilter(
@@ -1126,17 +1240,24 @@ $('.about').each(function (_, section) {
     );
 });
 
+/* ==========================================================================
+   About location
+   ========================================================================== */
+
 $('.about-location').each(function (_, section) {
     const $section = $(section);
     const $desktopItems = $section.find('.about-location__navigation .section-side-navigation__list li');
     const $blocks = $section.find('.about-location__block');
     const $allPanels = $section.find('.about-location__list > .item');
+    const $blocksContainer = $section.find('.about-location__blocks');
+    const $desktopNav = $section.find('.about-location__navigation');
     const fadeDuration = 300;
+    const minHeightBuffer = 16;
     let isAnimating = false;
     const mobileMq = window.matchMedia('(max-width: 991px)');
 
     const getBlockNavItems = ($block) =>
-        $block.find('.about-location__navigation-item .section-side-navigation__list li');
+        $block.find('.about-location__navigation-list .section-side-navigation__list li');
 
     const syncPlaceholder = ($navigation) => {
         const $current = $navigation.find('.section-side-navigation__current');
@@ -1156,6 +1277,23 @@ $('.about-location').each(function (_, section) {
         $panel.find('.gallery-block__main').each(function () {
             if (this.swiper) this.swiper.update();
         });
+    };
+
+    const getNavMinHeight = () => ($desktopNav.outerHeight() || 0) + minHeightBuffer;
+
+    const syncBlocksMinHeight = () => {
+        const containerEl = $blocksContainer.get(0);
+        if (!containerEl) return;
+
+        if (mobileMq.matches) {
+            containerEl.style.minHeight = '';
+            return;
+        }
+
+        containerEl.style.minHeight = '';
+        const contentHeight = containerEl.offsetHeight;
+        const minHeight = getNavMinHeight();
+        containerEl.style.minHeight = contentHeight < minHeight ? `${minHeight}px` : '';
     };
 
     const getGlobalIndexFromBlock = ($block, $li) => {
@@ -1204,6 +1342,7 @@ $('.about-location').each(function (_, section) {
 
     const applyVisibility = () => {
         if (mobileMq.matches) {
+            $blocksContainer.css('min-height', '');
             $blocks.each(function () {
                 const $block = $(this);
                 const $lis = getBlockNavItems($block);
@@ -1224,14 +1363,28 @@ $('.about-location').each(function (_, section) {
         $allPanels.hide();
         $allPanels.eq(globalIndex).show();
         updateGalleries($allPanels.eq(globalIndex));
+        syncBlocksMinHeight();
     };
 
-    const fadeSwap = ($hide, $show) => {
+    const fadeSwap = ($hide, $show, $heightTarget) => {
         if (isAnimating || !$show.length) return;
 
         isAnimating = true;
+        const containerEl = ($heightTarget && $heightTarget.get(0)) || $blocksContainer.get(0);
+
+        if (containerEl) {
+            containerEl.style.minHeight = `${containerEl.offsetHeight}px`;
+        }
+
         $hide.stop(true, true).fadeOut(fadeDuration).promise().done(function () {
             $show.stop(true, true).hide().fadeIn(fadeDuration).promise().done(function () {
+                if (mobileMq.matches) {
+                    if (containerEl) {
+                        containerEl.style.minHeight = '';
+                    }
+                } else {
+                    syncBlocksMinHeight();
+                }
                 updateGalleries($show);
                 isAnimating = false;
             });
@@ -1260,7 +1413,11 @@ $('.about-location').each(function (_, section) {
         syncDesktopNavFromGlobal(globalIndex);
         syncBlockNavFromGlobal(globalIndex);
         scrollTabBlockToStart(this);
-        fadeSwap($allPanels.filter(':visible'), $allPanels.eq(globalIndex));
+        fadeSwap(
+            $allPanels.filter(':visible'),
+            $allPanels.eq(globalIndex),
+            $blocksContainer
+        );
     });
 
     $blocks.each(function () {
@@ -1282,9 +1439,17 @@ $('.about-location').each(function (_, section) {
             scrollTabBlockToStart(this);
 
             if (mobileMq.matches) {
-                fadeSwap($panels.filter(':visible'), $panels.eq(localIndex));
+                fadeSwap(
+                    $panels.filter(':visible'),
+                    $panels.eq(localIndex),
+                    $block.find('.about-location__list')
+                );
             } else {
-                fadeSwap($allPanels.filter(':visible'), $allPanels.eq(globalIndex));
+                fadeSwap(
+                    $allPanels.filter(':visible'),
+                    $allPanels.eq(globalIndex),
+                    $blocksContainer
+                );
             }
         });
     });
@@ -1294,4 +1459,6 @@ $('.about-location').each(function (_, section) {
     } else if (typeof mobileMq.addListener === 'function') {
         mobileMq.addListener(applyVisibility);
     }
+
+    $(window).on('resize.aboutLocation', syncBlocksMinHeight);
 });

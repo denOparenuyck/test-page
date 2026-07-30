@@ -43,7 +43,7 @@
     }
 
     .admissions__inner {
-        padding: 106px 0 44px;
+        padding: 70px 0;
     }
 
     .admissions__wrapper {
@@ -71,7 +71,7 @@
         min-width: 0;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 50px;
     }
 
     .admissions__image {
@@ -148,10 +148,8 @@
                 }
             }
         }
-
-
         .admissions__inner {
-            padding: vwD(106px) 0 vwD(44px);
+            padding: vwD(70px) 0;
         }
 
         .admissions__wrapper {
@@ -169,7 +167,7 @@
         }
 
         .admissions__content {
-            gap: vwD(10px);
+            gap: vwD(50px);
         }
 
         .admissions__image {
@@ -228,7 +226,7 @@
         }
 
         .admissions__inner {
-            padding: vwM(72px) 0 0;
+            padding: vwM(50px) 0;
         }
 
         .admissions__wrapper {

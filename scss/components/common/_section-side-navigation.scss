@@ -124,7 +124,7 @@
 @include maxw($mobile) {
     .section-side-navigation {
         width: 100%;
-        height: auto;
+        height: var(--section-side-navigation-height);
         position: relative;
         z-index: 5;
         .section-side-navigation__inner {
@@ -189,14 +189,11 @@
                 font-size: vwM(20px);
                 line-height: 1;
                 letter-spacing: -0.03em;
-                padding: 0 vwM(16px) 0 vwM(53px);
-                margin-top: 0;
+                padding: 0 vwM(16px) vwM(16px) vwM(53px);
                 background: transparent;
                 border-radius: 0;
                 color: #FFFFFF;
-                &:not(:first-child) {
-                    margin-top: 0;
-                }
+
                 &::before {
                     display: none;
                 }
@@ -205,13 +202,7 @@
                 }
                 &.is-current {
                     display: none;
-                    padding-left: vwM(53px);
-                    background: transparent;
-                    color: #FFFFFF;
                 }
-            }
-            li:not(.is-current) ~ li:not(.is-current) {
-                margin-top: vwM(18px);
             }
         }
         &.is-open {

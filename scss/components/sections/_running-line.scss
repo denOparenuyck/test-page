@@ -5,7 +5,7 @@
     overflow: hidden;
     position: relative;
     z-index: 2;
-    padding: 122px 0 140px;
+    padding: 70px 0;
 
     .running-line__track {
         display: flex;
@@ -45,7 +45,7 @@
 @include maxw($desktop) {
     .running-line {
         max-width: vwD(1920px);
-        padding: vwD(122px) 0 vwD(140px);
+        padding: vwD(70px) 0;
 
         .running-line__item {
             width: vwD(334px);
@@ -57,7 +57,7 @@
 @include maxw($mobile) {
     .running-line {
         max-width: 100%;
-        padding: vwM(60px) 0 vwM(100px);
+        padding: vwM(50px) 0;
 
         .running-line__item {
             width: vwM(163px);

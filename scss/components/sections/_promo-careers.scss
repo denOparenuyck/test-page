@@ -1,6 +1,6 @@
 .promo-careers {
     .promo-careers__inner {
-        padding: 106px 0 140px;
+        padding: 70px 0;
     }
 
     .promo-careers__wrapper {
@@ -42,7 +42,7 @@
 @include maxw($desktop) {
     .promo-careers {
         .promo-careers__inner {
-            padding: vwD(106px) 0 vwD(140px);
+            padding: vwD(70px) 0;
         }
 
         .promo-careers__content {
@@ -68,7 +68,7 @@
 @include maxw($mobile) {
     .promo-careers {
         .promo-careers__inner {
-            padding: vwM(72px) 0 vwM(100px);
+            padding: vwM(50px) 0;
         }
 
         .promo-careers__wrapper {

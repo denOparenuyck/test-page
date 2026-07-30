@@ -8,7 +8,7 @@
         margin-top: 0;
 
         .text-image__inner {
-            padding: 140px 0;
+            padding: 70px 0;
 
             &::before,
             &::after {
@@ -40,7 +40,7 @@
         width: 100%;
         max-width: 1920px;
         margin: 0 auto;
-        padding: 140px 0;
+        padding: 70px 0;
         position: relative;
         z-index: 2;
 
@@ -136,12 +136,12 @@
             margin-top: 0;
 
             .text-image__inner {
-                padding: vwD(140px) 0;
+                padding: vwD(70px) 0;
             }
         }
 
         .text-image__inner {
-            padding: vwD(140px) 0;
+            padding: vwD(70px) 0;
 
             &::before {
                 top: vwD(-800px);
@@ -192,9 +192,15 @@
         padding: 0;
         margin-top: 0;
 
+        &.is-plain {
+            .text-image__inner {
+                padding: vwM(50px) 0;
+            }
+        }
+
         .text-image__inner {
             max-width: 100%;
-            padding: vwM(100px) 0;
+            padding: vwM(50px) 0;
 
             &::before {
                 display: none;
