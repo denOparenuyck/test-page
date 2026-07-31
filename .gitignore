@@ -1,2 +1,3 @@
 prepros.config
 debug.log
+.playwright-mcp/

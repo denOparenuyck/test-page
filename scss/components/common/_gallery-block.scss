@@ -147,6 +147,24 @@
     --gallery-block-main-height: 470px;
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .gallery-block.is-tall {
+        --gallery-block-main-height: #{vwB(470px)};
+    }
+
+    .gallery-block {
+        --gallery-block-gap: #{vwB(10px)};
+        --gallery-block-main-height: #{vwB(449px)};
+        --gallery-block-main-radius: #{vwB(8px)};
+        --gallery-block-thumb-size: #{vwB(60px)};
+        --gallery-block-thumb-gap: #{vwB(10px)};
+        --gallery-block-thumb-radius: #{vwB(4px)};
+        --gallery-block-nav-size: #{vwB(40px)};
+        --gallery-block-nav-offset: #{vwB(12px)};
+        --gallery-block-gradient-width: #{vwB(82px)};
+    }
+}
+
 @include maxw($desktop) {
     .gallery-block.is-tall {
         --gallery-block-main-height: #{vwD(470px)};

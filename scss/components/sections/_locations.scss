@@ -90,12 +90,53 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .locations {
+        padding-bottom: vwB(534px);
+        margin-bottom: vwB(-534px);
+
+        .locations__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+            &::before {
+                left: vwB(-742px);
+                bottom: vwB(-534px);
+                width: vwB(1479px);
+                height: vwB(1584px);
+            }
+        }
+
+        .locations__top {
+            margin-bottom: vwB(55px);
+        }
+
+        .locations__caption {
+            margin-bottom: vwB(27px);
+        }
+
+        .locations__list {
+            grid-gap: vwB(10px);
+
+            .item-image {
+                height: vwB(437px);
+                border-radius: vwB(8px);
+                margin-bottom: vwB(24px);
+            }
+
+            .item-title {
+                font-size: vwB(32px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .locations {
         padding-bottom: vwD(534px);
         margin-bottom: vwD(-534px);
 
         .locations__inner {
+            max-width: vwD(1920px);
             padding: vwD(70px) 0;
             &::before {
                 left: vwD(-742px);

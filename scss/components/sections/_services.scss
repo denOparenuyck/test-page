@@ -110,12 +110,74 @@
 
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .services {
+        padding-top: vwB(406px);
+        margin-top: vwB(-406px);
+
+        .services__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            &::before {
+                top: vwB(-406px);
+                left: vwB(-585px);
+                width: vwB(1447px);
+                height: vwB(1527px);
+            }
+
+            &::after {
+                top: vwB(-358px);
+                right: vwB(-615px);
+                width: vwB(1307px);
+                height: vwB(1396px);
+            }
+        }
+
+        .services__top {
+            margin-bottom: vwB(50px);
+        }
+
+        .services__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .services__list {
+            border-radius: vwB(8px);
+
+            .item {
+                padding: vwB(32px);
+            }
+
+            .item-title {
+                font-size: vwB(22px);
+                margin-bottom: vwB(28px);
+            }
+
+            .item-text {
+                margin-bottom: vwB(28px);
+            }
+
+            .item-button {
+                a {
+                    font-size: vwB(18px);
+                }
+            }
+        }
+
+        .services__button {
+            margin-top: vwB(30px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .services {
         padding-top: vwD(406px);
         margin-top: vwD(-406px);
 
         .services__inner {
+            max-width: vwD(1920px);
             padding: vwD(70px) 0;
 
             &::before {

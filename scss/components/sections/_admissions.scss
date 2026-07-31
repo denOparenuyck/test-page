@@ -125,6 +125,77 @@
     .admissions__step-text {}
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .admissions {
+        .admissions__dec {
+            span {
+                max-width: vwB(1920px);
+
+                &::before,
+                &::after {
+                    width: vwB(1119px);
+                    height: vwB(1224px);
+                }
+
+                &::before {
+                    top: vwB(-224px);
+                    left: vwB(-596px);
+                }
+
+                &::after {
+                    right: vwB(-720px);
+                    bottom: vwB(-156px);
+                }
+            }
+        }
+        .admissions__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .admissions__wrapper {
+            gap: vwB(32px);
+        }
+
+        .admissions__info {
+            width: vwB(633px);
+            top: vwB(150px);
+            padding-top: vwB(100px);
+        }
+
+        .admissions__title {
+            margin-bottom: vwB(28px);
+        }
+
+        .admissions__content {
+            gap: vwB(50px);
+        }
+
+        .admissions__image {
+            height: vwB(432px);
+            border-radius: vwB(8px);
+        }
+
+        .admissions__steps {
+            gap: vwB(10px);
+        }
+
+        .admissions__step {
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+        }
+
+        .admissions__step-num {
+            font-size: vwB(32px);
+            margin-bottom: vwB(24px);
+        }
+
+        .admissions__step-title {
+            font-size: vwB(22px);
+            margin-bottom: vwB(24px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .admissions {
         .admissions__dec {

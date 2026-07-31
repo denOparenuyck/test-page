@@ -159,6 +159,90 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .promo {
+
+        &.is-single-title {
+            .promo__inner {
+                padding: vwB(70px) 0 vwB(730px);
+            }
+        }
+
+        &.no-image {
+            .promo__inner {
+                padding: vwB(70px) 0;
+            }
+        }
+
+        &.size-imagev2 {
+            .promo__inner {
+                padding: vwB(70px) 0 vwB(646px);
+            }
+
+            .promo__content-image {
+                height: vwB(578px);
+            }
+        }
+
+        &.is-content {
+            .promo__inner {
+                padding: vwB(70px) 0;
+            }
+
+            .promo__content-title {
+                margin-bottom: vwB(50px);
+            }
+
+            .promo__content-image {
+                width: calc(100% + vwB(384px));
+                margin: 0 vwB(-192px);
+                height: vwB(594px);
+            }
+        }
+
+        .promo__inner {
+            padding: vwB(70px) 0 vwB(742px);
+            max-width: vwB(1920px);
+        }
+
+        .promo__content {
+            grid-gap: vwB(10px);
+        }
+
+        .promo__content-image {
+            height: vwB(678px);
+        }
+
+        .promo__content-list {
+            gap: vwB(10px);
+        }
+
+        .promo__content-note {
+            gap: vwB(16px);
+            margin-top: vwB(24px);
+            padding-top: vwB(24px);
+        }
+
+        .promo__content-note-icon {
+            width: vwB(35px);
+        }
+
+        .promo__content-text {
+            width: vwB(707px);
+            margin: vwB(50px) auto 0;
+
+            .promo__content-text-title {
+                font-size: vwB(32px);
+                margin-bottom: vwB(28px);
+            }
+
+            .promo__content-text-block {
+                font-size: vwB(18px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .promo {
 

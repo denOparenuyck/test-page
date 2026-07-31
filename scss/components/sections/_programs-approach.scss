@@ -135,6 +135,78 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .programs-approach {
+        &:has(.dec-shadow-bottom-right) {
+            padding-bottom: vwB(256px);
+            margin-bottom: vwB(-256px);
+        }
+
+        &:has(.dec-shadow-bottom-right) + .our-programs {
+            margin-top: vwB(-756px);
+        }
+
+        .programs-approach__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            .dec-shadow-bottom-right {
+                right: vwB(-648px);
+                bottom: vwB(-256px);
+                width: vwB(1119px);
+                height: vwB(1224px);
+            }
+        }
+
+        .programs-approach__grid {
+            grid-gap: vwB(10px);
+        }
+
+        .programs-approach__method {
+            border-radius: vwB(8px);
+            padding: vwB(36px);
+        }
+
+        .programs-approach__method-top {
+            margin-bottom: vwB(60px);
+        }
+
+        .programs-approach__method-caption {
+            font-size: vwB(18px);
+            margin-bottom: vwB(28px);
+        }
+
+        .programs-approach__image {
+            min-height: vwB(320px);
+            border-radius: vwB(8px);
+        }
+
+        .programs-approach__aside {
+            gap: vwB(10px);
+        }
+
+        .programs-approach__quote {
+            border-radius: vwB(8px);
+            padding: vwB(36px);
+            gap: vwB(32px);
+        }
+
+        .programs-approach__quote-icon {
+            width: vwB(40px);
+            height: vwB(46px);
+        }
+
+        .programs-approach__quote-text {
+            font-size: vwB(22px);
+        }
+
+        .programs-approach__aside-image {
+            min-height: vwB(260px);
+            border-radius: vwB(8px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .programs-approach {
         &:has(.dec-shadow-bottom-right) {

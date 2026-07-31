@@ -73,9 +73,45 @@
     .assistance__button {}
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .assistance {
+        .assistance__inner {
+            max-width: vwB(1920px);
+            padding: vwB(140px) 0;
+            min-height: vwB(710px);
+
+            &::before {
+                height: vwB(710px);
+            }
+
+            &::after {
+                height: vwB(710px);
+            }
+        }
+
+        .assistance__content {
+            width: vwB(676px);
+        }
+
+        .assistance__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .assistance__text {
+            margin-top: vwB(28px);
+        }
+
+        .assistance__buttons {
+            margin-top: vwB(40px);
+            gap: vwB(12px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .assistance {
         .assistance__inner {
+            max-width: vwD(1920px);
             padding: vwD(140px) 0;
             min-height: vwD(710px);
 

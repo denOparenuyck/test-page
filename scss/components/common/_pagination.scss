@@ -105,6 +105,39 @@
 
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .pagination {
+        margin: vwB(80px) 0 0;
+
+        .page-numbers {
+            gap: vwB(10px);
+
+            li {
+                .page-numbers {
+                    width: vwB(50px);
+                    height: vwB(50px);
+                    padding: vwB(10px);
+                    font-size: vwB(16px);
+
+                    &.prev,
+                    &.next {
+                        &::before {
+                            width: vwB(15px);
+                            height: vwB(13px);
+                        }
+                    }
+
+                    &.dots {
+                        font-size: vwB(47px);
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+
 @include maxw($desktop) {
     .pagination {
         margin: vwD(80px) 0 0;

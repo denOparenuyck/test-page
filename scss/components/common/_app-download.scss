@@ -34,6 +34,25 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .app-download {
+        gap: vwB(20px);
+
+        .app-download__qr {
+            width: vwB(132px);
+            height: vwB(132px);
+        }
+
+        .app-download__stores {
+            gap: vwB(20px);
+        }
+
+        .app-download__store {
+            width: vwB(166px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .app-download {
         gap: vwD(20px);

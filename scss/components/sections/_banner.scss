@@ -49,9 +49,27 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .banner {
+        .banner__inner {
+            max-width: vwB(1920px);
+            min-height: vwB(800px);
+        }
+
+        .banner__text {
+            margin-top: vwB(30px);
+        }
+
+        .banner__button {
+            margin-top: vwB(40px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .banner {
         .banner__inner {
+            max-width: vwD(1920px);
             min-height: vwD(800px);
         }
 

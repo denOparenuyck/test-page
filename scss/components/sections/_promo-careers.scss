@@ -39,6 +39,32 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .promo-careers {
+        .promo-careers__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .promo-careers__content {
+            width: vwB(633px);
+
+            &-text {
+                margin-top: vwB(28px);
+            }
+
+            &-button {
+                margin-top: vwB(40px);
+            }
+        }
+
+        .promo-careers__image {
+            width: vwB(763px);
+            height: vwB(458px);
+            border-radius: vwB(8px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .promo-careers {
         .promo-careers__inner {

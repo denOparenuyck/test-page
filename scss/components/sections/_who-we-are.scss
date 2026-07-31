@@ -107,9 +107,66 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .who-we-are {
+        .who-we-are__inner {
+            max-width: vwB(1920px);
+            padding: vwB(140px) 0;
+
+            &::before {
+                left: vwB(-571px);
+                bottom: vwB(29px);
+                width: vwB(1307px);
+                height: vwB(1396px);
+            }
+        }
+
+        .who-we-are__wrapper {
+            gap: vwB(50px);
+        }
+
+        .who-we-are__caption {
+            margin-top: vwB(10px);
+            margin-bottom: vwB(14px);
+        }
+
+        .who-we-are__decoration {
+            width: vwB(71px);
+            height: vwB(93px);
+            margin-bottom: vwB(22px);
+        }
+
+        .who-we-are__content {
+            max-width: vwB(676px);
+            margin-right: vwB(86px);
+        }
+
+        .who-we-are__text {
+            padding-right: vwB(57px);
+            margin-top: vwB(45px);
+        }
+
+        .who-we-are__gallery {
+            margin-top: vwB(82px);
+
+            @include minw(992px) {
+                .swiper-wrapper {
+                    gap: vwB(10px);
+                }
+
+                .swiper-slide {
+                    width: calc(100% / 4 - vwB(8px));
+                    border-radius: vwB(8px);
+                }
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .who-we-are {
         .who-we-are__inner {
+            max-width: vwD(1920px);
             padding: vwD(140px) 0;
 
             &::before {

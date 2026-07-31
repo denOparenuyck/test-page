@@ -372,6 +372,14 @@ const accordionMobileMq = window.matchMedia('(max-width: 991px)');
         });
     }
 
+    $(window).on('scroll', function () {
+        if (window.scrollY > 5) {
+            header.classList.add('is-scrolled');
+        } else {
+            header.classList.remove('is-scrolled');
+        }
+    });
+
     $('.header__nav-mobile .has-child').each(function (index, item) {
         const link = $(item).find('a');
         const submenu = $(item).find('.sub-menu');
@@ -1083,78 +1091,20 @@ document.querySelectorAll('.gallery-block').forEach((gallery) => {
 });
 
 /* ==========================================================================
-   Story — decoration scroll pin
+   Story 
    ========================================================================== */
 
-document.querySelectorAll('section.story').forEach((story) => {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+   $('.story').each(function (_, section) {
+    const $dec = $(section).find('.story__dec img').outerHeight() / 2;
+    const $itemsLast = $(section).find('.story__list .item:last-child');
+    const $heightLastItem = ($itemsLast.outerHeight() / 2) - $dec;
+    const $heightLastItemMobile = $itemsLast.outerHeight() - $(section).find('.story__dec img').outerHeight();
 
-    const dec = story.querySelector('.story__dec');
-    const list = story.querySelector('.story__list');
-    const lastDot = list?.querySelector('.item:last-child .item-dot');
-    if (!dec || !list || !lastDot) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const mm = gsap.matchMedia();
-
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-        let tween = null;
-
-        // Recreate instead of ScrollTrigger.refresh() — refresh while scrolled
-        // shifts start/end by -scrollY and starts the scrub too early.
-        const create = () => {
-            if (tween) {
-                tween.scrollTrigger?.kill();
-                tween.kill();
-            }
-
-            gsap.set(dec, { y: 0 });
-
-            const travelY =
-                (lastDot.getBoundingClientRect().top + lastDot.offsetHeight / 2)
-                - (dec.getBoundingClientRect().top + dec.offsetHeight / 2);
-
-            const scrollDistance = Math.max(
-                1,
-                (lastDot.getBoundingClientRect().top + lastDot.offsetHeight / 2)
-                - list.getBoundingClientRect().top
-            );
-
-            tween = gsap.to(dec, {
-                y: travelY,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: list,
-                    start: 'top center',
-                    end: `+=${scrollDistance}`,
-                    scrub: true,
-                },
-            });
-        };
-
-        let resizeTimer = null;
-        const onResize = () => {
-            window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(create, 150);
-        };
-
-        rrWhenLoaderDone(create);
-        window.addEventListener('load', create);
-        window.addEventListener('resize', onResize);
-
-        return () => {
-            window.clearTimeout(resizeTimer);
-            window.removeEventListener('load', create);
-            window.removeEventListener('resize', onResize);
-            if (tween) {
-                tween.scrollTrigger?.kill();
-                tween.kill();
-            }
-            gsap.set(dec, { clearProps: 'transform' });
-        };
+    $(section).css({
+        '--heightLastItem': $heightLastItem + 'px',
+        '--heightLastItemMobile': $heightLastItemMobile + 'px',
     });
-});
+   });
 
 /* ==========================================================================
    Side navigation filter (shared helper)

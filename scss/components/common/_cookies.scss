@@ -64,6 +64,29 @@
     padding-right: 0;
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .cookies {
+        bottom: vwB(30px);
+        max-width: vwB(892px);
+        padding: 0 vwB(20px);
+    }
+
+    .cookies__inner {
+        gap: vwB(24px);
+        padding: vwB(18px) vwB(18px) vwB(18px) vwB(28px);
+        border-radius: vwB(16px);
+    }
+
+    .cookies__text {
+        max-width: vwB(473px);
+        font-size: vwB(16px);
+    }
+
+    .cookies__button {
+        width: vwB(160px);
+    }
+}
+
 @include maxw($desktop) {
     .cookies {
         bottom: vwD(30px);

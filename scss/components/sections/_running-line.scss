@@ -42,6 +42,18 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .running-line {
+        max-width: vwB(1920px);
+        padding: vwB(70px) 0;
+
+        .running-line__item {
+            width: vwB(334px);
+            padding: 0 vwB(20px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .running-line {
         max-width: vwD(1920px);

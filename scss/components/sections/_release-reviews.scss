@@ -96,6 +96,55 @@
     .release-reviews__text {}
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .release-reviews {
+        .release-reviews__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .release-reviews__top {
+            max-width: vwB(641px);
+            margin: 0 auto vwB(50px);
+        }
+
+        .release-reviews__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .release-reviews__wrapper {
+            gap: vwB(10px);
+        }
+
+        .release-reviews__image {
+            width: vwB(763px);
+            border-radius: vwB(8px);
+        }
+
+        .release-reviews__list {
+            @include minw(992px) {
+                .swiper-wrapper {
+                    gap: vwB(10px);
+                }
+
+                .swiper-slide {
+                    width: calc(50% - #{vwB(5px)});
+                }
+            }
+        }
+
+        .release-reviews__item {
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+            gap: vwB(24px);
+        }
+
+        .release-reviews__quote-icon {
+            width: vwB(23px);
+            height: vwB(19px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .release-reviews {
         .release-reviews__inner {

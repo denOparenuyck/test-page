@@ -105,6 +105,65 @@
     .what-we-treat__card-text {}
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .what-we-treat {
+        .what-we-treat__dec {
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(-434px);
+                    right: vwB(-633px);
+                    width: vwB(1087px);
+                    height: vwB(1167px);
+                }
+            }
+        }
+
+        .what-we-treat__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .what-we-treat__title {
+            margin-bottom: vwB(50px);
+        }
+
+        .what-we-treat__wrapper {
+            gap: vwB(32px);
+        }
+
+        .what-we-treat__image {
+            width: vwB(763px);
+            height: vwB(628px);
+            border-radius: vwB(8px);
+            top: vwB(150px);
+        }
+
+        .what-we-treat__content {
+            gap: vwB(10px);
+        }
+
+        .what-we-treat__intro {
+            padding-bottom: vwB(50px);
+        }
+
+        .what-we-treat__intro-title {
+            font-size: vwB(32px);
+            margin-bottom: vwB(28px);
+        }
+
+        .what-we-treat__card {
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+        }
+
+        .what-we-treat__card-title {
+            font-size: vwB(22px);
+            margin-bottom: vwB(40px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .what-we-treat {
         .what-we-treat__dec {

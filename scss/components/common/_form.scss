@@ -209,6 +209,88 @@ form {
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    form {
+        &[data-status="submitting"] {
+
+            &::before {
+                top: calc(50% - vwB(10px));
+                width: vwB(50px);
+                height: vwB(50px);
+            }
+        }
+
+        .form-fields {
+            grid-gap: vwB(20px);
+        }
+
+        .fields-wrapper {
+            grid-gap: vwB(10px);
+        }
+
+        .field-title {
+            font-size: vwB(16px);
+            margin-bottom: vwB(12px);
+        }
+
+        .input-field {
+
+            input {
+                height: vwB(46px);
+                border-radius: vwB(4px);
+                padding: 0 vwB(16px);
+                font-size: vwB(16px);
+            }
+        }
+
+        .radio-fields {
+            gap: vwB(25px);
+        }
+
+        .radio-field {
+
+            input+span {
+                font-size: vwB(16px);
+                padding-left: vwB(29px);
+
+                &::before {
+                    top: vwB(-4px);
+                    width: vwB(24px);
+                    height: vwB(24px);
+                }
+            }
+        }
+
+        .textarea-field {
+
+            textarea {
+                height: vwB(120px);
+                padding: vwB(12px) vwB(16px);
+                border-radius: vwB(4px);
+                font-size: vwB(16px);
+            }
+        }
+
+        .checkbox-field {
+
+            input+span {
+                font-size: vwB(16px);
+                padding-left: vwB(29px);
+
+                &::before {
+                    top: vwB(-4px);
+                    width: vwB(24px);
+                    height: vwB(24px);
+                }
+            }
+        }
+
+        .button-field {
+            margin-top: vwB(10px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     form {
         &[data-status="submitting"] {

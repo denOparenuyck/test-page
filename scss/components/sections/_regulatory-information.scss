@@ -53,6 +53,37 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .regulatory-information {
+
+        .regulatory-information__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .regulatory-information__wrapper {
+            grid-gap: vwB(10px);
+        }
+
+        .regulatory-information__content {
+            border-radius: vwB(8px);
+            padding: vwB(36px);
+
+            &-text {
+                margin-top: vwB(32px);
+            }
+
+            &-warning {
+                margin-top: vwB(32px);
+                font-size: vwB(18px);
+            }
+        }
+
+        .regulatory-information__image {
+            border-radius: vwB(8px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .regulatory-information {
 

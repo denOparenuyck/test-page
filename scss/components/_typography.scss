@@ -417,6 +417,117 @@
 
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .site-caption {
+        font-size: vwB(18px);
+    }
+
+    .main-title {
+        font-size: vwB(70px);
+    }
+
+    .title {
+        font-size: vwB(50px);
+    }
+
+    .text {
+        font-size: vwB(18px);
+
+        >p,
+        >ul,
+        >ol,
+        >img,
+        >iframe,
+        >table,
+        >blockquote {
+            margin-bottom: vwB(18px);
+        }
+
+        h1 {
+            font-size: vwB(70px);
+            margin-top: vwB(60px);
+            margin-bottom: vwB(32px);
+        }
+
+        h2 {
+            font-size: vwB(50px);
+            margin-top: vwB(60px);
+            margin-bottom: vwB(32px);
+        }
+
+        h3 {
+            font-size: vwB(32px);
+            margin-top: vwB(60px);
+            margin-bottom: vwB(32px);
+        }
+
+        h4,
+        h5,
+        h6 {
+            font-size: vwB(22px);
+            margin-top: vwB(40px);
+            margin-bottom: vwB(20px);
+        }
+
+        blockquote {
+            border-radius: vwB(12px);
+            font-size: vwB(20px);
+            padding: vwB(56px) vwB(64px);
+
+            &::before {
+                top: vwB(20px);
+                left: vwB(24px);
+                width: vwB(40px);
+                height: vwB(32px);
+            }
+        }
+
+        ul {
+            li {
+                padding-left: vwB(27px);
+
+                &::after {
+                    top: vwB(9px);
+                    left: vwB(11px);
+                    width: vwB(5px);
+                    height: vwB(5px);
+                }
+            }
+        }
+
+        ol {
+            li {
+                ol {
+                    padding-left: vwB(27px);
+                }
+
+                ul {
+                    padding-left: vwB(27px);
+
+                    li {
+                        padding-left: vwB(27px);
+
+                        &::after {
+                            top: vwB(9px);
+                            left: vwB(11px);
+                            width: vwB(5px);
+                            height: vwB(5px);
+                        }
+                    }
+                }
+            }
+        }
+
+        table {
+
+            td,
+            th {
+                padding: vwB(15px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .site-caption {
         font-size: vwD(18px);

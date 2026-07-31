@@ -98,6 +98,74 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .about-location {
+        .about-location__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .about-location__top {
+            gap: vwB(30px);
+            margin-bottom: vwB(50px);
+        }
+
+        .about-location__caption {
+            width: vwB(505px);
+        }
+
+        .about-location__top-wrapper {
+            width: vwB(892px);
+        }
+
+        .about-location__text {
+            margin: vwB(28px) 0 0 0;
+        }
+
+        .about-location__wrapper {
+            gap: vwB(30px);
+        }
+
+        .about-location__navigation {
+            top: vwB(150px);
+            width: vwB(505px);
+            gap: vwB(31px);
+        }
+
+        .about-location__navigation-title {
+            font-size: vwB(32px);
+            margin-bottom: vwB(10px);
+        }
+
+        .about-location__blocks {
+            width: vwB(892px);
+            min-height: vwB(600px);
+        }
+
+        .about-location__list {
+            .item {
+                border-radius: vwB(10px);
+                padding: vwB(36px);
+
+                .item-text {
+                    h3 {
+                        margin-bottom: vwB(24px);
+                    }
+                }
+            }
+
+            .item-gallery,
+            .location-switcher {
+                margin-top: vwB(32px);
+            }
+
+            .location-switcher + .item-text,
+            .item-gallery + .item-text {
+                margin-top: vwB(40px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .about-location {
         .about-location__inner {

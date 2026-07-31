@@ -109,6 +109,66 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .concierge-intervention {
+        .concierge-intervention__inner {
+            padding: vwB(140px) 0;
+        }
+
+        .concierge-intervention__top {
+            margin-bottom: vwB(50px);
+        }
+
+        .concierge-intervention__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .concierge-intervention__grid {
+            grid-gap: vwB(10px);
+        }
+
+        .concierge-intervention__card {
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+        }
+
+        .concierge-intervention__card-caption {
+            margin-bottom: vwB(20px);
+        }
+
+        .concierge-intervention__card-title {
+            margin-bottom: vwB(20px);
+        }
+
+        .concierge-intervention__card-button {
+            margin-top: vwB(32px);
+        }
+
+        .concierge-intervention__image {
+            height: vwB(692px);
+            border-radius: vwB(8px);
+        }
+
+        .concierge-intervention__stack {
+            gap: vwB(10px);
+        }
+
+        .concierge-intervention__note {
+            gap: vwB(113px);
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+        }
+
+        .concierge-intervention__note-icon {
+            width: vwB(35px);
+        }
+
+        .concierge-intervention__stack-image {
+            border-radius: vwB(8px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .concierge-intervention {
         .concierge-intervention__inner {

@@ -48,6 +48,28 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .concierge-case {
+        .concierge-case__inner {
+            max-width: vwB(1920px);
+        }
+
+        .concierge-case__content {
+            width: vwB(544px);
+            padding: vwB(32px);
+        }
+
+        .concierge-case__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .concierge-case__text {
+            margin-top: vwB(10px);
+            margin-bottom: vwB(40px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .concierge-case {
         .concierge-case__inner {

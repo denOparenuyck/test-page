@@ -116,6 +116,78 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .section-contact {
+        &:has(.dec-shadow.is-bottom-left) {
+            padding-bottom: vwB(400px);
+            margin-bottom: vwB(-400px);
+        }
+
+        .section-contact__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            .dec-shadow {
+                width: vwB(1409px);
+                height: vwB(1517px);
+
+                &.is-bottom-left {
+                    left: vwB(-678px);
+                    bottom: vwB(-398px);
+                }
+
+                &.is-top-right {
+                    width: vwB(1209px);
+                    height: vwB(1317px);
+                    top: vwB(-500px);
+                    right: vwB(-700px);
+                }
+            }
+        }
+   
+
+        .section-contact__wrapper {
+            gap: vwB(30px);
+        }
+
+        .section-contact__content {
+            width: vwB(741px);
+
+            &-caption {
+                margin-bottom: vwB(28px);
+            }
+
+            &-text {
+                margin-top: vwB(28px);
+            }
+
+            &-warning {
+                margin-top: vwB(28px);
+                font-size: vwB(18px);
+            }
+        }
+
+        .section-contact__form {
+            width: vwB(763px);
+            max-height: vwB(2000px);
+            padding: vwB(36px);
+            border-radius: vwB(10px);
+
+            &.is-submited {
+                max-height: vwB(220px);
+            }
+        }
+
+        .section-contact__form-thank {
+            top: vwB(36px);
+
+            &-text {
+                margin-top: vwB(28px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .section-contact {
         &:has(.dec-shadow.is-bottom-left) {

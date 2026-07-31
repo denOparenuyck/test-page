@@ -93,6 +93,54 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .why-release-u {
+        padding-bottom: vwB(585px);
+        margin-bottom: vwB(-585px);
+
+        .why-release-u__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0 0;
+
+
+            &::before {
+                width: vwB(1087px);
+                height: vwB(1167px);
+                left: vwB(-561px);
+                bottom: vwB(-585px);
+            }
+        }
+
+
+        .why-release-u__wrapper {
+            gap: vwB(32px);
+        }
+
+        .why-release-u__content {
+            width: vwB(741px);
+            gap: vwB(50px);
+        }
+
+        .why-release-u__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .why-release-u__stats {
+            gap: vwB(32px);
+        }
+
+        .why-release-u__stat-label {
+            font-size: vwB(18px);
+        }
+
+        .why-release-u__image {
+            width: vwB(763px);
+            height: vwB(731px);
+            border-radius: vwB(8px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .why-release-u {
         padding-bottom: vwD(585px);

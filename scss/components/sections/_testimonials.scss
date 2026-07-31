@@ -115,6 +115,82 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .testimonials {
+
+
+        .testimonials__dec {
+
+            .testimonials__dec-inner {
+                max-width: vwB(1920px);
+
+                div {
+                    width: vwB(810px);
+                    height: vwB(886px);
+
+                    &.is-right {
+                        top: vwB(170px);
+                        right: vwB(-486px);
+                    }
+
+                    &.is-left {
+                        top: vwB(836px);
+                        left: vwB(-391px);
+                    }
+
+                }
+            }
+        }
+
+        .testimonials__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .testimonials__top {
+            width: vwB(748px);
+            margin: 0 auto vwB(50px);
+
+        }
+
+        .testimonials__text {
+            margin-top: vwB(28px);
+        }
+
+        .testimonials__navigation {
+            width: vwB(512px);
+            top: vwB(100px);
+        }
+
+        .testimonials__content {
+            width: vwB(764px);
+        }
+
+        .testimonials__list {
+            margin-bottom: vwB(16px);
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            .item {
+                border-radius: vwB(8px);
+                padding: vwB(36px);
+
+                &:not(:first-child) {
+                    margin-top: vwB(16px);
+                }
+            }
+
+            .item-label {
+                font-size: vwB(20px);
+                margin-bottom: vwB(24px);
+                padding: vwB(12px) vwB(16px);
+                border-radius: vwB(8px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .testimonials {
 

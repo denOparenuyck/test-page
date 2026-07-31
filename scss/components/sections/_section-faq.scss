@@ -194,6 +194,120 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .section-faq {
+
+        &.is-block {
+            padding-top: vwB(520px);
+            margin-top: vwB(-520px);
+
+            .section-faq__inner {
+                padding: vwB(70px) 0;
+
+                &::before,
+                &::after {
+                    width: vwB(1087px);
+                    height: vwB(1167px);
+                }
+
+                &::before {
+                    top: vwB(-520px);
+                    left: vwB(-533px);
+                }
+
+                &::after {
+                    top: vwB(105px);
+                    right: vwB(-633px);
+                }
+            }
+
+            .section-faq__top {
+                margin-bottom: vwB(50px);
+            }
+
+            .section-faq__caption {
+                margin-bottom: vwB(28px);
+            }
+
+            .section-faq__button {
+                margin-top: vwB(30px);
+
+                .default-button {
+                    min-width: vwB(121px);
+                }
+            }
+        }
+
+
+        .section-faq__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            &::before,
+            &::after {
+                width: vwB(810px);
+                height: vwB(886px);
+            }
+
+            &::before {
+                top: vwB(-300px);
+                right: vwB(-450px);
+            }
+
+            &::after {
+                left: vwB(-400px);
+                bottom: vwB(-150px);
+            }
+        }
+
+        .section-faq__title {
+            margin-bottom: vwB(55px);
+        }
+
+        .section-faq__list {
+            max-width: vwB(764px);
+
+            .item {
+                border-radius: vwB(8px);
+
+                &:not(:first-child) {
+                    margin-top: vwB(20px);
+                }
+            }
+
+            .item-title {
+                font-size: vwB(22px);
+                gap: vwB(32px);
+                padding: vwB(32px);
+            }
+
+            .item-button {
+                width: vwB(24px);
+                height: vwB(24px);
+
+                &::before,
+                &::after {
+                    border-radius: vwB(2px);
+                }
+
+                &::before {
+                    width: vwB(2px);
+                    height: vwB(14px);
+                }
+
+                &::after {
+                    width: vwB(14px);
+                    height: vwB(2px);
+                }
+            }
+
+            .item-text {
+                padding: vwB(28px) vwB(32px) vwB(32px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .section-faq {
 

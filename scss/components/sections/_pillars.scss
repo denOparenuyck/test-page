@@ -176,6 +176,83 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .release.is-pillars {
+        .release__inner {
+            padding: vwB(140px) 0;
+        }
+
+        .release__navigation {
+            width: vwB(420px);
+            gap: vwB(10px);
+
+            .navigation-button {
+                height: vwB(64px);
+                padding: vwB(16px) vwB(20px);
+                border-radius: vwB(8px);
+                gap: vwB(12px);
+
+                .navigation-button__icon {
+                    width: vwB(28px);
+                    height: vwB(32px);
+                }
+
+                &.is-current {
+                    padding: vwB(16px) vwB(20px);
+                }
+            }
+        }
+
+        .release__list {
+            .item-caption {
+                font-size: vwB(18px);
+                margin-bottom: vwB(28px);
+            }
+
+            .item-panel {
+                border-radius: vwB(10px);
+                padding: vwB(36px);
+                gap: vwB(40px);
+            }
+
+            .item-panel-heading {
+                font-size: vwB(32px);
+                margin-bottom: vwB(24px);
+            }
+
+            .item-approach-title {
+                font-size: vwB(22px);
+                margin-bottom: vwB(12px);
+            }
+
+            .item-approach-quote {
+                font-size: vwB(22px);
+                margin-bottom: vwB(24px);
+            }
+
+            .item-program {
+                &:not(:first-child) {
+                    margin-top: vwB(40px);
+                }
+            }
+
+            .item-program-heading {
+                gap: vwB(12px);
+                margin-bottom: vwB(24px);
+            }
+
+            .item-program-icon {
+                width: vwB(28px);
+                height: vwB(32px);
+            }
+
+            .item-program-title {
+                font-size: vwB(22px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .release.is-pillars {
         .release__inner {
@@ -369,6 +446,57 @@
 
     &.is-current {
         display: block;
+    }
+}
+
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .release.is-pillars.is-ny {
+        .release__wrapper {
+            gap: vwB(30px);
+        }
+
+        .release__side {
+            width: vwB(505px);
+            gap: vwB(50px);
+            top: vwB(40px);
+        }
+
+        .release__list {
+            .item-panel {
+                gap: vwB(60px);
+            }
+        }
+    }
+
+    .release.is-pillars {
+        .item-block {
+            gap: vwB(24px);
+        }
+
+        .item-panel-intro {
+            gap: vwB(10px);
+        }
+
+        .item-panel-note {
+            font-size: vwB(18px);
+        }
+    }
+
+    .location-switcher {
+        gap: vwB(32px);
+    }
+
+    .location-toggle__button {
+        padding: vwB(12px) vwB(24px);
+        font-size: vwB(18px);
+
+        &:first-child {
+            border-radius: vwB(8px) 0 0 vwB(8px);
+        }
+
+        &:last-child {
+            border-radius: 0 vwB(8px) vwB(8px) 0;
+        }
     }
 }
 

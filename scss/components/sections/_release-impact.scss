@@ -135,6 +135,88 @@
     .release-impact__card-button {}
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .release-impact {
+        padding-top: vwB(540px);
+        margin-top: vwB(-540px);
+
+        .release-impact__dec {
+            padding-top: vwB(540px);
+
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(-540px);
+                    right: vwB(-708px);
+                    width: vwB(1087px);
+                    height: vwB(1167px);
+                }
+            }
+        }
+
+
+        .release-impact__inner {
+            padding: vwB(70px) 0 0;
+        }
+
+        .release-impact__wrapper {
+            gap: vwB(32px);
+        }
+
+        .release-impact__info {
+            width: vwB(505px);
+            top: vwB(150px);
+            padding-bottom: vwB(80px);
+        }
+
+        .release-impact__title {
+            margin-top: vwB(28px);
+        }
+
+        .release-impact__content {
+            gap: vwB(10px);
+        }
+
+        .release-impact__card {
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+            gap: vwB(40px);
+        }
+
+        .release-impact__card-title {
+            font-size: vwB(22px);
+        }
+
+        .release-impact__card-body {
+            gap: vwB(28px);
+        }
+
+        .release-impact__card-source {
+            font-size: vwB(18px);
+        }
+
+        .release-impact__stats {
+            gap: vwB(10px);
+        }
+
+        .release-impact__stat {
+            flex-basis: calc(50% - #{vwB(5px)});
+            border-radius: vwB(8px);
+            padding: vwB(20px);
+            gap: vwB(10px);
+        }
+
+        .release-impact__stat-num {
+            font-size: vwB(26px);
+        }
+
+        .release-impact__stat-label {
+            font-size: vwB(18px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .release-impact {
         padding-top: vwD(540px);

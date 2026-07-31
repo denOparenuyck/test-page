@@ -126,6 +126,68 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .text-image {
+        padding-top: vwB(800px);
+        margin-top: vwB(-800px);
+
+        &.is-plain {
+            padding-top: 0;
+            margin-top: 0;
+
+            .text-image__inner {
+                padding: vwB(70px) 0;
+            }
+        }
+
+        .text-image__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            &::before {
+                top: vwB(-800px);
+                right: vwB(-700px);
+                width: vwB(1479px);
+                height: vwB(1584px);
+            }
+
+            &::after {
+                top: vwB(-400px);
+                left: vwB(-396px);
+                width: vwB(1041px);
+                height: vwB(1115px);
+            }
+        }
+
+        .text-image__wrapper {
+            gap: vwB(32px);
+        }
+
+        .text-image__media {
+            width: vwB(763px);
+            height: vwB(710px);
+            border-radius: vwB(8px);
+        }
+
+        .text-image__content {
+            max-width: vwB(741px);
+        }
+
+        .text-image__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .text-image__text {
+            margin-top: vwB(28px);
+        }
+
+        .text-image__button {
+            margin-top: vwB(40px);
+            gap: vwB(12px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .text-image {
         padding-top: vwD(800px);
@@ -141,6 +203,7 @@
         }
 
         .text-image__inner {
+            max-width: vwD(1920px);
             padding: vwD(70px) 0;
 
             &::before {

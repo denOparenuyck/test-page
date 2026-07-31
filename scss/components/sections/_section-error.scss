@@ -59,6 +59,48 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .section-error {
+
+        .section-error__inner {
+            max-width: vwB(1920px);
+            padding: vwB(147px) 0 vwB(100px);
+
+            &::before,
+            &::after {
+                top: vwB(-206px);
+                width: vwB(1059px);
+                height: vwB(1135px);
+            }
+
+            &::before {
+                left: vwB(-509px);
+            }
+
+            &::after {
+                right: vwB(-609px);
+            }
+        }
+
+        .section-error__image {
+            width: vwB(536px);
+            height: vwB(297px);
+        }
+
+        .section-error__content {
+            width: vwB(1026px);
+        }
+
+        .section-error__text {
+            margin-top: vwB(32px);
+        }
+
+        .section-error__button {
+            margin-top: vwB(32px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .section-error {
 

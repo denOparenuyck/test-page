@@ -142,6 +142,95 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .concierge-mission {
+        padding-top: vwB(575px);
+        margin-top: vwB(-575px);
+
+        .concierge-mission__dec {
+            padding-top: vwB(575px);
+
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(-474px);
+                    left: vwB(-400px);
+                    width: vwB(772px);
+                    height: vwB(844px);
+                }
+            }
+        }
+
+
+        .concierge-mission__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .concierge-mission__wrapper {
+            gap: vwB(32px);
+        }
+
+        .concierge-mission__content {
+            width: vwB(634px);
+            top: vwB(150px);
+        }
+
+        .concierge-mission__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .concierge-mission__title {
+            margin-bottom: vwB(28px);
+        }
+
+        .concierge-mission__text {
+            &:not(:last-child) {
+                margin-bottom: vwB(18px);
+            }
+        }
+
+        .concierge-mission__card {
+            border-radius: vwB(8px);
+            padding: vwB(32px);
+            gap: vwB(80px);
+        }
+
+        .concierge-mission__card-title {
+            font-size: vwB(22px);
+        }
+
+        .concierge-mission__list {
+            gap: vwB(32px);
+        }
+
+        .concierge-mission__list-item {
+            gap: vwB(24px);
+
+            &:not(:last-child) {
+                padding-bottom: vwB(32px);
+            }
+        }
+
+        .concierge-mission__list-item-top {
+            gap: vwB(12px);
+        }
+
+        .concierge-mission__list-item-icon {
+            width: vwB(28px);
+            height: vwB(32px);
+        }
+
+        .concierge-mission__list-item-title {
+            font-size: vwB(22px);
+        }
+
+        .concierge-mission__list-item-text {
+            font-size: vwB(18px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .concierge-mission {
         padding-top: vwD(575px);

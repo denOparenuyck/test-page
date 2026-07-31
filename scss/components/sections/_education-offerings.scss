@@ -129,6 +129,77 @@
     .education-offerings__card-button {}
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .education-offerings {
+        .education-offerings__dec {
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(262px);
+                    left: vwB(33px);
+                    width: vwB(723px);
+                    height: vwB(790px);
+                }
+            }
+        }
+
+        .education-offerings__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .education-offerings__wrapper {
+            gap: vwB(82px);
+        }
+
+        .education-offerings__info {
+            width: vwB(691px);
+            top: vwB(10px);
+        }
+
+        .education-offerings__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .education-offerings__text {
+            max-width: vwB(549px);
+            margin-top: vwB(28px);
+        }
+
+        .education-offerings__button {
+            margin-top: vwB(40px);
+        }
+
+        .education-offerings__app {
+            margin-top: vwB(60px);
+            gap: vwB(60px);
+
+            .app-download {
+                width: vwB(132px);
+                gap: vwB(20px);
+
+                .app-download__stores {
+                    gap: vwB(15px);
+                }
+            }
+        }
+
+        .education-offerings__content {
+            gap: vwB(20px);
+        }
+
+        .education-offerings__card {
+            gap: vwB(60px);
+            border-radius: vwB(8px);
+            padding: vwB(30px);
+        }
+
+        .education-offerings__card-title {
+            font-size: vwB(22px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .education-offerings {
         .education-offerings__dec {

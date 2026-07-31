@@ -1,15 +1,29 @@
 .story {
-    overflow: hidden;
+    position: relative;
+    z-index: 2;
     padding-top: 577px;
     margin-top: -577px;
 
-    .story__inner {
+    .story__shadows {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-width: 1920px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-        padding:  70px 0;
+        height: 100%;
+        padding-top: 577px;
+        overflow: hidden;
+        pointer-events: none;
+
+        span {
+            display: block;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+        }
 
         .dec-shadow {
             position: absolute;
@@ -55,9 +69,18 @@
         }
     }
 
+    .story__inner {
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        padding:  70px 0;
+    }
+
     .story__top {
         text-align: center;
-        margin-bottom: 32px;
+        margin-bottom: 112px;
     }
 
     .story__caption {
@@ -74,16 +97,20 @@
     }
 
     .story__dec {
-        position: relative;
+        position: absolute;
         z-index: 3;
-        width: 88px;
-        height: 104px;
-        margin: 25px auto 0;
-        will-change: transform;
+        top: -80px;
+        left: 0;
+        pointer-events: none;
+        width: 100%;
+        height: calc(100% - var(--heightLastItem) + 80px);
 
         img {
-            width: 100%;
-            height: 100%;
+            position: sticky;
+            top: 50vh;
+            width: 88px;
+            height: 104px;
+            margin: 0 auto;
             object-fit: contain;
         }
     }
@@ -168,14 +195,129 @@
 }
 
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .story {
+        padding-top: vwB(577px);
+        margin-top: vwB(-577px);
+
+        .story__shadows {
+            padding-top: vwB(577px);
+
+            span {
+                max-width: vwB(1920px);
+            }
+
+            .dec-shadow {
+                width: vwB(1087px);
+                height: vwB(1167px);
+
+                &:nth-child(1) {
+                    top: vwB(-577px);
+                    right: vwB(-713px);
+                }
+
+                &:nth-child(2) {
+                    top: vwB(423px);
+                    left: vwB(-546px);
+                }
+
+                &:nth-child(3) {
+                    top: vwB(465px);
+                    right: vwB(-713px);
+                }
+
+                &:nth-child(4) {
+                    top: vwB(1741px);
+                    right: vwB(-725px);
+                }
+
+                &:nth-child(5) {
+                    top: vwB(2653px);
+                    left: vwB(-546px);
+                }
+
+                &:nth-child(6) {
+                    top: vwB(3574px);
+                    right: vwB(-670px);
+                }
+
+                &:nth-child(7) {
+                    top: vwB(3929px);
+                    left: vwB(-558px);
+                }
+            }
+        }
+
+        .story__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+        }
+
+        .story__top {
+            margin-bottom: vwB(112px);
+        }
+
+        .story__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .story__dec {
+            top: vwB(-80px);
+            height: calc(100% - var(--heightLastItem) + vwB(80px));
+    
+            img {
+                width: vwB(88px);
+                height: vwB(104px);
+            }
+        }
+
+        .story__list {
+            width: vwB(1200px);
+
+            &::before {
+                width: 2px;
+                height: calc(100% + vwB(60px));
+            }
+
+            .item {
+                &:not(:first-child) {
+                    margin-top: vwB(80px);
+                }
+            }
+
+            .item-content {
+                width: vwB(458px);
+            }
+
+            .item-text {
+                margin-top: vwB(32px);
+            }
+
+            .item-image {
+                width: vwB(460px);
+                border-radius: vwB(8px);
+            }
+
+            .item-dot {
+                width: vwB(14px);
+                height: vwB(14px);
+            }
+        }
+
+    }
+}
+
 @include maxw($desktop) {
     .story {
         padding-top: vwD(577px);
         margin-top: vwD(-577px);
 
-        .story__inner {
-            max-width: vwD(1920px);
-            padding: vwD(70px) 0;
+        .story__shadows {
+            padding-top: vwD(577px);
+
+            span {
+                max-width: vwD(1920px);
+            }
 
             .dec-shadow {
                 width: vwD(1087px);
@@ -218,8 +360,13 @@
             }
         }
 
+        .story__inner {
+            max-width: vwD(1920px);
+            padding: vwD(70px) 0;
+        }
+
         .story__top {
-            margin-bottom: vwD(32px);
+            margin-bottom: vwD(112px);
         }
 
         .story__caption {
@@ -227,9 +374,13 @@
         }
 
         .story__dec {
-            width: vwD(88px);
-            height: vwD(104px);
-            margin: vwD(25px) auto 0;
+            top: vwD(-80px);
+            height: calc(100% - var(--heightLastItem) + vwD(80px));
+    
+            img {
+                width: vwD(88px);
+                height: vwD(104px);
+            }
         }
 
         .story__list {
@@ -270,13 +421,15 @@
 
 @include maxw($mobile) {
     .story {
-        overflow: hidden;
         padding-top: vwM(577px);
         margin-top: vwM(-577px);
 
-        .story__inner {
-            max-width: 100%;
-            padding: vwM(50px) 0;
+        .story__shadows {
+            padding-top: vwM(577px);
+
+            span {
+                max-width: 100%;
+            }
 
             .dec-shadow {
                 width: vwM(447px);
@@ -318,8 +471,13 @@
             }
         }
 
+        .story__inner {
+            max-width: 100%;
+            padding: vwM(50px) 0;
+        }
+
         .story__top {
-            margin-bottom: vwM(40px);
+            margin-bottom: vwM(180px);
         }
 
         .story__caption {
@@ -327,22 +485,27 @@
         }
 
         .story__dec {
-            width: vwM(48px);
-            height: vwM(57px);
-            margin: 0 0 0 vwM(7px);
+            top: vwM(-138px);
+            height: calc(100% - var(--heightLastItemMobile) + vwM(138px));
+    
+            img {
+                top: vwM(100px);
+                width: vwM(48px);
+                height: vwM(57px);
+                margin: 0 0 0 vwM(7px);
+            }
         }
 
         .story__list {
             width: 100%;
             padding-left: vwM(58px);
-            padding-top: vwM(84px);
 
             &::before {
                 left: vwM(30px);
                 transform: translateX(0);
                 bottom: 0;
                 width: 1px;
-                height: calc(100% + vwM(35px));
+                height: calc(100% + vwM(118px));
             }
 
             .item {

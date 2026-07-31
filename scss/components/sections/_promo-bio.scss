@@ -80,6 +80,50 @@
 
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .promo-bio {
+        .promo-bio__dec {
+
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(-250px);
+                    right: vwB(-450px);
+                    width: vwB(772px);
+                    height: vwB(844px);
+                }
+            }
+        }
+
+        .promo-bio__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .promo-bio__image {
+            width: vwB(633px);
+            height: vwB(494px);
+            border-radius: vwB(8px);
+            top: vwB(150px);
+        }
+
+        .promo-bio__content {
+            width: vwB(764px);
+            margin-top: vwB(79px);
+        }
+
+        .promo-bio__content-subtitle {
+            font-size: vwB(20px);
+            margin-top: vwB(16px);
+        }
+
+        .promo-bio__content-text {
+            margin-top: vwB(50px);
+        }
+
+    }
+}
+
 @include maxw($desktop) {
     .promo-bio {
         .promo-bio__dec {

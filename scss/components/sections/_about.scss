@@ -176,6 +176,124 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .about {
+        padding-top: vwB(780px);
+        margin-top: vwB(-780px);
+
+        .about__dec {
+            padding-top: vwB(780px);
+
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(-779px);
+                    right: vwB(-652px);
+                    width: vwB(1119px);
+                    height: vwB(1224px);
+                }
+            }
+        }
+
+        .about__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .about__top {
+            gap: vwB(30px);
+            margin-bottom: vwB(50px);
+
+            .about__caption {
+                width: vwB(376px);
+            }
+
+            .about__top-wrapper {
+                width: vwB(892px);
+            }
+
+            .about__text {
+                margin: vwB(28px) 0 0 0;
+            }
+        }
+
+        .about__wrapper {
+            gap: vwB(30px);
+        }
+
+        .about__side {
+            top: vwB(150px);
+            width: vwB(512px);
+        }
+
+        .about__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .about__title {
+            margin-bottom: vwB(50px);
+        }
+
+        .about__text {
+            margin-top: vwB(-22px);
+            margin-bottom: vwB(50px);
+        }
+
+        .about__navigation {
+            width: vwB(376px);
+        }
+
+        .about__main {
+            width: vwB(892px);
+
+            .about__caption {
+                margin-bottom: vwB(28px);
+            }
+        }
+
+        .about__header {
+            margin-bottom: vwB(50px);
+
+            .about__title {
+                margin-bottom: vwB(28px);
+            }
+        }
+
+        .about__list {
+            .item {
+                border-radius: vwB(10px);
+                padding: vwB(36px);
+                margin-top: vwB(28px);
+            }
+
+            .item-gallery,
+            .location-switcher {
+                margin-top: vwB(40px);
+            }
+
+            .location-switcher+.item-text,
+            .item-gallery+.item-text {
+                margin-top: vwB(40px);
+            }
+
+            .item-text {
+                h3+.is-note {
+                    margin-top: vwB(-20px);
+                }
+
+                h4.is-icon {
+                    padding-left: vwB(40px);
+
+                    &::before {
+                        width: vwB(28px);
+                        height: vwB(32px);
+                    }
+                }
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .about {
         padding-top: vwD(780px);

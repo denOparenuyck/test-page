@@ -80,12 +80,61 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .insurance {
+        padding-bottom: vwB(353px);
+        margin-bottom: vwB(-372px);
+
+        .insurance__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            &::before {
+                top: vwB(-567px);
+                left: vwB(-763px);
+                width: vwB(1525px);
+                height: vwB(1670px);
+            }
+
+            &::after {
+                top: vwB(-507px);
+                right: vwB(-804px);
+                width: vwB(1415px);
+                height: vwB(1550px);
+            }
+        }
+
+        .insurance__caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .insurance__text {
+            margin-top: vwB(28px);
+        }
+
+        .insurance__button {
+            margin-top: vwB(40px);
+        }
+
+        .insurance__logos {
+            gap: vwB(27px);
+            height: vwB(72px);
+            margin-top: vwB(40px);
+        }
+
+        .insurance__warning {
+            margin-top: vwB(70px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .insurance {
         padding-bottom: vwD(353px);
         margin-bottom: vwD(-372px);
 
         .insurance__inner {
+            max-width: vwD(1920px);
             padding: vwD(70px) 0;
 
             &::before {

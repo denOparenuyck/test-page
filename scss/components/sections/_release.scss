@@ -148,6 +148,71 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .release {
+        .release__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .release__top {
+            margin-bottom: vwB(70px);
+        }
+
+        .release__caption {
+            top: vwB(19px);
+        }
+
+        .release__title {
+            max-width: vwB(509px);
+        }
+
+        .release__wrapper {
+            gap: vwB(30px);
+        }
+
+        .release__navigation {
+            width: vwB(486px);
+            gap: vwB(28px);
+
+            .navigation-button {
+                font-size: vwB(22px);
+
+                &::before {
+                    top: calc(50% - vwB(5px));
+                    width: vwB(28px);
+                    height: vwB(32px);
+                }
+
+                &.is-current {
+                    padding-left: vwB(32px);
+                }
+            }
+        }
+
+        .release__list {
+            min-height: vwB(480px);
+
+            .item-wrapper {
+                gap: vwB(30px);
+            }
+
+            .item-image {
+                width: vwB(506px);
+                height: vwB(479px);
+                border-radius: vwB(8px);
+            }
+
+            .item-content {
+                max-width: vwB(377px);
+            }
+
+            .item-text {
+                margin-bottom: vwB(30px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .release {
         .release__inner {

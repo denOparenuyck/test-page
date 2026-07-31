@@ -78,6 +78,14 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .default-button {
+        font-size: vwB(20px);
+        padding: vwB(16px) vwB(24px);
+        border-radius: vwB(8px);
+    }
+}
+
 @include maxw($desktop) {
     .default-button {
         font-size: vwD(20px);

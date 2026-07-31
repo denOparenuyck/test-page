@@ -169,6 +169,102 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .footer {
+        .footer__inner {
+            padding-top: vwB(50px);
+        }
+
+        .footer__wrapper {
+            gap: vwB(162px);
+        }
+
+        .footer__decoration {
+            width: vwB(39px);
+            height: vwB(52px);
+        }
+
+        .footer__navigations {
+            gap: vwB(147px);
+        }
+
+        .footer__nav {
+            gap: vwB(75px);
+
+            ul {
+                li {
+
+                    &:not(:first-child) {
+                        margin-top: vwB(10px);
+                    }
+
+                    a {
+                        font-size: vwB(18px);
+                    }
+                }
+            }
+        }
+
+        .footer__info {
+            .footer__info-phone {
+                margin-bottom: vwB(10px);
+            }
+
+            .footer__info-phone,
+            .footer__info-email {
+                a {
+                    font-size: vwB(18px);
+                }
+            }
+
+            .footer__info-social {
+                margin-top: vwB(20px);
+
+                ul {
+                    gap: vwB(30px);
+
+                    li {
+                        a {
+                            font-size: vwB(18px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer__rights {
+            margin-top: vwB(40px);
+            gap: vwB(162px);
+        }
+
+        .footer__copy {
+            font-size: vwB(18px);
+        }
+
+        .footer__privacy {
+            a {
+                font-size: vwB(18px);
+            }
+        }
+
+        .footer__dev {
+            gap: vwB(5px);
+
+            a {
+                font-size: vwB(18px);
+            }
+
+            img {
+                width: vwB(129px);
+            }
+        }
+
+        .footer__image {
+            margin-top: vwB(20px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .footer {
         .footer__inner {

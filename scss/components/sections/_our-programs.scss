@@ -134,6 +134,91 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .our-programs {
+        padding-top: vwB(500px);
+        margin-top: vwB(-500px);
+
+        .our-programs__dec {
+            padding-top: vwB(500px);
+
+            span {
+                max-width: vwB(1920px);
+
+                &::before {
+                    top: vwB(-498px);
+                    right: vwB(-647px);
+                    width: vwB(1003px);
+                    height: vwB(1098px);
+                }
+
+                &::after {
+                    top: vwB(573px);
+                    left: vwB(-396px);
+                    width: vwB(792px);
+                    height: vwB(866px);
+                }
+            }
+        }
+
+        .our-programs__inner {
+            padding: vwB(70px) 0;
+        }
+
+        .our-programs__wrapper {
+            gap: vwB(82px);
+        }
+
+        .our-programs__content {
+            top: vwB(150px);
+            max-width: vwB(691px);
+            margin-top: vwB(8px);
+        }
+
+        .our-programs__content-caption {
+            margin-bottom: vwB(28px);
+        }
+
+        .our-programs__content-text {
+            margin-top: vwB(28px);
+        }
+
+        .our-programs__content-button {
+            margin-top: vwB(40px);
+        }
+
+        .our-programs__list {
+            max-width: vwB(793px);
+
+            .item {
+                border-radius: vwB(8px);
+                padding: vwB(32px);
+
+                &:not(:first-child) {
+                    margin-top: vwB(20px);
+                }
+            }
+
+            .item-title {
+                font-size: vwB(22px);
+            }
+
+            .item-heading {
+                gap: vwB(12px);
+            }
+
+            .item-icon {
+                width: vwB(28px);
+                height: vwB(32px);
+            }
+
+            .item-text {
+                margin-top: vwB(40px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .our-programs {
         padding-top: vwD(500px);

@@ -52,6 +52,31 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .breadcrumbs-page {
+        margin-bottom: vwB(50px);
+
+        .breadcrumbs {
+            gap: vwB(8px);
+
+            .breadcrumbs-item {
+                gap: vwB(8px);
+
+                &:not(:last-child) {
+                    &::after {
+                        font-size: vwB(18px);
+                    }
+                }
+
+                a,
+                span {
+                    font-size: vwB(18px);
+                }
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .breadcrumbs-page {
         margin-bottom: vwD(50px);

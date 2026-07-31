@@ -67,6 +67,36 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .sitemap {
+        .sitemap__inner {
+            max-width: vwB(1920px);
+            padding: vwB(178px) 0 vwB(100px);
+        }
+
+        .sitemap__title {
+            margin-bottom: vwB(72px);
+        }
+
+        .sitemap__list {
+            gap: vwB(72px);
+            max-width: vwB(610px);
+        }
+
+        .sitemap__group {
+            gap: vwB(40px);
+        }
+
+        .sitemap__links {
+            gap: vwB(12px);
+
+            a {
+                font-size: vwB(18px);
+            }
+        }
+    }
+}
+
 @include maxw($desktop) {
     .sitemap {
         .sitemap__inner {

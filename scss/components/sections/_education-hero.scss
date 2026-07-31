@@ -68,6 +68,46 @@
     }
 }
 
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    .education-hero {
+        padding-bottom: vwB(500px);
+        margin-bottom: vwB(-500px);
+
+        .education-hero__inner {
+            max-width: vwB(1920px);
+            padding: vwB(70px) 0;
+
+            &::before {
+                top: vwB(-80px);
+                left: vwB(-300px);
+                width: vwB(792px);
+                height: vwB(866px);
+            }
+
+            &::after {
+                right: vwB(-700px);
+                bottom: vwB(-500px);
+                width: vwB(1119px);
+                height: vwB(1224px);
+            }
+        }
+
+
+        .education-hero__text {
+            margin-top: vwB(28px);
+        }
+
+        .education-hero__images {
+            gap: vwB(10px);
+            margin-top: vwB(50px);
+        }
+
+        .education-hero__image {
+            border-radius: vwB(8px);
+        }
+    }
+}
+
 @include maxw($desktop) {
     .education-hero {
         padding-bottom: vwD(500px);
