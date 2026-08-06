@@ -2077,7 +2077,8 @@ form .button-field {
   --gallery-block-thumb-radius: 4px;
   --gallery-block-nav-size: 40px;
   --gallery-block-nav-offset: 12px;
-  --gallery-block-gradient-width: 82px;
+  --gallery-block-fade-start: 35%;
+  --gallery-block-fade-end: 65%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2098,6 +2099,10 @@ form .button-field {
 }
 .gallery-block__main .swiper-slide {
   height: var(--gallery-block-main-height);
+  -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#000), color-stop(#000), to(transparent));
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 var(--gallery-block-fade-start), #000 var(--gallery-block-fade-end), transparent 100%);
+  mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#000), color-stop(#000), to(transparent));
+  mask-image: linear-gradient(90deg, transparent 0%, #000 var(--gallery-block-fade-start), #000 var(--gallery-block-fade-end), transparent 100%);
 }
 .gallery-block__main img {
   width: 100%;
@@ -2105,25 +2110,6 @@ form .button-field {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-}
-.gallery-block__main::before, .gallery-block__main::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  width: var(--gallery-block-gradient-width);
-  height: 100%;
-  pointer-events: none;
-}
-.gallery-block__main::before {
-  left: 0;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(1, 9, 11, 0.72)), to(rgba(1, 9, 11, 0)));
-  background: linear-gradient(90deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0) 100%);
-}
-.gallery-block__main::after {
-  right: 0;
-  background: -webkit-gradient(linear, right top, left top, from(rgba(1, 9, 11, 0.72)), to(rgba(1, 9, 11, 0)));
-  background: linear-gradient(-90deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0) 100%);
 }
 
 .gallery-block__prev,
@@ -2138,7 +2124,7 @@ form .button-field {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: rgba(1, 9, 11, 0.3);
+  background: transparent;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2240,7 +2226,6 @@ form .button-field {
     --gallery-block-thumb-radius: 0.2083333333vw;
     --gallery-block-nav-size: 2.0833333333vw;
     --gallery-block-nav-offset: 0.625vw;
-    --gallery-block-gradient-width: 4.2708333333vw;
   }
 }
 @media only screen and (max-width: 1568px) {
@@ -2256,7 +2241,6 @@ form .button-field {
     --gallery-block-thumb-radius: 0.2551020408vw;
     --gallery-block-nav-size: 2.5510204082vw;
     --gallery-block-nav-offset: 0.7653061224vw;
-    --gallery-block-gradient-width: 5.2295918367vw;
   }
 }
 @media only screen and (max-width: 991px) {
@@ -2272,7 +2256,6 @@ form .button-field {
     --gallery-block-thumb-radius: 1.0666666667vw;
     --gallery-block-nav-size: 8.5333333333vw;
     --gallery-block-nav-offset: 2.6666666667vw;
-    --gallery-block-gradient-width: 16vw;
   }
 }
 .app-download {
@@ -3068,7 +3051,7 @@ form .button-field {
     display: none;
   }
   .header .header__nav-mobile-wrapper > ul .sub-menu li {
-    padding: 6.4vw 5.3333333333vw 0;
+    padding: 3.2vw 5.3333333333vw 0;
   }
   .header .header__nav-mobile-wrapper > ul .sub-menu li.current-menu-item a {
     padding-left: 6.1333333333vw;
@@ -5976,8 +5959,8 @@ form .button-field {
 .education .education__list .item.is-current .item-media {
   opacity: 0;
   pointer-events: none;
-  -webkit-transition: opacity 0.55s linear;
-  transition: opacity 0.55s linear;
+  -webkit-transition: opacity 0.4s linear;
+  transition: opacity 0.4s linear;
 }
 .education .education__list .item.is-current .item-content {
   opacity: 1;
@@ -5999,8 +5982,8 @@ form .button-field {
       -ms-flex-align: end;
           align-items: flex-end;
   overflow: hidden;
-  -webkit-transition: opacity 0.65s linear;
-  transition: opacity 0.65s linear;
+  -webkit-transition: opacity 0.4s linear;
+  transition: opacity 0.4s linear;
 }
 .education .education__list .item-media .item-media__image {
   position: absolute;
@@ -8367,6 +8350,7 @@ form .button-field {
   transition: all 0.3s linear;
 }
 .section-contact .section-contact__form.is-submited {
+  background: transparent;
   border-color: transparent;
   max-height: 220px;
 }
@@ -10383,6 +10367,8 @@ form .button-field {
 }
 .concierge-support {
   overflow: hidden;
+  position: relative;
+  z-index: 3;
 }
 .concierge-support .concierge-support__inner {
   width: 100%;

@@ -90,7 +90,7 @@
                 .item-media {
                     opacity: 0;
                     pointer-events: none;
-                    transition: opacity 0.55s linear;
+                    transition: opacity 0.4s linear;
                 }
 
                 .item-content {
@@ -112,7 +112,7 @@
             display: flex;
             align-items: flex-end;
             overflow: hidden;
-            transition: opacity 0.65s linear;
+            transition: opacity 0.4s linear;
 
             .item-media__image {
                 position: absolute;

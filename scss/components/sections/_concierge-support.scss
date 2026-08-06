@@ -1,5 +1,7 @@
 .concierge-support {
     overflow: hidden;
+    position: relative;
+    z-index: 3;
 
     .concierge-support__inner {
         width: 100%;

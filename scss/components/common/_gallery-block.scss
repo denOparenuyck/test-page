@@ -7,7 +7,8 @@
     --gallery-block-thumb-radius: 4px;
     --gallery-block-nav-size: 40px;
     --gallery-block-nav-offset: 12px;
-    --gallery-block-gradient-width: 82px;
+    --gallery-block-fade-start: 35%;
+    --gallery-block-fade-end: 65%;
 
     display: flex;
     flex-direction: column;
@@ -24,6 +25,20 @@
 
     .swiper-slide {
         height: var(--gallery-block-main-height);
+        -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 var(--gallery-block-fade-start),
+            #000 var(--gallery-block-fade-end),
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 var(--gallery-block-fade-start),
+            #000 var(--gallery-block-fade-end),
+            transparent 100%
+        );
     }
 
     img {
@@ -31,27 +46,6 @@
         height: 100%;
         object-fit: cover;
         display: block;
-    }
-
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        width: var(--gallery-block-gradient-width);
-        height: 100%;
-        pointer-events: none;
-    }
-
-    &::before {
-        left: 0;
-        background: linear-gradient(90deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0) 100%);
-    }
-
-    &::after {
-        right: 0;
-        background: linear-gradient(-90deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0) 100%);
     }
 }
 
@@ -66,7 +60,7 @@
     padding: 0;
     border: 0;
     border-radius: 50%;
-    background: rgba(1, 9, 11, 0.3);
+    background: transparent;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -161,7 +155,6 @@
         --gallery-block-thumb-radius: #{vwB(4px)};
         --gallery-block-nav-size: #{vwB(40px)};
         --gallery-block-nav-offset: #{vwB(12px)};
-        --gallery-block-gradient-width: #{vwB(82px)};
     }
 }
 
@@ -179,7 +172,6 @@
         --gallery-block-thumb-radius: #{vwD(4px)};
         --gallery-block-nav-size: #{vwD(40px)};
         --gallery-block-nav-offset: #{vwD(12px)};
-        --gallery-block-gradient-width: #{vwD(82px)};
     }
 }
 
@@ -197,6 +189,5 @@
         --gallery-block-thumb-radius: #{vwM(4px)};
         --gallery-block-nav-size: #{vwM(32px)};
         --gallery-block-nav-offset: #{vwM(10px)};
-        --gallery-block-gradient-width: #{vwM(60px)};
     }
 }
