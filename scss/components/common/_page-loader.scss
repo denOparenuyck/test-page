@@ -42,24 +42,24 @@ html.has-page-loader {
     #wrapper {
         opacity: 0;
         visibility: hidden;
-        animation: page-loader-reveal-content 0.01s linear 2.55s forwards;
+        animation: page-loader-reveal-content 0.01s linear 1.45s forwards;
     }
 
     .page-loader {
-        animation: page-loader-exit 0.85s cubic-bezier(0.65, 0, 0.35, 1) 2.55s forwards;
+        animation: page-loader-exit 0.65s cubic-bezier(0.65, 0, 0.35, 1) 1.45s forwards;
     }
 
     .loader-mark__r--1 {
-        animation: page-loader-r1 0.45s ease-out 0.55s forwards;
+        animation: page-loader-r1 0.35s ease-out 0.3s forwards;
     }
 
     .loader-mark__r--2 {
         transform: translate(-23.2%, -29.1%);
-        animation: page-loader-r2 0.45s ease-out 1.15s forwards;
+        animation: page-loader-r2 0.35s ease-out 0.65s forwards;
     }
 
     .loader-mark__bird {
-        animation: page-loader-bird 0.4s ease-out 1.85s forwards;
+        animation: page-loader-bird 0.3s ease-out 1.05s forwards;
     }
 }
 

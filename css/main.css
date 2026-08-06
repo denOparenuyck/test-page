@@ -104,26 +104,26 @@ button {
 html.has-page-loader #wrapper {
   opacity: 0;
   visibility: hidden;
-  -webkit-animation: page-loader-reveal-content 0.01s linear 2.55s forwards;
-          animation: page-loader-reveal-content 0.01s linear 2.55s forwards;
+  -webkit-animation: page-loader-reveal-content 0.01s linear 1.45s forwards;
+          animation: page-loader-reveal-content 0.01s linear 1.45s forwards;
 }
 html.has-page-loader .page-loader {
-  -webkit-animation: page-loader-exit 0.85s cubic-bezier(0.65, 0, 0.35, 1) 2.55s forwards;
-          animation: page-loader-exit 0.85s cubic-bezier(0.65, 0, 0.35, 1) 2.55s forwards;
+  -webkit-animation: page-loader-exit 0.65s cubic-bezier(0.65, 0, 0.35, 1) 1.45s forwards;
+          animation: page-loader-exit 0.65s cubic-bezier(0.65, 0, 0.35, 1) 1.45s forwards;
 }
 html.has-page-loader .loader-mark__r--1 {
-  -webkit-animation: page-loader-r1 0.45s ease-out 0.55s forwards;
-          animation: page-loader-r1 0.45s ease-out 0.55s forwards;
+  -webkit-animation: page-loader-r1 0.35s ease-out 0.3s forwards;
+          animation: page-loader-r1 0.35s ease-out 0.3s forwards;
 }
 html.has-page-loader .loader-mark__r--2 {
   -webkit-transform: translate(-23.2%, -29.1%);
           transform: translate(-23.2%, -29.1%);
-  -webkit-animation: page-loader-r2 0.45s ease-out 1.15s forwards;
-          animation: page-loader-r2 0.45s ease-out 1.15s forwards;
+  -webkit-animation: page-loader-r2 0.35s ease-out 0.65s forwards;
+          animation: page-loader-r2 0.35s ease-out 0.65s forwards;
 }
 html.has-page-loader .loader-mark__bird {
-  -webkit-animation: page-loader-bird 0.4s ease-out 1.85s forwards;
-          animation: page-loader-bird 0.4s ease-out 1.85s forwards;
+  -webkit-animation: page-loader-bird 0.3s ease-out 1.05s forwards;
+          animation: page-loader-bird 0.3s ease-out 1.05s forwards;
 }
 
 @-webkit-keyframes page-loader-r1 {
@@ -287,7 +287,9 @@ body.no-scroll {
 .education.is-light,
 .concierge-case,
 .concierge-intervention,
-.founder__content {
+.founder__content,
+.programs-approach__method,
+.programs-approach__quote {
   --selection-bg: #01090B;
   --selection-color: #F4EFE7;
 }
@@ -2556,8 +2558,16 @@ form .button-field {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: #01090B;
+  height: 160%;
+  pointer-events: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 9, 11, 0.72)), color-stop(32%, rgba(1, 9, 11, 0.48)), color-stop(68%, rgba(1, 9, 11, 0.2)), to(rgba(1, 9, 11, 0)));
+  background: linear-gradient(180deg, rgba(1, 9, 11, 0.72) 0%, rgba(1, 9, 11, 0.48) 32%, rgba(1, 9, 11, 0.2) 68%, rgba(1, 9, 11, 0) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: -webkit-gradient(linear, left top, left bottom, from(#000), color-stop(42%, #000), to(transparent));
+  mask-image: linear-gradient(180deg, #000 0%, #000 42%, transparent 100%);
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(#000), color-stop(42%, #000), to(transparent));
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 42%, transparent 100%);
   opacity: 0;
   -webkit-transition: opacity 0.3s linear;
   transition: opacity 0.3s linear;
@@ -2681,7 +2691,7 @@ form .button-field {
           transform: translateX(-50%) translateY(50px);
   padding: 16px 24px;
   background: rgba(1, 9, 11, 0.3);
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(3px);
   border-radius: 10px;
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
@@ -3020,7 +3030,7 @@ form .button-field {
   }
   .header .header__nav-mobile-wrapper > ul > li.has-child > a .is-arrow {
     position: absolute;
-    top: 2.9333333333vw;
+    top: 2.4vw;
     right: 1.8666666667vw;
     width: 2.9333333333vw;
     height: 1.3333333333vw;
@@ -3751,6 +3761,7 @@ form .button-field {
   text-align: center;
 }
 .hero .hero__content.is-animation {
+  display: none;
   opacity: 0;
   position: absolute;
   z-index: -1;
@@ -5895,11 +5906,11 @@ form .button-field {
   color: #01090B;
 }
 .education.is-light .education__list .item {
-  background: #FFFFFF;
+  background: #F4EFE7;
   border: 1px solid rgba(1, 9, 11, 0.3);
 }
 .education.is-light .education__list .item.is-current {
-  background: #FFFFFF;
+  background: #F4EFE7;
 }
 .education .education__inner {
   padding: 70px 0;
@@ -6296,11 +6307,11 @@ form .button-field {
     margin-bottom: 4.2666666667vw;
   }
   .education.is-light .education__list-mobile .item {
-    background: #FFFFFF;
+    background: #F4EFE7;
     border: 1px solid rgba(1, 9, 11, 0.3);
   }
   .education.is-light .education__list-mobile .item.is-open {
-    background-color: #FFFFFF;
+    background-color: #F4EFE7;
     border-color: rgba(1, 9, 11, 0.3);
   }
   .education.is-light .education__list-mobile .item-title {
@@ -9324,6 +9335,9 @@ form .button-field {
   color: #fff;
   margin-bottom: 28px;
 }
+.what-we-treat .what-we-treat__intro-text {
+  opacity: 0.7;
+}
 .what-we-treat .what-we-treat__card {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -9337,6 +9351,10 @@ form .button-field {
   color: #fff;
   margin-bottom: 40px;
 }
+.what-we-treat .what-we-treat__card-text .text {
+  opacity: 0.7;
+}
+
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
   .what-we-treat .what-we-treat__dec span {
     max-width: 100vw;
@@ -9472,7 +9490,7 @@ form .button-field {
 .programs-approach {
   overflow: hidden;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 .programs-approach:has(.dec-shadow-bottom-right) {
   padding-bottom: 256px;
@@ -12700,7 +12718,7 @@ form .button-field {
 }
 .release-impact .release-impact__stat-label {
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.22;
   font-size: 18px;
   letter-spacing: -0.04em;
   color: #01090B;
@@ -12893,6 +12911,7 @@ form .button-field {
     font-size: 5.8666666667vw;
   }
   .release-impact .release-impact__stat-label {
+    line-height: 1.18;
     font-size: 4.2666666667vw;
   }
   .release-impact .release-impact__card-button .default-button {
@@ -14772,6 +14791,37 @@ form .button-field {
 .sitemap .sitemap__heading .title {
   color: #FFFFFF;
 }
+.sitemap .sitemap__heading .title a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+}
+.sitemap .sitemap__heading .title a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transition: -webkit-transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+  transition: -webkit-transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+  transition: transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+  transition: transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1), -webkit-transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+}
+@media only screen and (min-width: 991px) {
+  .sitemap .sitemap__heading .title a:hover::before {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: left;
+            transform-origin: left;
+  }
+}
 .sitemap .sitemap__links {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14784,22 +14834,44 @@ form .button-field {
   width: 100%;
 }
 .sitemap .sitemap__links a {
-  display: block;
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-family: "inter-18pt", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: normal;
   letter-spacing: -0.03em;
   color: #FFFFFF;
-  text-decoration: underline;
-  text-underline-position: from-font;
-  -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
 }
-.sitemap .sitemap__links a:hover {
-  opacity: 0.7;
+.sitemap .sitemap__links a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: -webkit-transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+  transition: -webkit-transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+  transition: transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+  transition: transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1), -webkit-transform 1.109s cubic-bezier(0.17, 0.84, 0.44, 1);
+}
+@media only screen and (min-width: 991px) {
+  .sitemap .sitemap__links a:hover::before {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {

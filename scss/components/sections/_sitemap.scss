@@ -38,6 +38,15 @@
     .sitemap__heading {
         .title {
             color: #FFFFFF;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+                position: relative;
+                z-index: 2;
+
+                @include link-hover-underline(#fff);
+            }
         }
     }
 
@@ -48,21 +57,19 @@
         width: 100%;
 
         a {
-            display: block;
+            display: inline-block;
+            width: fit-content;
             font-family: $mainFont;
             font-weight: 400;
             font-size: 18px;
             line-height: normal;
             letter-spacing: -0.03em;
             color: #FFFFFF;
-            text-decoration: underline;
-            text-underline-position: from-font;
-            text-decoration-skip-ink: none;
-            transition: opacity 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
 
-            &:hover {
-                opacity: 0.7;
-            }
+            @include link-hover-underline-reverse(#fff);
         }
     }
 }

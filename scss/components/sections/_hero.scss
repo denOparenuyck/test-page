@@ -56,6 +56,7 @@
         text-align: center;
 
         &.is-animation {
+            display: none;
             opacity: 0;
             position: absolute;
             z-index: -1;

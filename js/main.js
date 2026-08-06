@@ -34,7 +34,7 @@ const initPageLoader = () => {
         setTimeout(() => {
             document.body.classList.add('has-page-loader-done');
             document.dispatchEvent(new CustomEvent('rr:loader-exit-start'));
-        }, 300);
+        }, 200);
     };
 
     const onAnimationEnd = (event) => {
@@ -96,6 +96,26 @@ initCookieBanner();
 
 const rrPrefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Speed up GSAP reveals on mobile; page-loader stays CSS-only. */
+(() => {
+    if (typeof gsap === 'undefined') return;
+
+    const mq = window.matchMedia('(max-width: 991px)');
+    const MOBILE_SPEED = 1.4;
+
+    const apply = () => {
+        gsap.globalTimeline.timeScale(mq.matches ? MOBILE_SPEED : 1);
+    };
+
+    apply();
+
+    if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', apply);
+    } else if (typeof mq.addListener === 'function') {
+        mq.addListener(apply);
+    }
+})();
 
 const rrWhenLoaderDone = (callback) => {
     const hasLoaderDoneClass = () => document.body.classList.contains('has-page-loader-done');
@@ -381,12 +401,12 @@ const accordionMobileMq = window.matchMedia('(max-width: 991px)');
     });
 
     $('.header__nav-mobile .has-child').each(function (index, item) {
-        const link = $(item).find('a');
+        const link = $(item).find('> a');
         const submenu = $(item).find('.sub-menu');
 
         $(link).append('<span class="is-arrow"></span>');
 
-        $(item).find('.is-arrow').on('click', function (e) {
+        $(link).on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             $(item).toggleClass('is-open');

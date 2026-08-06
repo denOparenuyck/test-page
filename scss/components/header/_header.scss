@@ -5,12 +5,13 @@
     width: 100%;
     z-index: 10;
 
-    &.is-scrolled{
-        .header__inner{
-            &::before{
+    &.is-scrolled {
+        .header__inner {
+            &::before {
                 opacity: 0;
             }
-            &::after{
+
+            &::after {
                 opacity: 1;
             }
         }
@@ -18,7 +19,7 @@
 
     .header__inner {
         width: 100%;
-        padding: 12px 0 20px; 
+        padding: 12px 0 20px;
         position: relative;
         z-index: 2;
 
@@ -35,15 +36,26 @@
             transition: opacity .3s linear;
         }
 
-        &::after{
+        &::after {
             content: "";
             position: absolute;
             z-index: -1;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: #01090B;
+            height: 160%;
+            pointer-events: none;
+            background: linear-gradient(
+                180deg,
+                rgba(1, 9, 11, 0.72) 0%,
+                rgba(1, 9, 11, 0.48) 32%,
+                rgba(1, 9, 11, 0.2) 68%,
+                rgba(1, 9, 11, 0) 100%
+            );
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            mask-image: linear-gradient(180deg, #000 0%, #000 42%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 42%, transparent 100%);
             opacity: 0;
             transition: opacity .3s linear;
         }
@@ -157,7 +169,7 @@
                 transform: translateX(-50%) translateY(50px);
                 padding: 16px 24px;
                 background: rgba(1, 9, 11, 0.3);
-                backdrop-filter: blur(0px);
+                backdrop-filter: blur(3px);
                 border-radius: 10px;
                 transition: all .4s linear;
                 opacity: 0;
@@ -165,6 +177,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+
 
                 &::after {
                     content: "";
@@ -460,7 +473,7 @@
                 z-index: 2;
             }
 
-            
+
         }
 
         .header__wrapper {
@@ -568,7 +581,7 @@
 
                             .is-arrow {
                                 position: absolute;
-                                top: vwM(11px);
+                                top: vwM(9px);
                                 right: vwM(7px);
                                 width: vwM(11px);
                                 height: vwM(5px);

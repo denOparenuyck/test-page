@@ -1,7 +1,7 @@
 .programs-approach {
     overflow: hidden;
     position: relative;
-    z-index: 2;
+    z-index: 4;
 
     &:has(.dec-shadow-bottom-right) {
         padding-bottom: 256px;

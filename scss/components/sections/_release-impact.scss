@@ -126,7 +126,7 @@
 
     .release-impact__stat-label {
         font-weight: 400;
-        line-height: normal;
+        line-height: 1.22;
         font-size: 18px;
         letter-spacing: -0.04em;
         color: #01090B;
@@ -366,6 +366,7 @@
         }
 
         .release-impact__stat-label {
+            line-height: 1.18;
             font-size: vwM(16px);
         }
 
