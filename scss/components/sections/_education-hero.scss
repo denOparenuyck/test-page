@@ -150,6 +150,8 @@
 
 @include maxw($mobile) {
     .education-hero {
+        padding-top: vwM(75px);
+        margin-top: vwM(-75px);
         padding-bottom: 0;
         margin-bottom: 0;
 

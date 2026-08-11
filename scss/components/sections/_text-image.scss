@@ -117,6 +117,8 @@
     .text-image__button {
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 12px;
         margin-top: 40px;
 
@@ -252,10 +254,16 @@
 
 @include maxw($mobile) {
     .text-image {
-        padding: 0;
+        padding-top: 0;
         margin-top: 0;
+        padding-bottom: vwM(200px);
+        margin-bottom: vwM(-200px);
 
-        &.is-plain {
+        &.is-plain,
+        &.no-shadow {
+            padding: 0;
+            margin: 0;
+
             .text-image__inner {
                 padding: vwM(50px) 0;
             }

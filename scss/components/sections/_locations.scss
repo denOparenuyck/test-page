@@ -172,6 +172,8 @@
 
 @include maxw($mobile) {
     .locations {
+        padding-top: vwM(450px);
+        margin-top: vwM(-450px);
         padding-bottom: vwM(285px);
         margin-bottom: vwM(-285px);
 

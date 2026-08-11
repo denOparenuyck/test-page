@@ -1,5 +1,7 @@
 .section-error {
     overflow: hidden;
+    padding-top: 256px;
+    margin-top: -256px;
 
     .section-error__inner {
         position: relative;
@@ -61,6 +63,8 @@
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     .section-error {
+        padding-top: vwB(256px);
+        margin-top: vwB(-256px);
 
         .section-error__inner {
             max-width: vwB(1920px);
@@ -103,6 +107,8 @@
 
 @include maxw($desktop) {
     .section-error {
+        padding-top: vwD(256px);
+        margin-top: vwD(-256px);
 
         .section-error__inner {
             max-width: vwD(1920px);
@@ -145,6 +151,8 @@
 
 @include maxw($mobile) {
     .section-error {
+        padding-top: 0;
+        margin-top: 0;
 
         .section-error__inner {
             width: 100%;

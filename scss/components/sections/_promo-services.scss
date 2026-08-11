@@ -1,5 +1,7 @@
 .promo-services {
     overflow: hidden;
+    padding-top: 280px;
+    margin-top: -280px;
 
     .promo-services__inner {
         position: relative;
@@ -84,6 +86,8 @@
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     .promo-services {
+        padding-top: vwB(280px);
+        margin-top: vwB(-280px);
 
         .promo-services__inner {
             max-width: vwB(1920px);
@@ -126,6 +130,8 @@
 
 @include maxw($desktop) {
     .promo-services {
+        padding-top: vwD(280px);
+        margin-top: vwD(-280px);
 
         .promo-services__inner {
             max-width: vwD(1920px);
@@ -168,6 +174,8 @@
 
 @include maxw($mobile) {
     .promo-services {
+        padding-top: vwM(75px);
+        margin-top: vwM(-75px);
 
         .promo-services__inner {
             max-width: 100%;

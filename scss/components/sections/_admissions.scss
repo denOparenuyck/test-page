@@ -1,15 +1,21 @@
 .admissions {
     position: relative;
     z-index: 2;
+    overflow: hidden;
+    padding-top: 274px;
+    margin-top: -274px;
+    padding-bottom: 206px;
+    margin-bottom: -206px;
 
     .admissions__dec {
-        overflow: hidden;
         position: absolute;
         z-index: -1;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        padding-top: 274px;
+        padding-bottom: 206px;
 
         span {
             display: block;
@@ -127,7 +133,15 @@
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     .admissions {
+        padding-top: vwB(274px);
+        margin-top: vwB(-274px);
+        padding-bottom: vwB(206px);
+        margin-bottom: vwB(-206px);
+
         .admissions__dec {
+            padding-top: vwB(274px);
+            padding-bottom: vwB(206px);
+
             span {
                 max-width: vwB(1920px);
 
@@ -198,7 +212,15 @@
 
 @include maxw($desktop) {
     .admissions {
+        padding-top: vwD(274px);
+        margin-top: vwD(-274px);
+        padding-bottom: vwD(206px);
+        margin-bottom: vwD(-206px);
+
         .admissions__dec {
+            padding-top: vwD(274px);
+            padding-bottom: vwD(206px);
+
             span {
                 max-width: vwD(1920px);
 
@@ -269,12 +291,15 @@
 
 @include maxw($mobile) {
     .admissions {
+        padding-top: vwM(75px);
+        margin-top: vwM(-75px);
         padding-bottom: vwM(206px);
         margin-bottom: vwM(-206px);
 
         .admissions__dec {
+            padding-top: vwM(75px);
             padding-bottom: vwM(206px);
-            margin-bottom: vwM(-206px);
+            margin-bottom: 0;
             span {
                 max-width: 100%;
 

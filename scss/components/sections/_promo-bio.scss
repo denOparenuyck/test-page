@@ -1,15 +1,18 @@
 .promo-bio {
     position: relative;
     z-index: 2;
+    overflow: hidden;
+    padding-top: 300px;
+    margin-top: -300px;
 
     .promo-bio__dec {
-        overflow: hidden;
         position: absolute;
         z-index: -1;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        padding-top: 300px;
 
         span {
             display: block;
@@ -49,6 +52,7 @@
         overflow: hidden;
         position: sticky;
         top: 150px;
+        background-color: #F4EFE7;
 
 
         img {
@@ -82,7 +86,11 @@
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     .promo-bio {
+        padding-top: vwB(300px);
+        margin-top: vwB(-300px);
+
         .promo-bio__dec {
+            padding-top: vwB(300px);
 
             span {
                 max-width: vwB(1920px);
@@ -126,7 +134,11 @@
 
 @include maxw($desktop) {
     .promo-bio {
+        padding-top: vwD(300px);
+        margin-top: vwD(-300px);
+
         .promo-bio__dec {
+            padding-top: vwD(300px);
 
             span {
                 max-width: vwD(1920px);
@@ -172,8 +184,12 @@
     .promo-bio {
         position: relative;
         z-index: 2;
+        padding-top: 0;
+        margin-top: 0;
 
         .promo-bio__dec {
+            padding-top: 0;
+
             span {
                 max-width: 100%;
 

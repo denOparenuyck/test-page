@@ -1,5 +1,7 @@
 .concierge-case {
     overflow: hidden;
+    position: relative;
+    z-index: 4;
 
     .concierge-case__inner {
         width: 100%;

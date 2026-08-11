@@ -234,8 +234,10 @@
 
 @include maxw($mobile) {
     .services {
-        margin: 0;
-        padding: 0;
+        padding-top: vwM(400px);
+        margin-top: vwM(-400px);
+        padding-bottom: 0;
+        margin-bottom: 0;
 
         .services__inner {
             padding: vwM(50px) 0;

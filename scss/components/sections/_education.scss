@@ -74,34 +74,35 @@
             height: auto;
             overflow: hidden;
             border-radius: 8px;
-            background: #01090B;
+            background: #F4EFE7;
             cursor: pointer;
             transition:
-                flex-grow 0.65s linear,
-                flex-basis 0.65s linear,
-                background-color 0.55s linear;
+                flex-grow 0.55s ease-in-out,
+                flex-basis 0.55s ease-in-out,
+                background-color 0.45s ease-in-out;
 
             &.is-current {
                 flex-grow: 0;
                 flex-shrink: 0;
                 flex-basis: 763px;
-                background: #F4EFE7;
 
                 .item-media {
                     opacity: 0;
                     pointer-events: none;
-                    transition: opacity 0.4s linear;
+                    transition-delay: 0s;
                 }
 
                 .item-content {
                     opacity: 1;
+                    pointer-events: all;
+                    transition-delay: 0.3s;
                 }
             }
         }
 
         .item-media {
             position: absolute;
-            z-index: 3;
+            z-index: -1;
             top: 0;
             left: 0;
             bottom: 0;
@@ -109,10 +110,12 @@
             max-width: 377px;
             height: auto;
             padding: 22px 26px;
+            border-radius: 8px;
             display: flex;
             align-items: flex-end;
             overflow: hidden;
             transition: opacity 0.4s linear;
+            transition-delay: 0.3s;
 
             .item-media__image {
                 position: absolute;
@@ -152,6 +155,9 @@
         .item-content {
             width: 100%;
             height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s linear;
         }
 
         .item-content__wrapper {
@@ -231,6 +237,7 @@
             .item-media {
                 max-width: vwB(377px);
                 padding: vwB(22px) vwB(26px);
+                border-radius: vwB(8px);
 
                 .item-media__title {
                     font-size: vwB(22px);
@@ -295,6 +302,7 @@
             .item-media {
                 max-width: vwD(377px);
                 padding: vwD(22px) vwD(26px);
+                border-radius: vwD(8px);
 
                 .item-media__title {
                     font-size: vwD(22px);

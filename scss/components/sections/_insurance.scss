@@ -178,6 +178,8 @@
 
 @include maxw($mobile) {
     .insurance {
+        padding-top: vwM(50px);
+        margin-top: vwM(-50px);
         padding-bottom: 0;
         margin-bottom: 0;
 

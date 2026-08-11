@@ -221,6 +221,9 @@
 
 @include maxw($mobile) {
     .who-we-are {
+        padding-bottom: vwM(275px);
+        margin-bottom: vwM(-275px);
+
         .who-we-are__inner {
             max-width: 100%;
             padding: vwM(100px) 0;

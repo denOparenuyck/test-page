@@ -512,6 +512,9 @@ body.no-scroll {
   letter-spacing: -0.04em;
   color: #fff;
 }
+.text.is-opacity {
+  opacity: 0.7;
+}
 .text > p,
 .text > ul,
 .text > ol,
@@ -3030,7 +3033,7 @@ form .button-field {
   }
   .header .header__nav-mobile-wrapper > ul > li.has-child > a .is-arrow {
     position: absolute;
-    top: 2.4vw;
+    top: 2.9333333333vw;
     right: 1.8666666667vw;
     width: 2.9333333333vw;
     height: 1.3333333333vw;
@@ -4193,6 +4196,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 991px) {
+  .who-we-are {
+    padding-bottom: 73.3333333333vw;
+    margin-bottom: -73.3333333333vw;
+  }
   .who-we-are .who-we-are__inner {
     max-width: 100%;
     padding: 26.6666666667vw 0;
@@ -4276,6 +4283,8 @@ form .button-field {
 .release {
   background: #F4EFE7;
   overflow: visible;
+  position: relative;
+  z-index: 3;
 }
 .release .release__inner {
   padding: 70px 0;
@@ -4811,6 +4820,8 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .locations {
+    padding-top: 120vw;
+    margin-top: -120vw;
     padding-bottom: 76vw;
     margin-bottom: -76vw;
   }
@@ -5307,6 +5318,11 @@ form .button-field {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 12px;
   margin-top: 40px;
 }
@@ -5416,10 +5432,16 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .text-image {
-    padding: 0;
+    padding-top: 0;
     margin-top: 0;
+    padding-bottom: 53.3333333333vw;
+    margin-bottom: -53.3333333333vw;
   }
-  .text-image.is-plain .text-image__inner {
+  .text-image.is-plain, .text-image.no-shadow {
+    padding: 0;
+    margin: 0;
+  }
+  .text-image.is-plain .text-image__inner, .text-image.no-shadow .text-image__inner {
     padding: 13.3333333333vw 0;
   }
   .text-image .text-image__inner {
@@ -5489,6 +5511,8 @@ form .button-field {
 }
 .process {
   background-color: #F4EFE7;
+  position: relative;
+  z-index: 3;
 }
 .process .process__inner {
   padding: 70px 0;
@@ -5824,6 +5848,8 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .insurance {
+    padding-top: 13.3333333333vw;
+    margin-top: -13.3333333333vw;
     padding-bottom: 0;
     margin-bottom: 0;
   }
@@ -5950,12 +5976,12 @@ form .button-field {
   height: auto;
   overflow: hidden;
   border-radius: 8px;
-  background: #01090B;
+  background: #F4EFE7;
   cursor: pointer;
-  -webkit-transition: flex-grow 0.65s linear, background-color 0.55s linear, -webkit-box-flex 0.65s linear, -webkit-flex-basis 0.65s linear;
-  transition: flex-grow 0.65s linear, background-color 0.55s linear, -webkit-box-flex 0.65s linear, -webkit-flex-basis 0.65s linear;
-  transition: flex-grow 0.65s linear, flex-basis 0.65s linear, background-color 0.55s linear;
-  transition: flex-grow 0.65s linear, flex-basis 0.65s linear, background-color 0.55s linear, -webkit-box-flex 0.65s linear, -ms-flex-positive 0.65s linear, -webkit-flex-basis 0.65s linear, -ms-flex-preferred-size 0.65s linear;
+  -webkit-transition: flex-grow 0.55s ease-in-out, background-color 0.45s ease-in-out, -webkit-box-flex 0.55s ease-in-out, -webkit-flex-basis 0.55s ease-in-out;
+  transition: flex-grow 0.55s ease-in-out, background-color 0.45s ease-in-out, -webkit-box-flex 0.55s ease-in-out, -webkit-flex-basis 0.55s ease-in-out;
+  transition: flex-grow 0.55s ease-in-out, flex-basis 0.55s ease-in-out, background-color 0.45s ease-in-out;
+  transition: flex-grow 0.55s ease-in-out, flex-basis 0.55s ease-in-out, background-color 0.45s ease-in-out, -webkit-box-flex 0.55s ease-in-out, -ms-flex-positive 0.55s ease-in-out, -webkit-flex-basis 0.55s ease-in-out, -ms-flex-preferred-size 0.55s ease-in-out;
 }
 .education .education__list .item.is-current {
   -webkit-box-flex: 0;
@@ -5965,20 +5991,22 @@ form .button-field {
       flex-shrink: 0;
   -ms-flex-preferred-size: 763px;
       flex-basis: 763px;
-  background: #F4EFE7;
 }
 .education .education__list .item.is-current .item-media {
   opacity: 0;
   pointer-events: none;
-  -webkit-transition: opacity 0.4s linear;
-  transition: opacity 0.4s linear;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
 }
 .education .education__list .item.is-current .item-content {
   opacity: 1;
+  pointer-events: all;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
 }
 .education .education__list .item-media {
   position: absolute;
-  z-index: 3;
+  z-index: -1;
   top: 0;
   left: 0;
   bottom: 0;
@@ -5986,6 +6014,7 @@ form .button-field {
   max-width: 377px;
   height: auto;
   padding: 22px 26px;
+  border-radius: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5995,6 +6024,8 @@ form .button-field {
   overflow: hidden;
   -webkit-transition: opacity 0.4s linear;
   transition: opacity 0.4s linear;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
 }
 .education .education__list .item-media .item-media__image {
   position: absolute;
@@ -6031,6 +6062,10 @@ form .button-field {
 .education .education__list .item-content {
   width: 100%;
   height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.4s linear;
+  transition: opacity 0.4s linear;
 }
 .education .education__list .item-content__wrapper {
   width: 763px;
@@ -6096,6 +6131,7 @@ form .button-field {
   .education .education__list .item-media {
     max-width: 19.6354166667vw;
     padding: 1.1458333333vw 1.3541666667vw;
+    border-radius: 0.4166666667vw;
   }
   .education .education__list .item-media .item-media__title {
     font-size: 1.1458333333vw;
@@ -6142,6 +6178,7 @@ form .button-field {
   .education .education__list .item-media {
     max-width: 24.0433673469vw;
     padding: 1.4030612245vw 1.6581632653vw;
+    border-radius: 0.5102040816vw;
   }
   .education .education__list .item-media .item-media__title {
     font-size: 1.4030612245vw;
@@ -6649,8 +6686,10 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .services {
-    margin: 0;
-    padding: 0;
+    padding-top: 106.6666666667vw;
+    margin-top: -106.6666666667vw;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   .services .services__inner {
     padding: 13.3333333333vw 0;
@@ -7237,10 +7276,16 @@ form .button-field {
 }
 .section-faq {
   overflow: hidden;
+  padding-top: 350px;
+  margin-top: -350px;
+  padding-bottom: 200px;
+  margin-bottom: -200px;
 }
 .section-faq.is-block {
   padding-top: 520px;
   margin-top: -520px;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 .section-faq.is-block .section-faq__inner {
   padding: 70px 0;
@@ -7402,9 +7447,17 @@ form .button-field {
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .section-faq {
+    padding-top: 18.2291666667vw;
+    margin-top: -18.2291666667vw;
+    padding-bottom: 10.4166666667vw;
+    margin-bottom: -10.4166666667vw;
+  }
   .section-faq.is-block {
     padding-top: 27.0833333333vw;
     margin-top: -27.0833333333vw;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   .section-faq.is-block .section-faq__inner {
     padding: 3.6458333333vw 0;
@@ -7486,9 +7539,17 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .section-faq {
+    padding-top: 22.3214285714vw;
+    margin-top: -22.3214285714vw;
+    padding-bottom: 12.7551020408vw;
+    margin-bottom: -12.7551020408vw;
+  }
   .section-faq.is-block {
     padding-top: 33.1632653061vw;
     margin-top: -33.1632653061vw;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   .section-faq.is-block .section-faq__inner {
     padding: 4.4642857143vw 0;
@@ -7570,6 +7631,18 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 991px) {
+  .section-faq {
+    padding-top: 26.9333333333vw;
+    margin-top: -26.9333333333vw;
+    padding-bottom: 18.6666666667vw;
+    margin-bottom: -18.6666666667vw;
+  }
+  .section-faq.is-block {
+    padding-top: 54.4vw;
+    margin-top: -54.4vw;
+    padding-bottom: 7.2vw;
+    margin-bottom: -7.2vw;
+  }
   .section-faq.is-block .section-faq__inner {
     padding: 13.3333333333vw 0;
   }
@@ -7764,15 +7837,18 @@ form .button-field {
 .promo-bio {
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  padding-top: 300px;
+  margin-top: -300px;
 }
 .promo-bio .promo-bio__dec {
-  overflow: hidden;
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  padding-top: 300px;
 }
 .promo-bio .promo-bio__dec span {
   display: block;
@@ -7813,6 +7889,7 @@ form .button-field {
   overflow: hidden;
   position: sticky;
   top: 150px;
+  background-color: #F4EFE7;
 }
 .promo-bio .promo-bio__image img {
   width: 100%;
@@ -7837,6 +7914,13 @@ form .button-field {
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .promo-bio {
+    padding-top: 15.625vw;
+    margin-top: -15.625vw;
+  }
+  .promo-bio .promo-bio__dec {
+    padding-top: 15.625vw;
+  }
   .promo-bio .promo-bio__dec span {
     max-width: 100vw;
   }
@@ -7868,6 +7952,13 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .promo-bio {
+    padding-top: 19.1326530612vw;
+    margin-top: -19.1326530612vw;
+  }
+  .promo-bio .promo-bio__dec {
+    padding-top: 19.1326530612vw;
+  }
   .promo-bio .promo-bio__dec span {
     max-width: 122.4489795918vw;
   }
@@ -7902,6 +7993,11 @@ form .button-field {
   .promo-bio {
     position: relative;
     z-index: 2;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .promo-bio .promo-bio__dec {
+    padding-top: 0;
   }
   .promo-bio .promo-bio__dec span {
     max-width: 100%;
@@ -7946,6 +8042,8 @@ form .button-field {
 }
 .section-error {
   overflow: hidden;
+  padding-top: 256px;
+  margin-top: -256px;
 }
 .section-error .section-error__inner {
   position: relative;
@@ -7994,6 +8092,10 @@ form .button-field {
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .section-error {
+    padding-top: 13.3333333333vw;
+    margin-top: -13.3333333333vw;
+  }
   .section-error .section-error__inner {
     max-width: 100vw;
     padding: 7.65625vw 0 5.2083333333vw;
@@ -8024,6 +8126,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .section-error {
+    padding-top: 16.3265306122vw;
+    margin-top: -16.3265306122vw;
+  }
   .section-error .section-error__inner {
     max-width: 122.4489795918vw;
     padding: 9.375vw 0 6.3775510204vw;
@@ -8054,6 +8160,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 991px) {
+  .section-error {
+    padding-top: 0;
+    margin-top: 0;
+  }
   .section-error .section-error__inner {
     width: 100%;
     max-width: 100%;
@@ -8291,6 +8401,10 @@ form .button-field {
   padding-bottom: 400px;
   margin-bottom: -400px;
 }
+.section-contact:has(.dec-shadow.is-top-right) {
+  padding-top: 550px;
+  margin-top: -550px;
+}
 .section-contact .section-contact__inner {
   width: 100%;
   max-width: 1920px;
@@ -8395,6 +8509,10 @@ form .button-field {
     padding-bottom: 20.8333333333vw;
     margin-bottom: -20.8333333333vw;
   }
+  .section-contact:has(.dec-shadow.is-top-right) {
+    padding-top: 28.6458333333vw;
+    margin-top: -28.6458333333vw;
+  }
   .section-contact .section-contact__inner {
     max-width: 100vw;
     padding: 3.6458333333vw 0;
@@ -8449,6 +8567,10 @@ form .button-field {
   .section-contact:has(.dec-shadow.is-bottom-left) {
     padding-bottom: 25.5102040816vw;
     margin-bottom: -25.5102040816vw;
+  }
+  .section-contact:has(.dec-shadow.is-top-right) {
+    padding-top: 35.0765306122vw;
+    margin-top: -35.0765306122vw;
   }
   .section-contact .section-contact__inner {
     max-width: 122.4489795918vw;
@@ -9250,15 +9372,18 @@ form .button-field {
 .what-we-treat {
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  padding-top: 484px;
+  margin-top: -484px;
 }
 .what-we-treat .what-we-treat__dec {
-  overflow: hidden;
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  padding-top: 484px;
 }
 .what-we-treat .what-we-treat__dec span {
   display: block;
@@ -9356,6 +9481,13 @@ form .button-field {
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .what-we-treat {
+    padding-top: 25.2083333333vw;
+    margin-top: -25.2083333333vw;
+  }
+  .what-we-treat .what-we-treat__dec {
+    padding-top: 25.2083333333vw;
+  }
   .what-we-treat .what-we-treat__dec span {
     max-width: 100vw;
   }
@@ -9400,6 +9532,13 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .what-we-treat {
+    padding-top: 30.8673469388vw;
+    margin-top: -30.8673469388vw;
+  }
+  .what-we-treat .what-we-treat__dec {
+    padding-top: 30.8673469388vw;
+  }
   .what-we-treat .what-we-treat__dec span {
     max-width: 122.4489795918vw;
   }
@@ -9444,6 +9583,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 991px) {
+  .what-we-treat {
+    padding-top: 0;
+    margin-top: 0;
+  }
   .what-we-treat .what-we-treat__dec {
     display: none;
   }
@@ -10387,6 +10530,8 @@ form .button-field {
   overflow: hidden;
   position: relative;
   z-index: 3;
+  padding-top: 550px;
+  margin-top: -550px;
 }
 .concierge-support .concierge-support__inner {
   width: 100%;
@@ -10445,6 +10590,10 @@ form .button-field {
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .concierge-support {
+    padding-top: 28.6458333333vw;
+    margin-top: -28.6458333333vw;
+  }
   .concierge-support .concierge-support__inner {
     max-width: 100vw;
     padding: 3.6458333333vw 0;
@@ -10481,6 +10630,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .concierge-support {
+    padding-top: 35.0765306122vw;
+    margin-top: -35.0765306122vw;
+  }
   .concierge-support .concierge-support__inner {
     max-width: 122.4489795918vw;
     padding: 4.4642857143vw 0;
@@ -11284,15 +11437,21 @@ form .button-field {
 .admissions {
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  padding-top: 274px;
+  margin-top: -274px;
+  padding-bottom: 206px;
+  margin-bottom: -206px;
 }
 .admissions .admissions__dec {
-  overflow: hidden;
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  padding-top: 274px;
+  padding-bottom: 206px;
 }
 .admissions .admissions__dec span {
   display: block;
@@ -11403,6 +11562,16 @@ form .button-field {
   margin-bottom: 24px;
 }
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .admissions {
+    padding-top: 14.2708333333vw;
+    margin-top: -14.2708333333vw;
+    padding-bottom: 10.7291666667vw;
+    margin-bottom: -10.7291666667vw;
+  }
+  .admissions .admissions__dec {
+    padding-top: 14.2708333333vw;
+    padding-bottom: 10.7291666667vw;
+  }
   .admissions .admissions__dec span {
     max-width: 100vw;
   }
@@ -11456,6 +11625,16 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .admissions {
+    padding-top: 17.4744897959vw;
+    margin-top: -17.4744897959vw;
+    padding-bottom: 13.137755102vw;
+    margin-bottom: -13.137755102vw;
+  }
+  .admissions .admissions__dec {
+    padding-top: 17.4744897959vw;
+    padding-bottom: 13.137755102vw;
+  }
   .admissions .admissions__dec span {
     max-width: 122.4489795918vw;
   }
@@ -11510,12 +11689,15 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .admissions {
+    padding-top: 20vw;
+    margin-top: -20vw;
     padding-bottom: 54.9333333333vw;
     margin-bottom: -54.9333333333vw;
   }
   .admissions .admissions__dec {
+    padding-top: 20vw;
     padding-bottom: 54.9333333333vw;
-    margin-bottom: -54.9333333333vw;
+    margin-bottom: 0;
   }
   .admissions .admissions__dec span {
     max-width: 100%;
@@ -11716,6 +11898,8 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .education-hero {
+    padding-top: 20vw;
+    margin-top: -20vw;
     padding-bottom: 0;
     margin-bottom: 0;
   }
@@ -13471,6 +13655,8 @@ form .button-field {
 }
 .promo-services {
   overflow: hidden;
+  padding-top: 280px;
+  margin-top: -280px;
 }
 .promo-services .promo-services__inner {
   position: relative;
@@ -13548,6 +13734,10 @@ form .button-field {
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
+  .promo-services {
+    padding-top: 14.5833333333vw;
+    margin-top: -14.5833333333vw;
+  }
   .promo-services .promo-services__inner {
     max-width: 100vw;
     padding: 3.6458333333vw 0;
@@ -13580,6 +13770,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 1568px) {
+  .promo-services {
+    padding-top: 17.8571428571vw;
+    margin-top: -17.8571428571vw;
+  }
   .promo-services .promo-services__inner {
     max-width: 122.4489795918vw;
     padding: 4.4642857143vw 0;
@@ -13612,6 +13806,10 @@ form .button-field {
   }
 }
 @media only screen and (max-width: 991px) {
+  .promo-services {
+    padding-top: 20vw;
+    margin-top: -20vw;
+  }
   .promo-services .promo-services__inner {
     max-width: 100%;
     padding: 13.3333333333vw 0;
@@ -13663,6 +13861,8 @@ form .button-field {
 }
 .concierge-case {
   overflow: hidden;
+  position: relative;
+  z-index: 4;
 }
 .concierge-case .concierge-case__inner {
   width: 100%;

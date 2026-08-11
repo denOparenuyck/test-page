@@ -1,9 +1,15 @@
 .section-faq {
     overflow: hidden;
+    padding-top: 350px;
+    margin-top: -350px;
+    padding-bottom: 200px;
+    margin-bottom: -200px;
 
     &.is-block {
         padding-top: 520px;
         margin-top: -520px;
+        padding-bottom: 0;
+        margin-bottom: 0;
 
         .section-faq__inner {
             padding: 70px 0;
@@ -196,10 +202,16 @@
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     .section-faq {
+        padding-top: vwB(350px);
+        margin-top: vwB(-350px);
+        padding-bottom: vwB(200px);
+        margin-bottom: vwB(-200px);
 
         &.is-block {
             padding-top: vwB(520px);
             margin-top: vwB(-520px);
+            padding-bottom: 0;
+            margin-bottom: 0;
 
             .section-faq__inner {
                 padding: vwB(70px) 0;
@@ -310,10 +322,16 @@
 
 @include maxw($desktop) {
     .section-faq {
+        padding-top: vwD(350px);
+        margin-top: vwD(-350px);
+        padding-bottom: vwD(200px);
+        margin-bottom: vwD(-200px);
 
         &.is-block {
             padding-top: vwD(520px);
             margin-top: vwD(-520px);
+            padding-bottom: 0;
+            margin-bottom: 0;
 
             .section-faq__inner {
                 padding: vwD(70px) 0;
@@ -424,7 +442,17 @@
 
 @include maxw($mobile) {
     .section-faq {
+        padding-top: vwM(101px);
+        margin-top: vwM(-101px);
+        padding-bottom: vwM(70px);
+        margin-bottom: vwM(-70px);
+
         &.is-block {
+            padding-top: vwM(204px);
+            margin-top: vwM(-204px);
+            padding-bottom: vwM(27px);
+            margin-bottom: vwM(-27px);
+
             .section-faq__inner {
                 padding: vwM(50px) 0;
 

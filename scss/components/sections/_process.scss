@@ -1,5 +1,7 @@
 .process {
     background-color: #F4EFE7;
+    position: relative;
+    z-index: 3;
 
     .process__inner {
         padding: 70px 0;

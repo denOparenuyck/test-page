@@ -2,6 +2,8 @@
     overflow: hidden;
     position: relative;
     z-index: 3;
+    padding-top: 550px;
+    margin-top: -550px;
 
     .concierge-support__inner {
         width: 100%;
@@ -64,6 +66,9 @@
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     .concierge-support {
+        padding-top: vwB(550px);
+        margin-top: vwB(-550px);
+
         .concierge-support__inner {
             max-width: vwB(1920px);
             padding: vwB(70px) 0;
@@ -113,6 +118,9 @@
 
 @include maxw($desktop) {
     .concierge-support {
+        padding-top: vwD(550px);
+        margin-top: vwD(-550px);
+
         .concierge-support__inner {
             max-width: vwD(1920px);
             padding: vwD(70px) 0;

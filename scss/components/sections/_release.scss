@@ -1,6 +1,8 @@
 .release {
     background: #F4EFE7;
     overflow: visible;
+    position: relative;
+    z-index: 3;
 
     .release__inner {
         padding: 70px 0;
