@@ -120,10 +120,16 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 40px;
+        width: 100%;
+        max-width: 690px;
+        margin: 40px auto 0;
 
         .is-mobile {
             display: none;
+        }
+
+        .default-button.is-dark{
+            border: 1px solid #F4EFE7;
         }
     }
 }
@@ -184,8 +190,10 @@
         }
 
         .text-image__button {
-            margin-top: vwB(40px);
             gap: vwB(12px);
+
+            max-width: vwB(690px);
+            margin: vwB(40px) auto 0;
         }
     }
 }
@@ -246,8 +254,10 @@
         }
 
         .text-image__button {
-            margin-top: vwD(40px);
             gap: vwD(12px);
+
+            max-width: vwD(690px);
+            margin: vwD(40px) auto 0;
         }
     }
 }
@@ -322,10 +332,11 @@
         }
 
         .text-image__button {
-            margin-top: vwM(36px);
             display: flex;
             flex-direction: column;
             gap: vwM(8px);
+            max-width: 100%;
+            margin: vwM(36px) 0 0;
 
             .default-button {
                 width: 100%;

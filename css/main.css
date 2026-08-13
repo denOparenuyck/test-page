@@ -1181,6 +1181,10 @@ body.no-scroll {
     border-radius: 2.1333333333vw;
   }
 }
+.breadcrumbs-page {
+  position: relative;
+  z-index: 5;
+}
 .breadcrumbs-page .breadcrumbs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5324,10 +5328,15 @@ form .button-field {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 12px;
-  margin-top: 40px;
+  width: 100%;
+  max-width: 690px;
+  margin: 40px auto 0;
 }
 .text-image .text-image__button .is-mobile {
   display: none;
+}
+.text-image .text-image__button .default-button.is-dark {
+  border: 1px solid #F4EFE7;
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
@@ -5376,8 +5385,9 @@ form .button-field {
     margin-top: 1.4583333333vw;
   }
   .text-image .text-image__button {
-    margin-top: 2.0833333333vw;
     gap: 0.625vw;
+    max-width: 35.9375vw;
+    margin: 2.0833333333vw auto 0;
   }
 }
 @media only screen and (max-width: 1568px) {
@@ -5426,8 +5436,9 @@ form .button-field {
     margin-top: 1.7857142857vw;
   }
   .text-image .text-image__button {
-    margin-top: 2.5510204082vw;
     gap: 0.7653061224vw;
+    max-width: 44.0051020408vw;
+    margin: 2.5510204082vw auto 0;
   }
 }
 @media only screen and (max-width: 991px) {
@@ -5492,7 +5503,6 @@ form .button-field {
     margin-top: 7.4666666667vw;
   }
   .text-image .text-image__button {
-    margin-top: 9.6vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -5501,6 +5511,8 @@ form .button-field {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 2.1333333333vw;
+    max-width: 100%;
+    margin: 9.6vw 0 0;
   }
   .text-image .text-image__button .default-button {
     width: 100%;
