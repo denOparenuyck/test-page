@@ -89,7 +89,9 @@
     }
 
     .what-we-treat__intro-text {
-        opacity: 0.7;
+        .text {
+            color: rgba(#fff, 0.7);
+        }
     }
 
     .what-we-treat__card {
@@ -108,8 +110,16 @@
     }
 
     .what-we-treat__card-text {
-        .text{
-            opacity: 0.7;
+        .text {
+            color: rgba(#fff, 0.7);
+
+            ul {
+                li {
+                    &::after {
+                        background-color: rgba(#fff, 0.7);
+                    }
+                }
+            }
         }
     }
 }

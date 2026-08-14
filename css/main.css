@@ -513,7 +513,13 @@ body.no-scroll {
   color: #fff;
 }
 .text.is-opacity {
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+.text.is-opacity ul li::after {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.text.is-opacity ol li ul li::after {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .text > p,
 .text > ul,
@@ -9472,8 +9478,8 @@ form .button-field {
   color: #fff;
   margin-bottom: 28px;
 }
-.what-we-treat .what-we-treat__intro-text {
-  opacity: 0.7;
+.what-we-treat .what-we-treat__intro-text .text {
+  color: rgba(255, 255, 255, 0.7);
 }
 .what-we-treat .what-we-treat__card {
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -9489,7 +9495,10 @@ form .button-field {
   margin-bottom: 40px;
 }
 .what-we-treat .what-we-treat__card-text .text {
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+.what-we-treat .what-we-treat__card-text .text ul li::after {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
@@ -10544,6 +10553,13 @@ form .button-field {
   z-index: 3;
   padding-top: 550px;
   margin-top: -550px;
+}
+.concierge-support.no-shadow {
+  padding: 0;
+  margin: 0;
+}
+.concierge-support.no-shadow .concierge-support__inner::before, .concierge-support.no-shadow .concierge-support__inner::after {
+  display: none;
 }
 .concierge-support .concierge-support__inner {
   width: 100%;

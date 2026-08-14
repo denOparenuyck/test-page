@@ -5,6 +5,17 @@
     padding-top: 550px;
     margin-top: -550px;
 
+    &.no-shadow{
+        padding: 0;
+        margin: 0;
+        .concierge-support__inner{
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+    }
+
     .concierge-support__inner {
         width: 100%;
         max-width: 1920px;

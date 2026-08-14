@@ -50,8 +50,28 @@
     letter-spacing: -0.04em;
     color: #fff;
 
-    &.is-opacity{
-        opacity: 0.7;
+    &.is-opacity {
+        color: rgba(#fff, 0.7);
+
+        ul {
+            li {
+                &::after {
+                    background-color: rgba(#fff, 0.7);
+                }
+            }
+        }
+
+        ol {
+            li {
+                ul {
+                    li {
+                        &::after {
+                            background-color: rgba(#fff, 0.7);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     >p,
