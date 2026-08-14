@@ -1,13 +1,13 @@
 .admissions {
     position: relative;
     z-index: 2;
-    overflow: hidden;
     padding-top: 274px;
     margin-top: -274px;
     padding-bottom: 206px;
     margin-bottom: -206px;
 
     .admissions__dec {
+        overflow: hidden;
         position: absolute;
         z-index: -1;
         top: 0;
@@ -291,12 +291,14 @@
 
 @include maxw($mobile) {
     .admissions {
-        padding-top: vwM(75px);
-        margin-top: vwM(-75px);
-        padding-bottom: vwM(206px);
-        margin-bottom: vwM(-206px);
+        padding-top: 0;
+        margin-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
 
         .admissions__dec {
+            top: vwM(-75px);
+            height: calc(100% + #{vwM(75px)} + #{vwM(206px)});
             padding-top: vwM(75px);
             padding-bottom: vwM(206px);
             margin-bottom: 0;
@@ -327,7 +329,7 @@
 
         .admissions__wrapper {
             flex-direction: column;
-            gap: vwM(60px);
+            gap: vwM(50px);
         }
 
         .admissions__info {

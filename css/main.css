@@ -11465,13 +11465,13 @@ form .button-field {
 .admissions {
   position: relative;
   z-index: 2;
-  overflow: hidden;
   padding-top: 274px;
   margin-top: -274px;
   padding-bottom: 206px;
   margin-bottom: -206px;
 }
 .admissions .admissions__dec {
+  overflow: hidden;
   position: absolute;
   z-index: -1;
   top: 0;
@@ -11717,12 +11717,14 @@ form .button-field {
 }
 @media only screen and (max-width: 991px) {
   .admissions {
-    padding-top: 20vw;
-    margin-top: -20vw;
-    padding-bottom: 54.9333333333vw;
-    margin-bottom: -54.9333333333vw;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   .admissions .admissions__dec {
+    top: -20vw;
+    height: calc(100% + 20vw + 54.9333333333vw);
     padding-top: 20vw;
     padding-bottom: 54.9333333333vw;
     margin-bottom: 0;
@@ -11750,7 +11752,7 @@ form .button-field {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 16vw;
+    gap: 13.3333333333vw;
   }
   .admissions .admissions__info {
     width: 100%;
