@@ -28,7 +28,7 @@
 }
 
 @mixin link-hover-underline($color: currentColor) {
-    &::before {
+    &:not(.default-button)::before {
         content: "";
         position: absolute;
         left: 0;
@@ -42,7 +42,7 @@
     }
 
     @include minw($mobile) {
-        &:hover::before {
+        &:not(.default-button):hover::before {
             transform: scaleX(1);
             transform-origin: left;
         }
@@ -51,7 +51,7 @@
 
 // For links that already have an underline by default
 @mixin link-hover-underline-reverse($color: currentColor) {
-    &::before {
+    &:not(.default-button)::before {
         content: "";
         position: absolute;
         left: 0;
@@ -65,7 +65,7 @@
     }
 
     @include minw($mobile) {
-        &:hover::before {
+        &:not(.default-button):hover::before {
             transform: scaleX(0);
             transform-origin: right;
         }

@@ -28,6 +28,10 @@ form {
         display: none !important;
     }
 
+    .wpcf7-list-item{
+        margin: 0 !important;
+    }
+
     .form-fields {
         display: grid;
         grid-template-columns: 1fr;
@@ -45,6 +49,7 @@ form {
         font-size: 16px;
         color: #F4EFE7;
         margin-bottom: 12px;
+        display: block;
     }
 
     .input-field {

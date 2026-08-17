@@ -5,10 +5,12 @@
     padding-top: 550px;
     margin-top: -550px;
 
-    &.no-shadow{
+    &.no-shadow {
         padding: 0;
         margin: 0;
-        .concierge-support__inner{
+
+        .concierge-support__inner {
+
             &::before,
             &::after {
                 display: none;
@@ -182,11 +184,11 @@
 @include maxw($mobile) {
     .concierge-support {
         padding-top: vwM(300px);
-        padding-bottom: vwM(110px);
+        padding-bottom: 0;
         margin-top: vwM(-300px);
-        margin-bottom: vwM(-110px);
+        margin-bottom: 0;
 
-        & + .concierge-mission {
+        &+.concierge-mission {
             margin-top: vwM(-385px);
         }
 
@@ -206,6 +208,7 @@
             }
 
             &::after {
+                display: none;
                 top: auto;
                 bottom: vwM(-110px);
                 right: vwM(-250px);

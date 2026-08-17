@@ -32,7 +32,7 @@
         color: #01090B;
     }
 
-    a {
+    a:not(.default-button) {
         color: inherit;
         text-decoration: none;
         position: relative;
@@ -170,7 +170,7 @@
         margin-top: 0;
     }
 
-    a {
+    a:not(.default-button) {
         color: inherit !important;
         text-decoration: none !important;
         letter-spacing: -0.03em;
@@ -725,7 +725,7 @@
             margin-bottom: vwM(20px);
         }
 
-        a {
+        a:not(.default-button) {
             letter-spacing: -0.02em;
         }
 
