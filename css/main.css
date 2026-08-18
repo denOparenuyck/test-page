@@ -1426,7 +1426,7 @@ form .input-field input:focus, form .input-field input[placeholder]:not(:placeho
   border-color: rgba(255, 255, 255, 0.7);
   color: #fff;
 }
-form .input-field input.wpcf7-not-valid {
+form .input-field input.wpcf7-not-valid, form .input-field input[aria-invalid=true] {
   background: rgba(244, 239, 231, 0.5);
   border-color: #DA1F26;
   color: #fff;
@@ -1538,7 +1538,7 @@ form .textarea-field textarea:focus, form .textarea-field textarea[placeholder]:
   border-color: rgba(255, 255, 255, 0.7);
   color: #fff;
 }
-form .textarea-field textarea.wpcf7-not-valid {
+form .textarea-field textarea.wpcf7-not-valid, form .textarea-field textarea[aria-invalid=true] {
   background: rgba(244, 239, 231, 0.5);
   border-color: #DA1F26;
   color: #fff;
@@ -10821,9 +10821,6 @@ form .button-field {
     padding-bottom: 0;
     margin-top: -80vw;
     margin-bottom: 0;
-  }
-  .concierge-support + .concierge-mission {
-    margin-top: -102.6666666667vw;
   }
   .concierge-support .concierge-support__inner {
     max-width: 100%;
